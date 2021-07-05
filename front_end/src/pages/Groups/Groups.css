@@ -1,0 +1,8 @@
+.groups-page{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    width: calc(100% - 420px - 2px);
+}
