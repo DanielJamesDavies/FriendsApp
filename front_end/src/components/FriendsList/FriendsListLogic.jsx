@@ -19,7 +19,7 @@ export const FriendsListLogic = () => {
     const [filteredFriendsList, setFilteredFriendsList] = useState(friends);
 
     function changeSearchValue(e) {
-        setSearchValue(e.target.value)
+        setSearchValue(e.target.value);
         setFilteredFriendsList(
             friendsList.filter(friend =>
                 friend.nickname.toLowerCase().includes(e.target.value.toLowerCase()) ||

@@ -26,5 +26,10 @@
         "nickname": "Nickname5",
         "username": "username5",
         "status": "In a call with Group 1"
+    },
+    {
+        "nickname": "Nickname6",
+        "username": "username6",
+        "status": "Offline"
     }
 ]
