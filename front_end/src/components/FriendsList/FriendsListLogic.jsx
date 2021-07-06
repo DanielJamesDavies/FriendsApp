@@ -10,7 +10,7 @@ import { useState } from "react";
 // Styles
 
 // Assets
-import friends from './friends.json';
+import friends from './users.json';
 
 
 export const FriendsListLogic = () => {

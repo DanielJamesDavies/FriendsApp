@@ -8,6 +8,7 @@ import { Profile } from './pages/Profile/Profile';
 import { Meet } from './pages/Meet/Meet';
 import { Groups } from './pages/Groups/Groups';
 import { Settings } from './pages/Settings/Settings';
+import { User } from './pages/User/User';
 
 // Logic
 
@@ -30,6 +31,7 @@ function App() {
           <Route exact path="/meet" component={Meet} />
           <Route exact path="/groups" component={Groups} />
           <Route exact path="/settings" component={Settings} />
+          <Route exact path="/user/:username" component={User} />
         </Switch>
       </div>
     </BrowserRouter>

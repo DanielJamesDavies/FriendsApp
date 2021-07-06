@@ -1,5 +1,23 @@
 .friends-list-items-container{
     margin-top: 1em;
+    padding: 0;
+    padding-right: 15px;
+
+    height: calc(100% - 3em - 52px);
+
+    overflow-y: overlay;
+}
+
+.friends-list-items-container::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    transition: 0.2s;
+}
+
+.friends-list-items-container::-webkit-scrollbar-thumb {
+    background: var(--blue);
+    border-radius: 1em;
 }
 
 .friends-list-item{
@@ -11,6 +29,7 @@
 
     height: 74px;
 
+    background: #e8e8e8;
     color: #000;
     transition: 0.2s;
 }
@@ -20,7 +39,7 @@
 }
 
 .friends-list-item-without-background-image:hover{
-    color: var(--blue);
+    background: var(--blue);
 }
 
 .friends-list-item-divider{
@@ -28,7 +47,7 @@
     content: '';
     
     width: 100%;
-    height: 4px;
+    height: 2px;
     background: #e8e8e8;
 }
 
@@ -64,11 +83,35 @@
     filter: brightness(0.4);
 }
 
+.friends-list-item-with-background-image .friends-list-item-with-background-image-hover-filter{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: inherit;
+
+    height: 100%;
+    width: 100%;
+
+    background: var(--blue);
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.friends-list-item-with-background-image:hover .friends-list-item-with-background-image-hover-filter{
+    opacity: 0.7;
+}
+
 .friends-list-item-foreground{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 2;
     padding: 8px 12px;
     border-radius: 12px;
     
@@ -79,6 +122,11 @@
 .friends-list-item-profile-picture{
     display: inline-block;
     vertical-align: middle;
+}
+
+.friends-list-item-profile-picture svg{
+    fill: var(--blue);
+    transition: 0.2s;
 }
 
 .friends-list-item-names{
@@ -100,7 +148,12 @@
     font-weight: 700;
 }
 
+.friends-list-item-username{
+    font-size: 1em;
+}
+
 .friends-list-item-status{
+    margin-top: 8px;
     font-size: 0.88em;
 }
 
@@ -130,18 +183,16 @@
     color: #eee;
 }
 
+.friends-list-item-with-background-image:hover .friends-list-item-profile-picture svg{
+    fill: #fff;
+}
+
 .friends-list-item-without-background-image:hover .friends-list-item-nickname,
 .friends-list-item-without-background-image:hover .friends-list-item-username,
 .friends-list-item-without-background-image:hover .friends-list-item-status{
-    color: var(--blue);
+    color: #fff;
 }
 
-.friends-list-item-status{
-    margin-top: 8px;
-}
-
-.friends-list-item-status svg{
-    margin-right: 0.25em;
-    vertical-align: middle;
-    font-size: 1.1em;
+.friends-list-item-without-background-image:hover .friends-list-item-profile-picture svg{
+    fill: #fff;
 }

@@ -1,0 +1,8 @@
+.user-page{
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0;
+    border: 0;
+
+    width: calc(100% - 435px - 2px);
+}

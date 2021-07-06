@@ -24,7 +24,7 @@ export const Sidebar = () => {
 
                 <button
                     className="sidebar-button sidebar-button-user"
-                    onClick={() => toPage("/profile")}
+                    onClick={() => toPage("/profile/")}
                 >
                     <fa.FaUser />
                 </button>
@@ -38,21 +38,21 @@ export const Sidebar = () => {
 
                 <button
                     className="sidebar-button sidebar-button-meet"
-                    onClick={() => toPage("/meet")}
+                    onClick={() => toPage("/meet/")}
                 >
                     <fa.FaHandshake />
                 </button>
 
                 <button
                     className="sidebar-button sidebar-button-groups"
-                    onClick={() => toPage("/groups")}
+                    onClick={() => toPage("/groups/")}
                 >
                     <fa.FaUsers />
                 </button>
 
                 <button
                     className="sidebar-button sidebar-button-settings"
-                    onClick={() => toPage("/settings")}
+                    onClick={() => toPage("/settings/")}
                 >
                     <fa.FaCog />
                 </button>

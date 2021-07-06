@@ -1,9 +1,12 @@
 // Packages
 
 // Components
+import { Loading } from '../../components/Loading/Loading';
+import { MeetUserList } from './MeetUserList';
 import { FriendsList } from '../../components/FriendsList/FriendsList';
 
 // Logic
+import { MeetLogic } from './MeetLogic';
 
 // Context
 
@@ -15,13 +18,23 @@ import './Meet.css';
 
 
 export const Meet = () => {
-    return (
-        <div className="page">
-            <div className="meet-page">
-                <h1>Meet</h1>
-            </div>
+    const { loading } = MeetLogic();
 
-            <FriendsList />
-        </div>
-    )
+    if (loading) {
+        return (
+            <div className="page">
+                <Loading />
+            </div>
+        )
+    } else {
+        return (
+            <div className="page">
+                <div className="meet-page">
+                    <MeetUserList />
+                </div>
+
+                <FriendsList />
+            </div>
+        )
+    }
 }

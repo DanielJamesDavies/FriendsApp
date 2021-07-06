@@ -7,10 +7,9 @@
     border-width: 0 0 0 2px;
 
     height: 100vh;
-    width: 400px;
+    width: 415px;
 
     vertical-align: top;
-    text-align: right;
 }
 
 .friends-list{
@@ -19,7 +18,7 @@
     padding: 0;
 
     height: 100vh;
-    width: 380px;
+    width: 395px;
 
     vertical-align: top;
     text-align: left;
@@ -27,9 +26,12 @@
 
 
 .friends-list-search-bar{
-    margin: 8px auto;
+    margin: 8px 0;
+    margin-right: 15px;
     padding: 8px 10px;
     border-radius: 18px;
+
+    width: calc(100% - 30px);
 
     background: #e8e8e8;
 }

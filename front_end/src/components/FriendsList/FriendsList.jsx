@@ -1,5 +1,4 @@
 // Packages
-import * as fa from "react-icons/fa";
 
 // Components
 import { FriendsListItem } from "./FriendsListItem";
