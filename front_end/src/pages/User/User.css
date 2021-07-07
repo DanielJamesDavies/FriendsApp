@@ -1,8 +1,26 @@
 .user-page{
     display: inline-block;
-    margin: 0 auto;
+    margin: 8px 15px;
     padding: 0;
     border: 0;
 
-    width: calc(100% - 435px - 2px);
+    width: calc(100% - 435px - 2px - 30px);
+    height: calc(100% - 16px);
+    overflow-y: overlay;
+}
+
+.user-page::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    transition: 0.2s;
+}
+
+.dark-theme .user-page::-webkit-scrollbar {
+    background: #2a2a2a;
+}
+
+.user-page::-webkit-scrollbar-thumb {
+    background: var(--blue);
+    border-radius: 1em;
 }

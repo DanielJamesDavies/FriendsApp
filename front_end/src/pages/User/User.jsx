@@ -2,6 +2,9 @@
 
 // Components
 import { Loading } from '../../components/Loading/Loading';
+import { UserTop } from './UserTop';
+import { UserInfo } from './UserInfo';
+import { UserGroups } from './UserGroups';
 import { FriendsList } from '../../components/FriendsList/FriendsList';
 
 // Logic
@@ -31,7 +34,9 @@ export const User = (props) => {
         return (
             <div className="page">
                 <div className="user-page">
-                    <h1>{user.username}</h1>
+                    <UserTop user={user} />
+                    <UserInfo user={user} />
+                    <UserGroups user={user} />
                 </div>
 
                 <FriendsList />

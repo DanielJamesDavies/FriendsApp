@@ -15,6 +15,10 @@
     transition: 0.2s;
 }
 
+.dark-theme .friends-list-items-container::-webkit-scrollbar {
+    background: #2a2a2a;
+}
+
 .friends-list-items-container::-webkit-scrollbar-thumb {
     background: var(--blue);
     border-radius: 1em;
@@ -30,8 +34,12 @@
     height: 74px;
 
     background: #e8e8e8;
-    color: #000;
+    color: #777;
     transition: 0.2s;
+}
+
+.friends-list-item:hover{
+    cursor: pointer;
 }
 
 .dark-theme .friends-list-item{
@@ -45,19 +53,6 @@
 
 .friends-list-item-without-background-image:hover{
     background: var(--blue);
-}
-
-.friends-list-item-divider{
-    display: block;
-    content: '';
-    
-    width: 100%;
-    height: 2px;
-    background: #e8e8e8;
-}
-
-.friends-list-item:hover{
-    cursor: pointer;
 }
 
 .friends-list-item-background-container{
@@ -200,4 +195,17 @@
 
 .friends-list-item-without-background-image:hover .friends-list-item-profile-picture svg{
     fill: #fff;
+}
+
+.friends-list-item-divider{
+    display: block;
+    content: '';
+    
+    width: 100%;
+    height: 2px;
+    background: #e8e8e8;
+}
+
+.dark-theme .friends-list-item-divider{
+    background: #2a2a2a;
 }
