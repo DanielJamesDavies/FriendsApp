@@ -12,6 +12,10 @@
     vertical-align: top;
 }
 
+.dark-theme .friends-list-container{
+    border-color: #2a2a2a;
+}
+
 .friends-list{
     margin: 0;
     margin-left: auto;
@@ -36,9 +40,18 @@
     background: #e8e8e8;
 }
 
+.dark-theme .friends-list-search-bar{
+    background: #2a2a2a;
+}
+
 .friends-list-search-bar input{
     display: inline-block;
 
     width: calc(100% - 20px - 6px);
     font-size: 0.9em;
+}
+
+.dark-theme .friends-list-search-bar input{
+    background: #080808;
+    color: #fff;
 }

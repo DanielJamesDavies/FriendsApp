@@ -1,4 +1,5 @@
 // Packages
+import { useContext } from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 // Components
@@ -13,6 +14,7 @@ import { User } from './pages/User/User';
 // Logic
 
 // Context
+import { UserContext } from "./context/UserContext";
 
 // Styles
 import './styles/App.css';
@@ -21,18 +23,22 @@ import './styles/App.css';
 
 
 function App() {
+  const { user } = useContext(UserContext);
+
   return (
     <BrowserRouter>
-      <div className="App">
-        <Sidebar />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/meet" component={Meet} />
-          <Route exact path="/groups" component={Groups} />
-          <Route exact path="/settings" component={Settings} />
-          <Route exact path="/user/:username" component={User} />
-        </Switch>
+      <div className={user.settings.theme === "light" ? "light-theme" : "dark-theme"}>
+        <div className="App">
+          <Sidebar />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/meet" component={Meet} />
+            <Route exact path="/groups" component={Groups} />
+            <Route exact path="/settings" component={Settings} />
+            <Route exact path="/user/:username" component={User} />
+          </Switch>
+        </div>
       </div>
     </BrowserRouter>
   );

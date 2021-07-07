@@ -10,9 +10,18 @@
     max-width: 1500px;
     height: 100%;
 
-    background: #fff;
     text-align: center;
     font-size: 1em;
+}
+
+.light-theme{
+    background: #fff;
+    color: #000;
+}
+
+.dark-theme{
+    background: #080808;
+    color: #fff;
 }
 
 input{

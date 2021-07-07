@@ -22,13 +22,18 @@
     margin: 12px 0;
     padding: 0;
     border: 0;
-    border-radius: 8px;
+    border-radius: 12px;
 
     height: 74px;
 
     background: #e8e8e8;
     color: #000;
     transition: 0.2s;
+}
+
+.dark-theme .users-list-item{
+    background: #2a2a2a;
+    color: #fff;
 }
 
 .users-list-item-with-background-image{
@@ -72,12 +77,8 @@
     width: 100%;
 
     object-fit: cover;
-    filter: brightness(0.6);
+    filter: brightness(0.8);
     transition: 0.2s;
-}
-
-.users-list-item:hover .users-list-item-background{
-    filter: brightness(0.4);
 }
 
 .users-list-item-with-background-image .users-list-item-with-background-image-hover-filter{

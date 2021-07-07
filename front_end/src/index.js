@@ -1,13 +1,27 @@
+// Packages
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Components
+import App from './App';
+
+// Logic
+
+// Context
+import UserProvider from "./context/UserContext";
+
+// Styles
+import './styles/index.css';
+
+// Assets
+
+
+
 ReactDOM.render(
-  <React.StrictMode>
+  <UserProvider>
     <App />
-  </React.StrictMode>,
+  </UserProvider>,
   document.getElementById('root')
 );
 

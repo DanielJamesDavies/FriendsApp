@@ -34,6 +34,11 @@
     transition: 0.2s;
 }
 
+.dark-theme .friends-list-item{
+    background: #2a2a2a;
+    color: #fff;
+}
+
 .friends-list-item-with-background-image{
     color: #fff;
 }
