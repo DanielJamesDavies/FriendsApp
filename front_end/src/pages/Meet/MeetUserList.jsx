@@ -1,7 +1,7 @@
 // Packages
 
 // Components
-import { MeetUserListItem } from "./MeetUserListItem";
+import { UserItem } from "../../components/UserItem/UserItem";
 
 // Logic
 import { MeetUserListLogic } from "./MeetUserListLogic";
@@ -33,7 +33,7 @@ export const MeetUserList = () => {
                 <div className="users-list-items-container">
 
                     {filteredUsersList.map((user, index) => (
-                        <MeetUserListItem key={index} user={user} />
+                        <UserItem key={index} user={user} isFriend={false} />
                     ))}
 
                 </div>

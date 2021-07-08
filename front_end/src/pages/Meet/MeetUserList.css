@@ -47,3 +47,26 @@
     background: #080808;
     color: #fff;
 }
+
+.users-list-items-container{
+    margin-top: 1em;
+    padding: 0 15px;
+    height: calc(100% - 3em - 52px);
+    overflow-y: overlay;
+}
+
+.users-list-items-container::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    transition: 0.2s;
+}
+
+.dark-theme .users-list-items-container::-webkit-scrollbar {
+    background: #2a2a2a;
+}
+
+.users-list-items-container::-webkit-scrollbar-thumb {
+    background: var(--blue);
+    border-radius: 1em;
+}

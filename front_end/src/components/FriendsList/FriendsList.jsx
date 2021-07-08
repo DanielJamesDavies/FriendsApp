@@ -1,7 +1,7 @@
 // Packages
 
 // Components
-import { FriendsListItem } from "./FriendsListItem";
+import { UserItem } from "../UserItem/UserItem";
 
 // Logic
 import { FriendsListLogic } from "./FriendsListLogic";
@@ -33,7 +33,7 @@ export const FriendsList = () => {
                 <div className="friends-list-items-container">
 
                     {filteredFriendsList.map((friend, index) => (
-                        <FriendsListItem key={index} friend={friend} />
+                        <UserItem key={index} user={friend} isFriend={true} />
                     ))}
 
                 </div>
