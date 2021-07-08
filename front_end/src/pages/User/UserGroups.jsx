@@ -2,6 +2,7 @@
 import * as fa from "react-icons/fa";
 
 // Components
+import { GroupItem } from "../../components/GroupItem/GroupItem";
 
 // Logic
 import { UserGroupsLogic } from './UserGroupsLogic';
@@ -22,43 +23,7 @@ export const UserGroups = ({ user }) => {
 
             <div className="user-groups-container">
 
-                <div className="user-group-item">
-                    <img
-                        className="user-group-item-image"
-                        src={user.backgroundImage}
-                    />
-
-                    <div className="user-group-item-info">
-                        <div className="user-group-item-names">
-                            <p className="user-group-item-nickname">Pillow World</p>
-                            <p className="user-group-item-username">@PillowWorld</p>
-                        </div>
-
-                        <div className="user-group-item-members">
-                            <p className="user-group-item-value">11</p>
-                            <p className="user-group-item-label">Members</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="user-group-item">
-                    <img
-                        className="user-group-item-image"
-                        src={user.backgroundImage}
-                    />
-
-                    <div className="user-group-item-info">
-                        <div className="user-group-item-names">
-                            <p className="user-group-item-nickname">Pillow World</p>
-                            <p className="user-group-item-username">@PillowWorld</p>
-                        </div>
-
-                        <div className="user-group-item-members">
-                            <p className="user-group-item-value">11</p>
-                            <p className="user-group-item-label">Members</p>
-                        </div>
-                    </div>
-                </div>
+                <GroupItem user={user} />
 
             </div>
 
