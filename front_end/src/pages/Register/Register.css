@@ -1,0 +1,74 @@
+.register-page{
+    position: relative;
+
+    width: 100%;
+}
+
+.register-container{
+    margin: 0 auto;
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 8px 24px;
+    border-radius: 8px;
+
+    width: 100%;
+    max-width: 450px;
+
+    background: #fff;
+}
+
+.register-container h1{
+    color: var(--blue);
+}
+
+.register-input-container{
+    margin: 16px auto;
+
+    width: 100%;
+}
+
+.register-input-container .input{
+    width: calc(100% - 40px);
+}
+
+.register-submit-container{
+    margin: 16px auto;
+    text-align: right;
+}
+
+.register-submit-container button{
+    margin: 0 4px;
+    padding: 8px 16px;
+    border: 0;
+    border-radius: 4px;
+
+    vertical-align: middle;
+    background: #e8e8e8;
+    color: var(--blue);
+    font-size: 1em;
+    transition: 0.2s;
+}
+
+.register-submit-container button:hover{
+    cursor: pointer;
+    background: var(--blue);
+    color: #fff;
+}
+
+.register-submit-container button p{
+    display: inline-block;
+    margin: 0;
+
+    vertical-align: middle;
+    font-size: 1em;
+}
+
+.register-submit-container button svg{
+    display: inline-block;
+    margin-left: 0.4em;
+
+    vertical-align: middle;
+    font-size: 1.25em;
+}

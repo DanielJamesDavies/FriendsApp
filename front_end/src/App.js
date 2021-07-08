@@ -1,15 +1,10 @@
 // Packages
 import { useContext } from 'react';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch } from "react-router-dom";
 
 // Components
 import { Sidebar } from "./components/Sidebar/Sidebar";
-import { Home } from './pages/Home/Home';
-import { Profile } from './pages/Profile/Profile';
-import { Meet } from './pages/Meet/Meet';
-import { Groups } from './pages/Groups/Groups';
-import { Settings } from './pages/Settings/Settings';
-import { User } from './pages/User/User';
+import { Routes } from './components/Routes/Routes';
 
 // Logic
 
@@ -23,20 +18,15 @@ import './styles/App.css';
 
 
 function App() {
-  const { user } = useContext(UserContext);
+  const { user, authorised } = useContext(UserContext);
 
   return (
     <BrowserRouter>
-      <div className={user.settings.theme === "light" ? "light-theme" : "dark-theme"}>
+      <div className={!authorised ? "unauthorised" : user.settings.theme === "light" ? "light-theme" : "dark-theme"}>
         <div className="App">
-          <Sidebar />
+          {!authorised ? null : <Sidebar />}
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/profile" component={Profile} />
-            <Route exact path="/meet" component={Meet} />
-            <Route exact path="/groups" component={Groups} />
-            <Route exact path="/settings" component={Settings} />
-            <Route exact path="/user/:username" component={User} />
+            <Routes authorised={authorised} />
           </Switch>
         </div>
       </div>

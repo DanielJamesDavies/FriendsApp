@@ -24,17 +24,6 @@
     color: #fff;
 }
 
-input{
-    padding: 7px 10px;
-    border: 3px solid rgba(0,0,0,0);
-    border-radius: 18px;
-
-    background: #fff;
-    color: #000;
-    transition: 0.2s;
-}
-
-input:focus{
-    border-color: var(--blue);
-    outline: 0;
+.unauthorised{
+    background: linear-gradient(135deg, var(--blue), #ee32ff);
 }

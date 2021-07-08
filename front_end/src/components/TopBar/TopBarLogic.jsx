@@ -12,12 +12,12 @@ import { useHistory } from "react-router-dom";
 // Assets
 
 
-export const GroupItemLogic = () => {
+export const TopBarLogic = () => {
     const history = useHistory();
 
-    function toGroup(id) {
-        //history.push("/group/" + id);
+    function toPage(address) {
+        history.push(address);
     }
 
-    return { toGroup }
+    return { toPage }
 }

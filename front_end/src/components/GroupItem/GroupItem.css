@@ -17,10 +17,20 @@
     }
 }
 
+.group-item:hover{
+    cursor: pointer;
+}
+
 .group-item .group-item-image{
     border-radius: inherit;
 
     width: 100%;
+    
+    transition: 0.2s;
+}
+
+.group-item:hover .group-item-image{
+    filter: brightness(0.7);
 }
 
 .group-item .group-item-info{
@@ -33,6 +43,17 @@
 
     background: #e8e8e8;
     color: #777;
+    transition: 0.2s;
+}
+
+.dark-theme .group-item .group-item-info{
+    background: #2a2a2a;
+    color: #bbb;
+}
+
+.group-item:hover .group-item-info{
+    background: var(--blue);
+    color: #fff;
 }
 
 .group-item .group-item-names{

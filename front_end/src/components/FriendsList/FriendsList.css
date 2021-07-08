@@ -32,28 +32,12 @@
 .friends-list-search-bar{
     margin: 8px 0;
     margin-right: 15px;
-    padding: 8px 10px;
-    border-radius: 18px;
 
     width: calc(100% - 30px);
-
-    background: #e8e8e8;
 }
 
-.dark-theme .friends-list-search-bar{
-    background: #2a2a2a;
-}
-
-.friends-list-search-bar input{
-    display: inline-block;
-
+.friends-list-search-bar .input{
     width: calc(100% - 20px - 6px);
-    font-size: 0.9em;
-}
-
-.dark-theme .friends-list-search-bar input{
-    background: #080808;
-    color: #fff;
 }
 
 .friends-list-items-container{

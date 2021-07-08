@@ -53,6 +53,11 @@
     color: #777;
 }
 
+.dark-theme .user-top .user-top-info-container .user-top-info{
+    background: #2a2a2a;
+    color: #bbb;
+}
+
 .user-top .user-top-info-container .user-top-info p{
     margin: 0;
 
@@ -125,6 +130,10 @@
     background: #e8e8e8;
     color: var(--blue);
     transition: 0.2s;
+}
+
+.dark-theme .user-top .user-top-info-container .user-top-add-btn{
+    background: #2a2a2a;
 }
 
 .user-top .user-top-info-container .user-top-add-btn:hover{

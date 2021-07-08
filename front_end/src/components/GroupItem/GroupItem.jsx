@@ -3,6 +3,7 @@
 // Components
 
 // Logic
+import { GroupItemLogic } from './GroupItemLogic';
 
 // Context
 
@@ -13,8 +14,13 @@ import './GroupItem.css';
 
 
 export const GroupItem = ({ user }) => {
+    const { toGroup } = GroupItemLogic();
+
     return (
-        <div className="group-item">
+        <div
+            className="group-item"
+            onClick={() => toGroup("PillowWorld")}
+        >
             <img
                 className="group-item-image"
                 src={user.backgroundImage}

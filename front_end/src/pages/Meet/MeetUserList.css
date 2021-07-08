@@ -23,29 +23,15 @@
 
 
 .users-list-search-bar{
-    margin: 8px auto;
-    padding: 8px 10px;
+    margin: 8px 15px;
+    margin-left: 15px;
     border-radius: 18px;
 
-    width: calc(100% - 50px);
-
-    background: #e8e8e8;
+    width: calc(100% - 40px);
 }
 
-.dark-theme .users-list-search-bar{
-    background: #2a2a2a;
-}
-
-.users-list-search-bar input{
-    display: inline-block;
-
-    width: calc(100% - 20px - 6px);
-    font-size: 0.9em;
-}
-
-.dark-theme .users-list-search-bar input{
-    background: #080808;
-    color: #fff;
+.users-list-search-bar .input{
+    width: calc(100% - 36px);
 }
 
 .users-list-items-container{

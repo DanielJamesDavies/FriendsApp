@@ -2,6 +2,7 @@
 
 // Components
 import { UserItem } from "../UserItem/UserItem";
+import { Input } from "../Input/Input";
 
 // Logic
 import { FriendsListLogic } from "./FriendsListLogic";
@@ -22,12 +23,11 @@ export const FriendsList = () => {
             <div className="friends-list">
 
                 <div className="friends-list-search-bar">
-                    <input
-                        placeholder="Search for Friends"
+                    <Input
                         value={searchValue}
                         onChange={changeSearchValue}
-                    >
-                    </input>
+                        label={"Search for Friends"}
+                    ></Input>
                 </div>
 
                 <div className="friends-list-items-container">

@@ -2,6 +2,7 @@
 
 // Components
 import { UserItem } from "../../components/UserItem/UserItem";
+import { Input } from '../../components/Input/Input';
 
 // Logic
 import { MeetUserListLogic } from "./MeetUserListLogic";
@@ -22,12 +23,11 @@ export const MeetUserList = () => {
             <div className="users-list">
 
                 <div className="users-list-search-bar">
-                    <input
-                        placeholder="Search for Users"
+                    <Input
                         value={searchValue}
                         onChange={changeSearchValue}
-                    >
-                    </input>
+                        label={"Search for Users"}
+                    ></Input>
                 </div>
 
                 <div className="users-list-items-container">
