@@ -4,7 +4,7 @@
     padding: 0;
     border: 0;
 
-    width: calc(100% - 435px - 2px - 30px);
+    width: calc(100% - 360px - 2px - 30px);
     height: calc(100% - 16px);
     overflow-y: overlay;
 }

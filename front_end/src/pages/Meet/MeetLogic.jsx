@@ -13,7 +13,6 @@ import { useState } from "react";
 
 
 export const MeetLogic = () => {
-    const [loading, setLoading] = useState(false);
 
-    return { loading }
+    return {}
 }

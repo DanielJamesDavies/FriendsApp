@@ -14,6 +14,7 @@ import '../Pages.css';
 import './UserGroups.css';
 
 // Assets
+import groups from './groups.json';
 
 
 export const UserGroups = ({ user }) => {
@@ -23,7 +24,7 @@ export const UserGroups = ({ user }) => {
 
             <div className="user-groups-container">
 
-                <GroupItem user={user} />
+                <GroupItem group={groups[0]} />
 
             </div>
 

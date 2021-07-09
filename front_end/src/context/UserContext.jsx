@@ -4,7 +4,7 @@ export const UserContext = createContext();
 
 export default ({ children }) => {
     const [user, setUser] = useState({ "id": 0, "username": "username", "nickname": "nickname", "settings": { "theme": "light" } });
-    const [authorised, setAuthorised] = useState(false);
+    const [authorised, setAuthorised] = useState(true);
 
     return (
         <UserContext.Provider

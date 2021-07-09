@@ -8,6 +8,7 @@
 
     height: 100vh;
     width: 415px;
+    width: 340px;
 
     vertical-align: top;
 }
@@ -22,7 +23,7 @@
     padding: 0;
 
     height: 100vh;
-    width: 395px;
+    width: calc(340px - 20px);
 
     vertical-align: top;
     text-align: left;

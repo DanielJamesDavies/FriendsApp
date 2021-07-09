@@ -13,7 +13,7 @@ import './GroupItem.css';
 // Assets
 
 
-export const GroupItem = ({ user }) => {
+export const GroupItem = ({ group }) => {
     const { toGroup } = GroupItemLogic();
 
     return (
@@ -21,19 +21,21 @@ export const GroupItem = ({ user }) => {
             className="group-item"
             onClick={() => toGroup("PillowWorld")}
         >
-            <img
-                className="group-item-image"
-                src={user.backgroundImage}
-            />
+            {group.backgroundImage === undefined ? null :
+                <img
+                    className="group-item-image"
+                    src={group.backgroundImage}
+                />
+            }
 
             <div className="group-item-info">
                 <div className="group-item-names">
-                    <p className="group-item-nickname">Pillow World</p>
-                    <p className="group-item-username">@PillowWorld</p>
+                    <p className="group-item-name">{group.name}</p>
+                    <p className="group-item-description">{group.description}</p>
                 </div>
 
                 <div className="group-item-members">
-                    <p className="group-item-value">11</p>
+                    <p className="group-item-value">{group.memberCount}</p>
                     <p className="group-item-label">Members</p>
                 </div>
             </div>

@@ -4,5 +4,10 @@
     padding: 0;
     border: 0;
 
-    width: calc(100% - 435px - 2px);
+    width: calc(100% - 360px - 2px);
+}
+
+.groups-container{
+    margin: 0 20px;
+    text-align: left;
 }

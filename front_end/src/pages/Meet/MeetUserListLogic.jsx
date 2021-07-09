@@ -14,6 +14,7 @@ import users from './users.json';
 
 
 export const MeetUserListLogic = () => {
+    const [loading, setLoading] = useState(false);
     const [searchValue, setSearchValue] = useState("");
     const [usersList, setUsersList] = useState(users);
     const [filteredUsersList, setFilteredUsersList] = useState(users);
@@ -28,5 +29,5 @@ export const MeetUserListLogic = () => {
         )
     }
 
-    return { searchValue, changeSearchValue, filteredUsersList }
+    return { loading, searchValue, changeSearchValue, filteredUsersList }
 }
