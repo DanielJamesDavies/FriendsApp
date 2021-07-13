@@ -10,7 +10,7 @@ import { useState } from "react";
 // Styles
 
 // Assets
-import groups from './groups.json';
+import groups from './groupsData.json';
 
 
 export const GroupsLogic = () => {
