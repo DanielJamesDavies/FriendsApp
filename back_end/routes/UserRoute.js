@@ -3,8 +3,8 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const Joi = require("@hapi/joi");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const User = require("../models/User");
-const { RegisterValidation, LoginValidation } = require("../Validation");
 
 // Get all Users
 router.get("/", (req, res) => {
@@ -103,7 +103,6 @@ router.delete("/:id", (req, res) => {
 });
 
 // Login
-
 router.post("/login", async (req, res) => {
 	// Login Input Validation
 	const schema = Joi.object({
@@ -111,7 +110,7 @@ router.post("/login", async (req, res) => {
 		password: Joi.string().min(6).required(),
 	});
 	const { error } = schema.validate(req.body);
-	if (error) return res.status(400).send(error);
+	if (error) return res.status(200).send({ error: error });
 
 	// Check if user with username exists
 	const user = await User.findOne({
@@ -119,7 +118,7 @@ router.post("/login", async (req, res) => {
 	}).exec();
 	if (!user)
 		return res
-			.status(400)
+			.status(200)
 			.send({ error: "There is no account with this username." });
 
 	// Check if password is correct
@@ -128,9 +127,12 @@ router.post("/login", async (req, res) => {
 		user.password
 	);
 	if (!isCorrectPassword)
-		return res.status(400).send({ error: "Incorrect Password." });
+		return res.status(200).send({ error: "Incorrect Password." });
 
-	res.send({ message: "Logged in." });
+	// Create token
+	const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+
+	res.header("token", token).send({ message: "Logged in.", token: token });
 });
 
 // Change Username
