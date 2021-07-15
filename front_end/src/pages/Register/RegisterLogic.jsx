@@ -1,5 +1,7 @@
 // Packages
-import { useState } from 'react';
+import { useState } from "react";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 // Components
 
@@ -11,19 +13,38 @@ import { useState } from 'react';
 
 // Assets
 
-
 export const RegisterLogic = () => {
-    const [email, setEmail] = useState("");
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+	const [username, setUsername] = useState("");
+	const [nickname, setNickname] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [error, setError] = useState("");
+	const history = useHistory();
 
-    function submit() {
-        if (email === "" || username === "" || password === "") {
+	async function submit() {
+		if (email === "" || username === "" || password === "")
+			return setError("Please enter an Email, Username and Password.");
 
-        } else {
-            console.log("Register");
-        }
-    }
+		const registered = await axios.post("http://localhost:3001/user/", {
+			username: username,
+			nickname: nickname,
+			email: email,
+			password: password,
+		});
 
-    return { email, setEmail, username, setUsername, password, setPassword, submit }
-}
+		if (registered.data.error) return setError(registered.data.error);
+		if (registered.data.message) return history.push("/login");
+	}
+
+	return {
+		username,
+		setUsername,
+		nickname,
+		setNickname,
+		email,
+		setEmail,
+		password,
+		setPassword,
+		submit,
+	};
+};

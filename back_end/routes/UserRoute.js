@@ -49,7 +49,7 @@ router.post("/", async (req, res) => {
 		password: Joi.string().min(6).required(),
 	});
 	const { error } = schema.validate(req.body);
-	if (error) return res.status(400).send(error);
+	if (error) return res.status(200).send({ error: error });
 
 	// Check if username is used
 	const usernameUsed = await User.findOne({
@@ -64,7 +64,7 @@ router.post("/", async (req, res) => {
 		var output = { error: {} };
 		if (usernameUsed) output.error.usernameUsed = true;
 		if (emailUsed) output.error.emailUsed = true;
-		return res.status(400).send(output);
+		return res.status(200).send(output);
 	}
 
 	// Hash password
@@ -85,7 +85,7 @@ router.post("/", async (req, res) => {
 		})
 		.catch((err) => {
 			console.log(err);
-			return res.status(500).send({ message: "Error: " + err });
+			return res.status(200).send({ message: "Error: " + err });
 		});
 });
 
