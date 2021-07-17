@@ -64,9 +64,16 @@ export const RegisterLogic = () => {
 		});
 	}
 
+	function getImageFileSize(image) {
+		var imageLength = image.split(",")[1].split("=")[0].length;
+		return Math.floor(imageLength - (imageLength / 8) * 2);
+	}
+
 	async function submit() {
 		if (nickname === "" || bio === "" || description.length === 0 || profilePicture.length === 0 || backgroundImage.length === 0)
 			return setError("Please add a Profile Picture and Background Image, and enter a Nickname, Bio, and Description.");
+		if (getImageFileSize(profilePicture) >= 1000000) return setError("Please add a Profile Picture that has a file size smaller than 1MB.");
+		if (getImageFileSize(backgroundImage) >= 1000000) return setError("Please add a Background Image that has a file size smaller than 1MB.");
 		setError("");
 
 		const submitData = {
@@ -86,7 +93,10 @@ export const RegisterLogic = () => {
 
 		const registered = await axios.post("http://localhost:3001/user/", submitData);
 
-		if (registered.data.error) return setError(registered.data.error);
+		if (registered.data.error) {
+			console.log(registered.data.error);
+			return setError(registered.data.error.details[0].message);
+		}
 		if (registered.data.message) return history.push("/login");
 	}
 

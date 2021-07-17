@@ -77,7 +77,6 @@ export const RegisterProfile = ({
 			<div className='register-image-input-container'>
 				<p className='register-image-input-label'>Background Image</p>
 				<button onClick={() => addBackgroundImageInputRef.current.click()}>
-					{console.log(backgroundImage)}
 					{backgroundImage.length !== 0 ? <img src={backgroundImage} /> : <div className='register-background-image-blank-input' />}
 				</button>
 			</div>
