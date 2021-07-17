@@ -1,74 +1,72 @@
-.login-page{
-    position: relative;
+.login-page {
+	position: relative;
 
-    width: 100%;
+	width: 100%;
 }
 
-.login-container{
-    margin: 0 auto;
-    position: absolute;
-    top: 38%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 8px 24px;
-    border-radius: 8px;
+.login-container {
+	margin: 0 auto;
+	margin-top: 100px;
+	padding: 8px 24px;
+	border-radius: 8px;
 
-    width: 100%;
-    max-width: 450px;
+	width: 100%;
+	max-width: 450px;
 
-    background: #fff;
+	background: #fff;
 }
 
-.login-container h1{
-    color: var(--blue);
+.login-container h1 {
+	color: var(--blue);
+	font-weight: 500;
 }
 
-.login-input-container{
-    margin: 16px auto;
+.login-input-container {
+	margin: 16px auto;
 
-    width: 100%;
+	width: 100%;
 }
 
-.login-input-container .input{
-    width: calc(100% - 40px);
+.login-input-container .input {
+	width: calc(100% - 40px);
 }
 
-.login-submit-container{
-    margin: 16px auto;
-    text-align: right;
+.login-submit-container {
+	margin: 16px auto;
+	text-align: right;
 }
 
-.login-submit-container button{
-    margin: 0 4px;
-    padding: 8px 16px;
-    border: 0;
-    border-radius: 4px;
+.login-submit-container button {
+	margin: 0 4px;
+	padding: 8px 16px;
+	border: 0;
+	border-radius: 4px;
 
-    vertical-align: middle;
-    background: #e8e8e8;
-    color: var(--blue);
-    font-size: 1em;
-    transition: 0.2s;
+	vertical-align: middle;
+	background: #e8e8e8;
+	color: var(--blue);
+	font-size: 1em;
+	transition: 0.2s;
 }
 
-.login-submit-container button:hover{
-    cursor: pointer;
-    background: var(--blue);
-    color: #fff;
+.login-submit-container button:hover {
+	cursor: pointer;
+	background: var(--blue);
+	color: #fff;
 }
 
-.login-submit-container button p{
-    display: inline-block;
-    margin: 0;
+.login-submit-container button p {
+	display: inline-block;
+	margin: 0;
 
-    vertical-align: middle;
-    font-size: 1em;
+	vertical-align: middle;
+	font-size: 1em;
 }
 
-.login-submit-container button svg{
-    display: inline-block;
-    margin-left: 0.4em;
+.login-submit-container button svg {
+	display: inline-block;
+	margin-left: 0.4em;
 
-    vertical-align: middle;
-    font-size: 1.25em;
+	vertical-align: middle;
+	font-size: 1.25em;
 }

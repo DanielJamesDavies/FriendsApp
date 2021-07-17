@@ -1,0 +1,38 @@
+.register-form-container h2 {
+	font-size: 1.3em;
+	font-weight: 500;
+}
+
+.register-form-error-container p {
+	color: #ff0000;
+}
+
+.register-form-switch-btn-container {
+	margin: 16px auto;
+	text-align: right;
+}
+
+.register-form-switch-btn-container button {
+	margin: 0 4px;
+	padding: 8px 16px;
+	border: 0;
+	border-radius: 4px;
+
+	vertical-align: middle;
+	background: #e8e8e8;
+	color: var(--blue);
+	font-size: 1em;
+	transition: 0.2s;
+}
+
+.register-form-switch-btn-container button svg {
+	vertical-align: middle;
+	margin-top: -1px;
+	font-size: 1.4em;
+}
+
+.register-form-switch-btn-container button:hover {
+	cursor: pointer;
+	background: var(--blue);
+	color: #fff;
+}

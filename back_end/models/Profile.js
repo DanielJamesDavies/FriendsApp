@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const UserSchema = mongoose.Schema({
+const ProfileSchema = mongoose.Schema({
 	_id: mongoose.Schema.Types.ObjectId,
 	username: {
 		type: String,
@@ -8,19 +8,21 @@ const UserSchema = mongoose.Schema({
 		min: 1,
 		max: 32,
 	},
-	email: {
+	nickname: {
 		type: String,
 		require: true,
 		min: 1,
-		max: 255,
+		max: 32,
 	},
-	password: {
+	bio: {
 		type: String,
 		require: true,
-		min: 6,
-		max: 255,
+		min: 1,
+		max: 32,
 	},
-	profile_id: mongoose.Schema.Types.ObjectId,
+	description: {
+		type: [String],
+	},
 });
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("Profile", ProfileSchema);

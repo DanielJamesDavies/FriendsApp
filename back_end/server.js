@@ -22,6 +22,10 @@ mongoose
 const userRoute = require("./routes/UserRoute");
 app.use("/user", userRoute);
 
+// Profile Routes
+const profileRoute = require("./routes/ProfileRoute");
+app.use("/profile", profileRoute);
+
 app.listen(port, () => {
 	console.log(port);
 });
