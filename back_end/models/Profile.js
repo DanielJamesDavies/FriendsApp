@@ -23,6 +23,14 @@ const ProfileSchema = mongoose.Schema({
 	description: {
 		type: [String],
 	},
+	profilePicture: {
+		type: String,
+		require: true,
+	},
+	backgroundImage: {
+		type: String,
+		require: true,
+	},
 });
 
 module.exports = mongoose.model("Profile", ProfileSchema);

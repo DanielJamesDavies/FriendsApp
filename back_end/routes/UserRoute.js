@@ -89,6 +89,8 @@ router.post("/", async (req, res) => {
 				nickname: req.body.profile.nickname,
 				bio: req.body.profile.bio,
 				description: req.body.profile.description,
+				profilePicture: req.body.profile.profilePicture,
+				backgroundImage: req.body.profile.backgroundImage,
 			});
 			profile
 				.save()
@@ -140,7 +142,7 @@ router.post("/login", async (req, res) => {
 	if (!isCorrectPassword) return res.status(200).send({ error: "Incorrect Password." });
 
 	// Create token
-	const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+	const token = jwt.sign({ profile_id: user.profile_id }, process.env.TOKEN_SECRET);
 
 	res.header("token", token).send({ message: "Logged in.", token: token });
 });

@@ -30,10 +30,16 @@ export const Register = () => {
 		setBio,
 		description,
 		setDescription,
+		profilePicture,
+		changeProfilePicture,
+		backgroundImage,
+		changeBackgroundImage,
 		form,
 		switchForm,
 		submit,
 		error,
+		addProfilePictureInputRef,
+		addBackgroundImageInputRef,
 	} = RegisterLogic();
 
 	return (
@@ -62,9 +68,15 @@ export const Register = () => {
 						setBio={setBio}
 						description={description}
 						setDescription={setDescription}
+						profilePicture={profilePicture}
+						changeProfilePicture={changeProfilePicture}
+						backgroundImage={backgroundImage}
+						changeBackgroundImage={changeBackgroundImage}
 						switchForm={switchForm}
 						submit={submit}
 						error={error}
+						addProfilePictureInputRef={addProfilePictureInputRef}
+						addBackgroundImageInputRef={addBackgroundImageInputRef}
 					/>
 				)}
 			</div>
