@@ -5,9 +5,10 @@ const Joi = require("@hapi/joi");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Profile = require("../models/Profile");
+const authenticate = require("./TokenAuthentication");
 
 // Get all Profiles
-router.get("/", (req, res) => {
+router.get("/", authenticate, (req, res) => {
 	Profile.find()
 		.then((result) => {
 			if (result) {
@@ -23,7 +24,7 @@ router.get("/", (req, res) => {
 });
 
 // Get Profile by Id
-router.get("/:id", (req, res) => {
+router.get("/:id", authenticate, (req, res) => {
 	Profile.findById(req.params.id)
 		.exec()
 		.then((result) => {

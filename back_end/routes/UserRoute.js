@@ -7,9 +7,27 @@ const jwt = require("jsonwebtoken");
 
 const User = require("../models/User");
 const Profile = require("../models/Profile");
+const authenticate = require("./TokenAuthentication");
+
+// Get Users
+router.get("/", (req, res) => {
+	User.find()
+		.exec()
+		.then((result) => {
+			if (result) {
+				res.status(200).send(result);
+			} else {
+				res.status(404).send({ message: "Error: User not Found" });
+			}
+		})
+		.catch((err) => {
+			console.log(err);
+			res.status(500).send({ message: "Error: " + err });
+		});
+});
 
 // Get User by Id
-router.get("/:id", (req, res) => {
+router.get("/:id", authenticate, (req, res) => {
 	User.findById(req.params.id)
 		.exec()
 		.then((result) => {
@@ -40,12 +58,12 @@ router.post("/", async (req, res) => {
 	const profileSchema = Joi.object({
 		username: Joi.string().min(1).max(32).required(),
 		nickname: Joi.string().min(1).max(32).required(),
-		bio: Joi.string().min(1).max(32).required(),
+		shortDescription: Joi.string().min(1).max(32).required(),
 	});
 	const profileToValidate = {
 		username: req.body.user.username,
 		nickname: req.body.profile.nickname,
-		bio: req.body.profile.bio,
+		shortDescription: req.body.profile.shortDescription,
 	};
 	const profileValidationError = profileSchema.validate(profileToValidate).error;
 	if (profileValidationError) return res.status(200).send({ error: profileValidationError });
@@ -87,7 +105,7 @@ router.post("/", async (req, res) => {
 				_id: profile_id,
 				username: req.body.user.username,
 				nickname: req.body.profile.nickname,
-				bio: req.body.profile.bio,
+				shortDescription: req.body.profile.shortDescription,
 				description: req.body.profile.description,
 				profilePicture: req.body.profile.profilePicture,
 				backgroundImage: req.body.profile.backgroundImage,
@@ -142,9 +160,9 @@ router.post("/login", async (req, res) => {
 	if (!isCorrectPassword) return res.status(200).send({ error: "Incorrect Password." });
 
 	// Create token
-	const token = jwt.sign({ profile_id: user.profile_id }, process.env.TOKEN_SECRET);
+	const token = jwt.sign({ profile_id: user._id }, process.env.TOKEN_SECRET);
 
-	res.header("token", token).send({ message: "Logged in.", token: token });
+	res.header("token", token).send({ message: "Logged in.", token: token, id: user.profile_id });
 });
 
 // Change Username

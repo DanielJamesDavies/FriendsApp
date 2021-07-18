@@ -14,7 +14,7 @@ const ProfileSchema = mongoose.Schema({
 		min: 1,
 		max: 32,
 	},
-	bio: {
+	shortDescription: {
 		type: String,
 		require: true,
 		min: 1,
