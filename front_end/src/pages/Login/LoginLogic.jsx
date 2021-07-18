@@ -18,12 +18,11 @@ export const LoginLogic = () => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
-	const { setAuthorised } = useContext(UserContext);
+	const { setToken, setId } = useContext(UserContext);
 	const history = useHistory();
 
 	async function submit() {
-		if (username === "" || password === "")
-			return setError("Please enter a Username and a Password.");
+		if (username === "" || password === "") return setError("Please enter a Username and a Password.");
 
 		const loggedIn = await axios.post("http://localhost:3001/user/login", {
 			username: username,
@@ -32,7 +31,8 @@ export const LoginLogic = () => {
 
 		if (loggedIn.data.error) return setError(loggedIn.data.error);
 		if (loggedIn.data.token) {
-			setAuthorised(loggedIn.data.token);
+			setToken(loggedIn.data.token);
+			setId(loggedIn.data.id);
 			history.push("/");
 		}
 	}

@@ -1,0 +1,12 @@
+.profile-groups {
+	width: 100%;
+}
+
+.profile-groups .profile-groups-container {
+	margin: 0 auto;
+
+	width: calc(100% - 20px);
+
+	vertical-align: middle;
+	text-align: left;
+}

@@ -9,13 +9,8 @@ export default ({ children }) => {
 		nickname: "nickname",
 		settings: { theme: "light" },
 	});
-	const [authorised, setAuthorised] = useState(false);
+	const [token, setToken] = useState(false);
+	const [id, setId] = useState(false);
 
-	return (
-		<UserContext.Provider
-			value={{ user, setUser, authorised, setAuthorised }}
-		>
-			{children}
-		</UserContext.Provider>
-	);
+	return <UserContext.Provider value={{ user, setUser, token, setToken, id, setId }}>{children}</UserContext.Provider>;
 };
