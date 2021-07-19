@@ -4,6 +4,7 @@ import * as fa from "react-icons/fa";
 // Components
 import { TopBar } from "../../components/TopBar/TopBar";
 import { Input } from "../../components/Input/Input";
+import { Loading } from "../../components/Loading/Loading";
 
 // Logic
 import { LoginLogic } from "./LoginLogic";
@@ -17,8 +18,7 @@ import "./Login.css";
 // Assets
 
 export const Login = () => {
-	const { username, setUsername, password, setPassword, error, submit } =
-		LoginLogic();
+	const { username, setUsername, password, setPassword, error, submit, loading } = LoginLogic();
 
 	return (
 		<div className='page login-page'>
@@ -28,28 +28,22 @@ export const Login = () => {
 				<h1>Login</h1>
 
 				<div className='login-input-container'>
-					<Input
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
-						label={"Username"}
-						type={"username"}
-					></Input>
+					<Input value={username} onChange={(e) => setUsername(e.target.value)} label={"Username"} type={"username"}></Input>
 				</div>
 
 				<div className='login-input-container'>
-					<Input
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						label={"Password"}
-						type={"password"}
-					></Input>
+					<Input value={password} onChange={(e) => setPassword(e.target.value)} label={"Password"} type={"password"}></Input>
 				</div>
 
 				<div className='login-submit-container'>
-					<button onClick={submit}>
-						<p>Log in</p>
-						<fa.FaSignInAlt />
-					</button>
+					{!loading ? (
+						<button onClick={submit}>
+							<p>Log in</p>
+							<fa.FaSignInAlt />
+						</button>
+					) : (
+						<Loading />
+					)}
 				</div>
 			</div>
 		</div>

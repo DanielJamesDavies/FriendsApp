@@ -17,6 +17,7 @@ export const RegisterLogic = () => {
 	const history = useHistory();
 	const [form, setForm] = useState(0);
 	const [error, setError] = useState("");
+	const [loading, setLoading] = useState(false);
 	const addProfilePictureInputRef = useRef();
 	const addBackgroundImageInputRef = useRef();
 
@@ -75,6 +76,7 @@ export const RegisterLogic = () => {
 		if (getImageFileSize(profilePicture) >= 1000000) return setError("Please add a Profile Picture that has a file size smaller than 1MB.");
 		if (getImageFileSize(backgroundImage) >= 1000000) return setError("Please add a Background Image that has a file size smaller than 1MB.");
 		setError("");
+		setLoading(true);
 
 		const submitData = {
 			user: {
@@ -95,6 +97,7 @@ export const RegisterLogic = () => {
 
 		if (registered.data.error) {
 			console.log(registered.data.error);
+			setLoading(false);
 			return setError(registered.data.error.details[0].message);
 		}
 		if (registered.data.message) return history.push("/login");
@@ -123,5 +126,6 @@ export const RegisterLogic = () => {
 		error,
 		addProfilePictureInputRef,
 		addBackgroundImageInputRef,
+		loading,
 	};
 };

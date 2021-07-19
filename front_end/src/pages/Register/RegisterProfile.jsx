@@ -4,6 +4,7 @@ import { FaArrowLeft, FaPlusCircle } from "react-icons/fa";
 // Components
 import { Input } from "../../components/Input/Input";
 import { TextArea } from "../../components/TextArea/TextArea";
+import { Loading } from "../../components/Loading/Loading";
 
 // Logic
 
@@ -32,6 +33,7 @@ export const RegisterProfile = ({
 	error,
 	addProfilePictureInputRef,
 	addBackgroundImageInputRef,
+	loading,
 }) => {
 	return (
 		<div className='register-form-container'>
@@ -104,10 +106,14 @@ export const RegisterProfile = ({
 			</div>
 
 			<div className='register-submit-container'>
-				<button onClick={submit}>
-					<p>Create New Account</p>
-					<FaPlusCircle />
-				</button>
+				{!loading ? (
+					<button onClick={submit}>
+						<p>Create New Account</p>
+						<FaPlusCircle />
+					</button>
+				) : (
+					<Loading />
+				)}
 			</div>
 		</div>
 	);

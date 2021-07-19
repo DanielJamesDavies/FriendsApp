@@ -75,3 +75,12 @@
 	vertical-align: middle;
 	font-size: 1.4em;
 }
+
+.register-submit-container .loading {
+	width: 100%;
+	height: 80px;
+}
+
+.register-submit-container .loading svg {
+	margin-top: 0;
+}

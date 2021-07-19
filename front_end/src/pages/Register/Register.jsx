@@ -40,6 +40,7 @@ export const Register = () => {
 		error,
 		addProfilePictureInputRef,
 		addBackgroundImageInputRef,
+		loading,
 	} = RegisterLogic();
 
 	return (
@@ -77,6 +78,7 @@ export const Register = () => {
 						error={error}
 						addProfilePictureInputRef={addProfilePictureInputRef}
 						addBackgroundImageInputRef={addBackgroundImageInputRef}
+						loading={loading}
 					/>
 				)}
 			</div>
