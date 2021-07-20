@@ -1,5 +1,5 @@
 // Packages
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 
 // Components
@@ -18,7 +18,7 @@ export const ProfileLogic = () => {
 	const [loading, setLoading] = useState(true);
 	const [user, setUser] = useState(false);
 
-	useEffect(async () => {
+	async function getProfile() {
 		const userData = await axios.get("http://localhost:3001/profile/" + id, {
 			headers: {
 				token: token,
@@ -26,7 +26,7 @@ export const ProfileLogic = () => {
 		});
 		setUser(userData.data);
 		setLoading(false);
-	}, []);
+	}
 
-	return { loading, user };
+	return { loading, getProfile, user };
 };

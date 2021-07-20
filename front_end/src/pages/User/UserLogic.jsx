@@ -1,21 +1,32 @@
 // Packages
-import { useState } from "react";
+import { useContext, useState } from "react";
+import axios from "axios";
 
 // Components
 
 // Logic
 
 // Context
+import { UserContext } from "../../context/UserContext";
 
 // Styles
 
 // Assets
-import userData from './userData.json';
-
 
 export const UserLogic = () => {
-    const [loading, setLoading] = useState(false);
-    const [user, setUser] = useState(userData[0]);
+	const { token } = useContext(UserContext);
+	const [loading, setLoading] = useState(true);
+	const [user, setUser] = useState(false);
 
-    return { loading, user }
-}
+	async function getUser(username) {
+		const userData = await axios.get("http://localhost:3001/profile/?username=" + username, {
+			headers: {
+				token: token,
+			},
+		});
+		setUser(userData.data);
+		setLoading(false);
+	}
+
+	return { loading, getUser, user };
+};

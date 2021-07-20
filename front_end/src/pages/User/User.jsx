@@ -14,13 +14,16 @@ import { UserLogic } from "./UserLogic";
 // Styles
 import "../Pages.css";
 import "./User.css";
+import { useEffect } from "react";
 
 // Assets
 
 export const User = (props) => {
-	var username = props.match.params.username;
+	const { loading, getUser, user } = UserLogic();
 
-	const { loading, user } = UserLogic();
+	useEffect(() => {
+		getUser(props.match.params.username);
+	}, []);
 
 	if (loading) {
 		return (

@@ -1,12 +1,13 @@
-.user-groups{
-    width: 100%;
+.user-groups {
+	width: 100%;
 }
 
-.user-groups .user-groups-container{
-    margin: 0 auto;
+.user-groups .user-groups-container {
+	margin: 0 auto;
+	margin-left: -10px;
 
-    width: calc(100% - 20px);
+	width: calc(100% + 20px);
 
-    vertical-align: middle;
-    text-align: left;
+	vertical-align: middle;
+	text-align: left;
 }

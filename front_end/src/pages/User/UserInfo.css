@@ -47,7 +47,7 @@
 	vertical-align: middle;
 }
 
-.user-info .user-info-more-top-info-container .user-info-short-description p {
+.user-info .user-info-more-top-info-container .user-info-bio p {
 	margin: calc(18px - 0.5em) 0;
 }
 
@@ -115,7 +115,7 @@
 
 .user-info .user-info-info-container {
 	margin: 10px auto;
-	width: calc(100% - 40px);
+	width: 100%;
 }
 
 .user-info .user-info-description {

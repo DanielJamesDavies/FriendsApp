@@ -1,4 +1,5 @@
 // Packages
+import { useEffect } from "react";
 
 // Components
 import { Loading } from "../../components/Loading/Loading";
@@ -18,7 +19,11 @@ import "./Profile.css";
 // Assets
 
 export const Profile = (props) => {
-	const { loading, user } = ProfileLogic();
+	const { loading, getProfile, user } = ProfileLogic();
+
+	useEffect(() => {
+		getProfile();
+	}, []);
 
 	if (loading) {
 		return (

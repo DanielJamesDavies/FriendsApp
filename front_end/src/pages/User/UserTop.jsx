@@ -35,9 +35,9 @@ export const UserTop = ({ user }) => {
 					<p className='users-list-item-username'>@{user.username}</p>
 				</div>
 
-				{user.shortDescription === undefined ? null : (
-					<div className='user-top-info user-top-short-description'>
-						<p>{user.shortDescription}</p>
+				{user.bio === undefined ? null : (
+					<div className='user-top-info user-top-bio'>
+						<p>{user.bio}</p>
 					</div>
 				)}
 
