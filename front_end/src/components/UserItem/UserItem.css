@@ -1,89 +1,20 @@
 .user-item {
 	position: relative;
 	margin: 12px 0;
-	padding: 0;
+	padding: 16px;
 	border: 0;
 	border-radius: 8px;
 
-	height: 74px;
-	height: 90px;
+	width: calc(100% - 24px);
 
 	background: var(--grey2);
-	color: #777;
+	color: #fff;
 	transition: 0.2s;
 }
 
 .user-item:hover {
 	cursor: pointer;
-}
-
-.user-item-with-background-image {
-	color: #fff;
-}
-
-.user-item-without-background-image:hover {
 	background: var(--blue);
-}
-
-.user-item-background-container {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	border-radius: inherit;
-
-	height: 100%;
-	width: 100%;
-}
-
-.user-item-background {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	border-radius: inherit;
-
-	height: 100%;
-	width: 100%;
-
-	object-fit: cover;
-	filter: brightness(0.65);
-	transition: 0.2s;
-}
-
-.user-item-with-background-image .user-item-with-background-image-hover-filter {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 1;
-	margin: 0;
-	padding: 0;
-	border: 0;
-	border-radius: inherit;
-
-	height: 100%;
-	width: 100%;
-
-	background: var(--blue);
-	opacity: 0;
-	transition: 0.2s;
-}
-
-.user-item-with-background-image:hover .user-item-with-background-image-hover-filter {
-	opacity: 0.7;
-}
-
-.user-item-foreground {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 2;
-	padding: 8px 12px;
-	border-radius: 12px;
-
-	height: 50px;
-	width: calc(100% - 24px);
-	vertical-align: middle;
 }
 
 .user-item-profile-picture {
@@ -96,19 +27,33 @@
 	transition: 0.2s;
 }
 
-.user-item-with-background-image:hover .user-item-profile-picture svg {
-	fill: #fff;
-}
-
-.user-item-without-background-image:hover .user-item-profile-picture svg {
+.user-item:hover .user-item-profile-picture svg {
 	fill: #fff;
 }
 
 .user-item-names {
 	display: inline-block;
 	margin-left: 0.8em;
+
+	width: 20%;
+	max-width: 300px;
+
 	vertical-align: middle;
 	font-size: 0.9em;
+}
+
+@media (max-width: 1000px) {
+	.user-item-names {
+		width: calc(50% - 50px - 0.8em);
+		max-width: 50%;
+	}
+}
+
+@media (max-width: 600px) {
+	.user-item-names {
+		width: calc(100% - 50px - 0.8em);
+		max-width: 100%;
+	}
 }
 
 .user-item-nickname,
@@ -127,14 +72,35 @@
 	font-size: 1em;
 }
 
-.user-item-with-background-image:hover .user-item-nickname,
-.user-item-with-background-image:hover .user-item-username {
-	color: #eee;
+.user-item-second-info {
+	display: inline-block;
+
+	width: 30%;
+	max-width: 350px;
+
+	font-size: 0.9em;
+	vertical-align: middle;
 }
 
-.user-item-without-background-image:hover .user-item-nickname,
-.user-item-without-background-image:hover .user-item-username {
-	color: #fff;
+@media (max-width: 1000px) {
+	.user-item-second-info {
+		width: 50%;
+		max-width: 50%;
+	}
+}
+
+@media (max-width: 600px) {
+	.user-item-second-info {
+		display: none;
+	}
+}
+
+.user-item-second-info p {
+	margin: 0;
+}
+
+.user-item-bio {
+	margin-bottom: 10px;
 }
 
 .user-item-status {
@@ -163,24 +129,22 @@
 }
 
 .user-item-compatibility {
-	float: right;
-	margin-top: 10px;
-	height: 38px;
+	display: inline-block;
 
 	vertical-align: middle;
 	text-align: center;
-	font-size: 0.9em;
+	font-size: 1em;
 }
 
 .user-item-compatibility-label {
+	display: inline-block;
 	margin: 0;
-	font-size: 0.8em;
 }
 
 .user-item-compatibility-value {
+	display: inline-block;
 	margin: 0;
 	margin-top: 0.25em;
-	font-size: 1.2em;
 }
 
 .user-item:hover .user-item-compatibility-value {
@@ -205,4 +169,49 @@
 
 .user-item-compatibility-value-very-high {
 	color: #0077ff;
+}
+
+.user-item-banner-container {
+	float: right;
+	position: relative;
+	margin-top: -16px;
+	margin-right: -16px;
+	border-radius: 0 8px 8px 0;
+
+	width: 40%;
+	height: 86px;
+}
+
+@media (max-width: 1000px) {
+	.user-item-banner-container {
+		display: none;
+	}
+}
+
+.user-item-banner-container .user-item-banner {
+	display: inline-block;
+	border-radius: inherit;
+
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.user-item-banner-container .user-item-banner-hover-filter {
+	position: absolute;
+	display: inline-block;
+	content: "";
+	border-radius: inherit;
+
+	width: 0%;
+	height: 100%;
+
+	background: var(--blue);
+	opacity: 0;
+	transition: 0.2s;
+}
+
+.user-item:hover .user-item-banner-container .user-item-banner-hover-filter {
+	width: 100%;
+	opacity: 1;
 }
