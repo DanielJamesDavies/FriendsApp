@@ -19,7 +19,7 @@ export const RegisterLogic = () => {
 	const [error, setError] = useState("");
 	const [loading, setLoading] = useState(false);
 	const addProfilePictureInputRef = useRef();
-	const addBackgroundImageInputRef = useRef();
+	const addBannerInputRef = useRef();
 
 	// Form Data
 	const [username, setUsername] = useState("");
@@ -29,7 +29,7 @@ export const RegisterLogic = () => {
 	const [bio, setBio] = useState("");
 	const [description, setDescription] = useState([]);
 	const [profilePicture, setProfilePicture] = useState("");
-	const [backgroundImage, setBackgroundImage] = useState([]);
+	const [banner, setBanner] = useState([]);
 
 	function switchForm() {
 		if (email === "" || username === "" || password === "") return setError("Please enter an Email, Username and Password.");
@@ -45,10 +45,10 @@ export const RegisterLogic = () => {
 			});
 	}
 
-	function changeBackgroundImage(e) {
+	function changeBanner(e) {
 		if (e.target.files.length !== 0)
 			convertToBase64(e.target.files[0]).then((res) => {
-				setBackgroundImage(res);
+				setBanner(res);
 			});
 	}
 
@@ -71,10 +71,10 @@ export const RegisterLogic = () => {
 	}
 
 	async function submit() {
-		if (nickname === "" || bio === "" || description.length === 0 || profilePicture.length === 0 || backgroundImage.length === 0)
-			return setError("Please add a Profile Picture and Background Image, and enter a Nickname, Bio, and Description.");
+		if (nickname === "" || bio === "" || description.length === 0 || profilePicture.length === 0 || banner.length === 0)
+			return setError("Please add a Profile Picture and Banner, and enter a Nickname, Bio, and Description.");
 		if (getImageFileSize(profilePicture) >= 1000000) return setError("Please add a Profile Picture that has a file size smaller than 1MB.");
-		if (getImageFileSize(backgroundImage) >= 1000000) return setError("Please add a Background Image that has a file size smaller than 1MB.");
+		if (getImageFileSize(banner) >= 1000000) return setError("Please add a Banner that has a file size smaller than 1MB.");
 		setError("");
 		setLoading(true);
 
@@ -89,7 +89,7 @@ export const RegisterLogic = () => {
 				bio: bio,
 				description: description,
 				profilePicture: profilePicture,
-				backgroundImage: backgroundImage,
+				banner: banner,
 			},
 		};
 
@@ -118,14 +118,14 @@ export const RegisterLogic = () => {
 		setDescription,
 		profilePicture,
 		changeProfilePicture,
-		backgroundImage,
-		changeBackgroundImage,
+		banner,
+		changeBanner,
 		form,
 		switchForm,
 		submit,
 		error,
 		addProfilePictureInputRef,
-		addBackgroundImageInputRef,
+		addBannerInputRef,
 		loading,
 	};
 };

@@ -17,11 +17,11 @@ import "./styles/App.css";
 // Assets
 
 function App() {
-	const { user, token } = useContext(UserContext);
+	const { token } = useContext(UserContext);
 
 	return (
 		<BrowserRouter>
-			<div className={!token ? "unauthorised" : user.settings.theme === "light" ? "light-theme" : "dark-theme"}>
+			<div className={!token ? "unauthorised" : "authorised"}>
 				<div className='App'>
 					{!token ? null : <Sidebar />}
 					<Switch>

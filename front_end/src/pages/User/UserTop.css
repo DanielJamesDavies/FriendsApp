@@ -1,157 +1,156 @@
-.user-top{
-    width: 100%;
+.user-top {
+	width: 100%;
 }
 
-.user-top .user-top-background-image{
-    margin: 20px 20px;
-    margin-top: 0;
-    border-radius: 10px;
+.user-top .user-top-background-image {
+	margin: 20px 20px;
+	margin-top: 0;
+	border-radius: 10px;
 
-    width: calc(100% - 40px);
-    height: 200px;
-    
+	width: calc(100% - 40px);
+	height: 200px;
 }
 
-.user-top .user-top-background-image img{
-    width: 100%;
-    height: 100%;
+.user-top .user-top-background-image img {
+	width: 100%;
+	height: 100%;
 
-    object-fit: cover;
-    border-radius: inherit;
+	object-fit: cover;
+	border-radius: inherit;
 }
 
-.user-top .user-top-info-container{
-    margin: 0 auto;
-    margin-top: -60px;
+.user-top .user-top-info-container {
+	margin: 0 auto;
+	margin-top: -60px;
 
-    width: calc(100% - 60px);
+	width: calc(100% - 60px);
 
-    vertical-align: middle;
-    text-align: left;
+	vertical-align: middle;
+	text-align: left;
 }
 
-.user-top .user-top-info-container .user-top-profile-picture{
-    display: inline-block;
-    margin: 0 10px;
-    width: 70px;
-    height: 70px;
+.user-top .user-top-info-container .user-top-profile-picture {
+	display: inline-block;
+	margin: 0 10px;
+	width: 70px;
+	height: 70px;
 
-    vertical-align: middle;
-    fill: var(--blue);
+	vertical-align: middle;
+	fill: var(--blue);
 }
 
-.user-top .user-top-info-container .user-top-info{
-    display: inline-block;
-    margin: 10px 10px;
-    padding: 10px 15px;
-    border-radius: 10px;
+.user-top .user-top-info-container .user-top-info {
+	display: inline-block;
+	margin: 10px 10px;
+	padding: 10px 15px;
+	border-radius: 10px;
 
-    height: 38px;
+	height: 38px;
 
-    vertical-align: middle;
-    background: #e8e8e8;
-    color: #777;
+	vertical-align: middle;
+	background: #e8e8e8;
+	color: #777;
 }
 
-.dark-theme .user-top .user-top-info-container .user-top-info{
-    background: #2a2a2a;
-    color: #bbb;
+.dark-theme .user-top .user-top-info-container .user-top-info {
+	background: var(--grey2);
+	color: #bbb;
 }
 
-.user-top .user-top-info-container .user-top-info p{
-    margin: 0;
+.user-top .user-top-info-container .user-top-info p {
+	margin: 0;
 
-    vertical-align: middle;
+	vertical-align: middle;
 }
 
-.user-top .user-top-info-container .user-top-names{
-    min-width: 140px;
+.user-top .user-top-info-container .user-top-names {
+	min-width: 140px;
 }
 
-.user-top .user-top-info-container .user-top-short-description p{
-    margin: calc(18px - 0.5em) 0;
+.user-top .user-top-info-container .user-top-short-description p {
+	margin: calc(18px - 0.5em) 0;
 }
 
-@media(max-width: 1400px){
-    .user-top .user-top-info-container .user-top-short-description{
-        display: none;
-    }
+@media (max-width: 1400px) {
+	.user-top .user-top-info-container .user-top-short-description {
+		display: none;
+	}
 }
 
-.user-top .user-top-info-container .user-top-compatibility{
-    text-align: center;
+.user-top .user-top-info-container .user-top-compatibility {
+	text-align: center;
 }
 
-@media(max-width: 1400px){
-    .user-top .user-top-info-container .user-top-compatibility{
-        display: none;
-    }
+@media (max-width: 1400px) {
+	.user-top .user-top-info-container .user-top-compatibility {
+		display: none;
+	}
 }
 
-.user-top .user-top-info-container .user-top-compatibility .user-top-compatibility-label{
-    margin-bottom: 2px;
-    font-size: 0.85em;
+.user-top .user-top-info-container .user-top-compatibility .user-top-compatibility-label {
+	margin-bottom: 2px;
+	font-size: 0.85em;
 }
 
-.user-top .user-top-info-container .user-top-compatibility .user-top-compatibility-value{
-    font-size: 1.1em;
+.user-top .user-top-info-container .user-top-compatibility .user-top-compatibility-value {
+	font-size: 1.1em;
 }
 
-.user-top-compatibility-value-very-low{
-    color: #d33030;
+.user-top-compatibility-value-very-low {
+	color: #d33030;
 }
 
-.user-top-compatibility-value-low{
-    color: #d37f30;
+.user-top-compatibility-value-low {
+	color: #d37f30;
 }
 
-.user-top-compatibility-value-medium{
-    color: #d3c830;
+.user-top-compatibility-value-medium {
+	color: #d3c830;
 }
 
-.user-top-compatibility-value-high{
-    color: #30D368;
+.user-top-compatibility-value-high {
+	color: #30d368;
 }
 
-.user-top-compatibility-value-very-high{
-    color: #0077ff;
+.user-top-compatibility-value-very-high {
+	color: #0077ff;
 }
 
-.user-top .user-top-info-container .user-top-add-btn{
-    display: inline-block;
-    margin: 0 10px;
-    border-radius: 100%;
+.user-top .user-top-info-container .user-top-add-btn {
+	display: inline-block;
+	margin: 0 10px;
+	border-radius: 100%;
 
-    height: 58px;
-    width: 58px;
+	height: 58px;
+	width: 58px;
 
-    vertical-align: middle;
-    text-align: center;
-    background: #e8e8e8;
-    color: var(--blue);
-    transition: 0.2s;
+	vertical-align: middle;
+	text-align: center;
+	background: #e8e8e8;
+	color: var(--blue);
+	transition: 0.2s;
 }
 
-.dark-theme .user-top .user-top-info-container .user-top-add-btn{
-    background: #2a2a2a;
+.dark-theme .user-top .user-top-info-container .user-top-add-btn {
+	background: var(--grey2);
 }
 
-.user-top .user-top-info-container .user-top-add-btn:hover{
-    cursor: pointer;
-    background: var(--blue);
-    color: #e8e8e8;
+.user-top .user-top-info-container .user-top-add-btn:hover {
+	cursor: pointer;
+	background: var(--blue);
+	color: #e8e8e8;
 }
 
-.user-top .user-top-info-container .user-top-add-btn svg{
-    margin-top: 12px;
+.user-top .user-top-info-container .user-top-add-btn svg {
+	margin-top: 12px;
 
-    vertical-align: middle;
-    text-align: center;
-    font-size: 2em;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 2em;
 }
 
-@media(max-width: 1400px){
-    .user-top .user-top-info-container .user-top-add-btn{
-        display: none;
-    }
+@media (max-width: 1400px) {
+	.user-top .user-top-info-container .user-top-add-btn {
+		display: none;
+	}
 }

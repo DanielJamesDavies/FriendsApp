@@ -1,5 +1,5 @@
 // Packages
-import * as fa from "react-icons/fa";
+import { FaSignInAlt } from "react-icons/fa";
 
 // Components
 import { TopBar } from "../../components/TopBar/TopBar";
@@ -39,7 +39,7 @@ export const Login = () => {
 					{!loading ? (
 						<button onClick={submit}>
 							<p>Log in</p>
-							<fa.FaSignInAlt />
+							<FaSignInAlt />
 						</button>
 					) : (
 						<Loading />

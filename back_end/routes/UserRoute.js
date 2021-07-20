@@ -108,7 +108,7 @@ router.post("/", async (req, res) => {
 				shortDescription: req.body.profile.shortDescription,
 				description: req.body.profile.description,
 				profilePicture: req.body.profile.profilePicture,
-				backgroundImage: req.body.profile.backgroundImage,
+				banner: req.body.profile.banner,
 			});
 			profile
 				.save()

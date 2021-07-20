@@ -27,7 +27,7 @@ const ProfileSchema = mongoose.Schema({
 		type: String,
 		require: true,
 	},
-	backgroundImage: {
+	banner: {
 		type: String,
 		require: true,
 	},

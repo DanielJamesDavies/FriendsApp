@@ -1,13 +1,9 @@
-.groups-page{
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-    border: 0;
-
-    width: calc(100% - 360px - 2px);
+.groups-page .page-title {
+	background: linear-gradient(90deg, #22df2c, #07910e);
 }
 
-.groups-container{
-    margin: 0 20px;
-    text-align: left;
+.groups-container {
+	width: calc(100% + 20px);
+	margin-left: -10px;
+	text-align: left;
 }

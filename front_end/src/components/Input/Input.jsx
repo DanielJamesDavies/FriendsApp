@@ -14,6 +14,7 @@ import "./Input.css";
 
 export const Input = (props) => {
 	const [focused, setFocused] = useState(false);
+	if (props.icon) var DynamicIconComponent = props.icon;
 
 	return (
 		<div
@@ -27,7 +28,10 @@ export const Input = (props) => {
 					: "input"
 			}
 		>
-			<label htmlFor='input'>{props.label}</label>
+			<div className='label'>
+				{props.icon ? <DynamicIconComponent /> : null}
+				<label htmlFor='input'>{props.label}</label>
+			</div>
 
 			<input
 				value={props.value === undefined ? "" : props.value}

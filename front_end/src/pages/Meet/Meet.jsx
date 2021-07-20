@@ -1,29 +1,26 @@
 // Packages
 
 // Components
-import { MeetUserList } from './MeetUserList';
-import { FriendsList } from '../../components/FriendsList/FriendsList';
+import { MeetUserList } from "./MeetUserList";
 
 // Logic
 
 // Context
 
 // Styles
-import '../Pages.css';
-import './Meet.css';
+import "../Pages.css";
+import "./Meet.css";
 
 // Assets
 
-
 export const Meet = () => {
+	return (
+		<div className='page meet-page'>
+			<div className='page-title'>
+				<h1>Meet</h1>
+			</div>
 
-    return (
-        <div className="page">
-            <div className="meet-page">
-                <MeetUserList />
-            </div>
-
-            <FriendsList />
-        </div>
-    )
-}
+			<MeetUserList />
+		</div>
+	);
+};

@@ -32,14 +32,14 @@ export const Register = () => {
 		setDescription,
 		profilePicture,
 		changeProfilePicture,
-		backgroundImage,
-		changeBackgroundImage,
+		banner,
+		changeBanner,
 		form,
 		switchForm,
 		submit,
 		error,
 		addProfilePictureInputRef,
-		addBackgroundImageInputRef,
+		addBannerInputRef,
 		loading,
 	} = RegisterLogic();
 
@@ -71,13 +71,13 @@ export const Register = () => {
 						setDescription={setDescription}
 						profilePicture={profilePicture}
 						changeProfilePicture={changeProfilePicture}
-						backgroundImage={backgroundImage}
-						changeBackgroundImage={changeBackgroundImage}
+						banner={banner}
+						changeBanner={changeBanner}
 						switchForm={switchForm}
 						submit={submit}
 						error={error}
 						addProfilePictureInputRef={addProfilePictureInputRef}
-						addBackgroundImageInputRef={addBackgroundImageInputRef}
+						addBannerInputRef={addBannerInputRef}
 						loading={loading}
 					/>
 				)}

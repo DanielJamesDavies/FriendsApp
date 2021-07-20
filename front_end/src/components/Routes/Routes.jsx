@@ -4,11 +4,11 @@ import { Route, useHistory } from "react-router-dom";
 
 // Components
 import { Landing } from "../../pages/Landing/Landing";
-import { Home } from "../../pages/Home/Home";
 import { Login } from "../../pages/Login/Login";
 import { Register } from "../../pages/Register/Register";
 import { Profile } from "../../pages/Profile/Profile";
 import { Meet } from "../../pages/Meet/Meet";
+import { Friends } from "../../pages/Friends/Friends";
 import { Groups } from "../../pages/Groups/Groups";
 import { Settings } from "../../pages/Settings/Settings";
 import { User } from "../../pages/User/User";
@@ -37,14 +37,14 @@ export const Routes = ({ token }) => {
 					<Route exact path='/register' component={Register} />
 				</>
 			) : (
-				<>
-					<Route exact path='/' component={Home} />
+				<div className='page-container'>
 					<Route exact path='/profile' component={Profile} />
 					<Route exact path='/meet' component={Meet} />
+					<Route exact path='/friends' component={Friends} />
 					<Route exact path='/groups' component={Groups} />
 					<Route exact path='/settings' component={Settings} />
 					<Route exact path='/user/:username' component={User} />
-				</>
+				</div>
 			)}
 		</>
 	);

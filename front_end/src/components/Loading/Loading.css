@@ -12,7 +12,7 @@
 	stroke-width: 6px;
 	stroke-linecap: round;
 	stroke-dasharray: 94.25;
-	animation: loading-animation 1s linear infinite;
+	animation: loading-animation 0.75s linear infinite;
 }
 
 @keyframes loading-animation {

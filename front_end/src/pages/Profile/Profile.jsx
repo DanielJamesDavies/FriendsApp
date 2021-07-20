@@ -5,7 +5,6 @@ import { Loading } from "../../components/Loading/Loading";
 import { ProfileTop } from "./ProfileTop";
 import { ProfileInfo } from "./ProfileInfo";
 import { ProfileGroups } from "./ProfileGroups";
-import { FriendsList } from "../../components/FriendsList/FriendsList";
 
 // Logic
 import { ProfileLogic } from "./ProfileLogic";

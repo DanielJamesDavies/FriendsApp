@@ -1,8 +1,3 @@
-.meet-page{
-    display: inline-block;
-    margin: 0 auto;
-    padding: 0;
-    border: 0;
-
-    width: calc(100% - 360px - 2px);
+.meet-page .page-title {
+	background: linear-gradient(90deg, #ff5c00, #ff00b8);
 }

@@ -13,7 +13,7 @@
 	width: 100%;
 	max-width: 450px;
 
-	background: #fff;
+	background: var(--grey1);
 }
 
 .register-container h1 {
@@ -47,7 +47,7 @@
 	border-radius: 4px;
 
 	vertical-align: middle;
-	background: #e8e8e8;
+	background: var(--grey2);
 	color: var(--blue);
 	font-size: 1em;
 	transition: 0.2s;

@@ -38,7 +38,7 @@ export const LoginLogic = () => {
 		if (loggedIn.data.token) {
 			setToken(loggedIn.data.token);
 			setId(loggedIn.data.id);
-			history.push("/");
+			history.push("/profile/");
 		}
 	}
 

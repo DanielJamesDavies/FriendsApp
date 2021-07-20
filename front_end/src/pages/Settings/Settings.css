@@ -1,8 +1,3 @@
-.settings-page{
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-    border: 0;
-
-    width: calc(100% - 360px - 2px);
+.settings-page .page-title {
+	background: linear-gradient(90deg, #737b80, #292f33);
 }

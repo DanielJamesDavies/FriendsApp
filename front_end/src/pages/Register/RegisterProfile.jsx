@@ -26,13 +26,13 @@ export const RegisterProfile = ({
 	setDescription,
 	profilePicture,
 	changeProfilePicture,
-	backgroundImage,
-	changeBackgroundImage,
+	banner,
+	changeBanner,
 	switchForm,
 	submit,
 	error,
 	addProfilePictureInputRef,
-	addBackgroundImageInputRef,
+	addBannerInputRef,
 	loading,
 }) => {
 	return (
@@ -74,12 +74,12 @@ export const RegisterProfile = ({
 				></Input>
 			</div>
 
-			{/* Background Image Input */}
-			<input style={{ display: "none" }} ref={addBackgroundImageInputRef} type='file' onChange={changeBackgroundImage} />
+			{/* Banner Input */}
+			<input style={{ display: "none" }} ref={addBannerInputRef} type='file' onChange={changeBanner} />
 			<div className='register-image-input-container'>
-				<p className='register-image-input-label'>Background Image</p>
-				<button onClick={() => addBackgroundImageInputRef.current.click()}>
-					{backgroundImage.length !== 0 ? <img src={backgroundImage} /> : <div className='register-background-image-blank-input' />}
+				<p className='register-image-input-label'>Banner</p>
+				<button onClick={() => addBannerInputRef.current.click()}>
+					{banner.length !== 0 ? <img src={banner} /> : <div className='register-banner-blank-input' />}
 				</button>
 			</div>
 

@@ -1,8 +1,48 @@
-.page{
-    display: inline-block;
+.page-container {
+	display: inline-block;
+	width: calc(100% - 70px);
+	height: 100vh;
+	overflow-y: overlay;
+}
 
-    width: calc(100% - 92px);
-    height: 100vh;
+.page-container::-webkit-scrollbar {
+	width: 8px;
+	border-radius: 0;
+	background: var(--grey2);
+	transition: 0.2s;
+}
 
-    vertical-align: top;
+.page-container::-webkit-scrollbar-thumb {
+	background: var(--blue);
+	border-radius: 4px;
+}
+
+.page {
+	display: inline-block;
+	margin-top: 20px;
+	padding: 0 5%;
+
+	width: calc(100% - 10%);
+	max-width: 1500px;
+	height: 100%;
+
+	vertical-align: top;
+}
+
+.page-title {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	margin: 20px 0;
+	padding: 0 40px;
+	border-radius: 8px;
+
+	width: calc(100% - 80px);
+	height: 150px;
+}
+
+.page-title h1 {
+	margin: 0;
+	font-size: 4em;
+	text-align: left;
 }

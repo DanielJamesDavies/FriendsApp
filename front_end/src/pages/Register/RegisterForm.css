@@ -13,7 +13,7 @@
 }
 
 .dark-theme .register-form-container::-webkit-scrollbar {
-	background: #2a2a2a;
+	background: var(--grey2);
 }
 
 .register-form-container::-webkit-scrollbar-thumb {
@@ -73,7 +73,7 @@
 	min-height: 60px;
 }
 
-.register-background-image-blank-input {
+.register-banner-blank-input {
 	display: block;
 	content: "";
 	border-radius: inherit;
@@ -106,7 +106,7 @@
 	border-radius: 4px;
 
 	vertical-align: middle;
-	background: #e8e8e8;
+	background: var(--grey2);
 	color: var(--blue);
 	font-size: 1em;
 	transition: 0.2s;

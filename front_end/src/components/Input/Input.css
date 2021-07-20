@@ -1,66 +1,78 @@
-.input{
-    display: inline-flex;
-    flex-direction: column;
-    margin: 0;
-    padding: 4px 16px;
-    padding-bottom: 12px;
-    border: 4px solid rgba(0, 0, 0, 0);
-    border-radius: 12px;
+.input {
+	display: inline-flex;
+	flex-direction: column;
+	margin: 0;
+	padding: 8px 16px;
+	padding-bottom: 16px;
+	border: 4px solid rgba(0, 0, 0, 0);
+	border-radius: 12px;
 
-    height: 33px;
+	height: 33px;
 
-    background: #e8e8e8;
-    color: #777;
-    font-family: Calibri, sans-serif;
-    transition: 0.1s;
-    vertical-align: middle;
+	background: var(--grey2);
+	color: #777;
+	font-family: Calibri, sans-serif;
+	transition: 0.1s;
+	vertical-align: middle;
 }
 
-.dark-theme .input{
-    background: #2a2a2a;
+.input .label {
+	text-align: left;
+	font-size: 0.9em;
+	font-weight: 500;
+	transition: 0.1s;
+	color: #bbb;
 }
 
-.input label{
-    text-align: left;
-    font-size: 0.9em;
-    font-weight: 500;
-    transition: 0.1s;
-    color: #aaa;
+.input-empty .label {
+	margin-top: 8px;
+
+	font-size: 1.1em;
+	color: #bbb;
+	vertical-align: middle;
 }
 
-.input-empty label{
-    margin-top: 8px;
-
-    font-size: 1.1em;
+.label svg {
+	margin-top: -2px;
+	margin-right: 7px;
+	vertical-align: middle;
 }
 
-.input input{
-    margin: 0;
-    padding: 0;
-    border: 0;
-    border-radius: 4px;
-
-    width: calc(100%);
-
-    background: rgba(0, 0, 0, 0);
-    color: #777;
-    font-size: 1.1em;
-    transition: 0.1s;
+.input-empty .label svg {
+	margin-right: 10px;
 }
 
-.dark-theme .input input{
-    color: #fff;
+.input input {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 4px;
+
+	width: calc(100%);
+
+	background: rgba(0, 0, 0, 0);
+	color: #fff;
+	font-size: 1.1em;
+	transition: 0.1s;
 }
 
-.input input:focus{
-    outline: 0;
+.input input:-webkit-autofill,
+.input input:-webkit-autofill:hover,
+.input input:-webkit-autofill:focus,
+.input input:-webkit-autofill:active {
+	-webkit-text-fill-color: #fff !important;
+	transition: background-color 99999s ease-in-out 0s;
 }
 
-.input-empty input{
-    margin-top: -1.15em;
+.input input:focus {
+	outline: 0;
 }
 
-.input-focused{
-    border-color: var(--blue);
-    outline: 0;
+.input-empty input {
+	margin-top: -1.15em;
+}
+
+.input-focused {
+	border-color: var(--blue);
+	outline: 0;
 }
