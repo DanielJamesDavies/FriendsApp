@@ -25,9 +25,13 @@ export const ProfileTop = ({ user }) => {
 
 			<div className='profile-top-info-container'>
 				<div className='profile-top-profile-picture'>
-					<svg height='70' width='70'>
-						<circle cx='35' cy='35' r='35' />
-					</svg>
+					{user.profilePicture ? (
+						<img src={user.profilePicture} />
+					) : (
+						<svg height='70' width='70'>
+							<circle cx='35' cy='35' r='35' />
+						</svg>
+					)}
 				</div>
 
 				<div className='profile-top-info profile-top-names'>

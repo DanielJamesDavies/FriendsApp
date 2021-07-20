@@ -40,6 +40,24 @@
 	vertical-align: middle;
 }
 
+.sidebar-button .sidebar-profile-picture {
+	margin-top: -1px;
+	margin-left: -6px;
+	height: 50px;
+	width: 50px;
+
+	margin-top: 3px;
+	margin-left: -2px;
+	height: 42px;
+	width: 42px;
+	object-fit: cover;
+	transition: 0.2s;
+}
+
+.sidebar-button:hover .sidebar-profile-picture {
+	filter: brightness(70%);
+}
+
 .sidebar-button-user {
 	margin-bottom: 40px;
 }

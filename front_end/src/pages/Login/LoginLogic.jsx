@@ -19,7 +19,7 @@ export const LoginLogic = () => {
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
 	const [loading, setLoading] = useState(false);
-	const { setToken, setId } = useContext(UserContext);
+	const { setToken, setId, setProfilePicture } = useContext(UserContext);
 	const history = useHistory();
 
 	async function submit() {
@@ -38,6 +38,7 @@ export const LoginLogic = () => {
 		if (loggedIn.data.token) {
 			setToken(loggedIn.data.token);
 			setId(loggedIn.data.id);
+			setProfilePicture(loggedIn.data.profilePicture);
 			history.push("/profile/");
 		}
 	}

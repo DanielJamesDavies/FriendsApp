@@ -17,17 +17,7 @@ export const Input = (props) => {
 	if (props.icon) var DynamicIconComponent = props.icon;
 
 	return (
-		<div
-			className={
-				focused
-					? props.value === undefined || props.value === ""
-						? "input input-focused input-empty"
-						: "input input-focused"
-					: props.value === undefined || props.value === ""
-					? "input input-empty"
-					: "input"
-			}
-		>
+		<div className={inputClassName(props, focused)}>
 			<div className='label'>
 				{props.icon ? <DynamicIconComponent /> : null}
 				<label htmlFor='input'>{props.label}</label>
@@ -44,3 +34,10 @@ export const Input = (props) => {
 		</div>
 	);
 };
+
+function inputClassName(props, focused) {
+	var className = "input";
+	if (focused) className += " input-focused";
+	if (props.value === undefined || props.value === "") className += " input-empty";
+	return className;
+}

@@ -155,6 +155,12 @@ router.post("/login", async (req, res) => {
 	}).exec();
 	if (!user) return res.status(200).send({ error: "There is no account with this username." });
 
+	// Check if profile with username exists
+	const profile = await Profile.findOne({
+		_id: user.profile_id,
+	}).exec();
+	if (!profile) return res.status(200).send({ error: "This account has no profile." });
+
 	// Check if password is correct
 	const isCorrectPassword = await bcrypt.compare(req.body.password, user.password);
 	if (!isCorrectPassword) return res.status(200).send({ error: "Incorrect Password." });
@@ -162,7 +168,7 @@ router.post("/login", async (req, res) => {
 	// Create token
 	const token = jwt.sign({ profile_id: user._id }, process.env.TOKEN_SECRET);
 
-	res.header("token", token).send({ message: "Logged in.", token: token, id: user.profile_id });
+	res.header("token", token).send({ message: "Logged in.", token: token, id: user.profile_id, profilePicture: profile.profilePicture });
 });
 
 // Change Username

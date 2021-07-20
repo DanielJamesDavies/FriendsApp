@@ -48,13 +48,8 @@
 	height: 38px;
 
 	vertical-align: middle;
-	background: #e8e8e8;
-	color: #777;
-}
-
-.dark-theme .user-top .user-top-info-container .user-top-info {
 	background: var(--grey2);
-	color: #bbb;
+	color: #fff;
 }
 
 .user-top .user-top-info-container .user-top-info p {
@@ -126,7 +121,7 @@
 
 	vertical-align: middle;
 	text-align: center;
-	background: #e8e8e8;
+	background: var(--grey2);
 	color: var(--blue);
 	transition: 0.2s;
 }
@@ -138,7 +133,7 @@
 .user-top .user-top-info-container .user-top-add-btn:hover {
 	cursor: pointer;
 	background: var(--blue);
-	color: #e8e8e8;
+	color: #fff;
 }
 
 .user-top .user-top-info-container .user-top-add-btn svg {

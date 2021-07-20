@@ -39,6 +39,13 @@
 	fill: var(--blue);
 }
 
+.profile-top .profile-top-info-container .profile-top-profile-picture img {
+	width: 70px;
+	height: 70px;
+	object-fit: cover;
+	vertical-align: middle;
+}
+
 .profile-top .profile-top-info-container .profile-top-info {
 	display: inline-block;
 	margin: 10px 10px;
