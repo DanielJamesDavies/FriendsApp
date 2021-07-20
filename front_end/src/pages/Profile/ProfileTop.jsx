@@ -26,7 +26,7 @@ export const ProfileTop = ({ user }) => {
 			<div className='profile-top-info-container'>
 				<div className='profile-top-profile-picture'>
 					{user.profilePicture ? (
-						<img src={user.profilePicture} />
+						<img src={user.profilePicture} alt='Profile Picture' />
 					) : (
 						<svg height='70' width='70'>
 							<circle cx='35' cy='35' r='35' />

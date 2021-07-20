@@ -13,11 +13,16 @@ import { MeetUserListLogic } from "./MeetUserListLogic";
 
 // Styles
 import "./MeetUserList.css";
+import { useEffect } from "react";
 
 // Assets
 
 export const MeetUserList = () => {
-	const { loading, searchValue, changeSearchValue, filteredUsersList } = MeetUserListLogic();
+	const { loading, searchValue, changeSearchValue, filteredUsersList, getUsers } = MeetUserListLogic();
+
+	useEffect(() => {
+		getUsers();
+	}, []);
 
 	if (loading) {
 		return <Loading />;

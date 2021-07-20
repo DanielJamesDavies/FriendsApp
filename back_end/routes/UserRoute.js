@@ -58,12 +58,12 @@ router.post("/", async (req, res) => {
 	const profileSchema = Joi.object({
 		username: Joi.string().min(1).max(32).required(),
 		nickname: Joi.string().min(1).max(32).required(),
-		shortDescription: Joi.string().min(1).max(32).required(),
+		bio: Joi.string().min(1).max(32).required(),
 	});
 	const profileToValidate = {
 		username: req.body.user.username,
 		nickname: req.body.profile.nickname,
-		shortDescription: req.body.profile.shortDescription,
+		bio: req.body.profile.bio,
 	};
 	const profileValidationError = profileSchema.validate(profileToValidate).error;
 	if (profileValidationError) return res.status(200).send({ error: profileValidationError });
@@ -105,7 +105,7 @@ router.post("/", async (req, res) => {
 				_id: profile_id,
 				username: req.body.user.username,
 				nickname: req.body.profile.nickname,
-				shortDescription: req.body.profile.shortDescription,
+				bio: req.body.profile.bio,
 				description: req.body.profile.description,
 				profilePicture: req.body.profile.profilePicture,
 				banner: req.body.profile.banner,

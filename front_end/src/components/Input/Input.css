@@ -39,7 +39,8 @@
 }
 
 .input-empty .label svg {
-	margin-right: 10px;
+	margin-right: 18px;
+	font-size: 1.2em;
 }
 
 .input input {

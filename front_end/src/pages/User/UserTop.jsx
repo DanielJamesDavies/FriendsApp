@@ -19,8 +19,8 @@ export const UserTop = ({ user }) => {
 
 	return (
 		<div className='user-top'>
-			<div className='user-top-background-image'>
-				<img src={user.backgroundImage} alt='' />
+			<div className='user-top-banner'>
+				<img src={user.banner} alt='' />
 			</div>
 
 			<div className='user-top-info-container'>

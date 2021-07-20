@@ -1,5 +1,4 @@
 // Packages
-import { useState } from "react";
 
 // Components
 
@@ -11,8 +10,6 @@ import { useState } from "react";
 
 // Assets
 
-
 export const MeetLogic = () => {
-
-    return {}
-}
+	return {};
+};

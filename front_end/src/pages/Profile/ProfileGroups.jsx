@@ -19,7 +19,9 @@ export const ProfileGroups = ({ user }) => {
 	return (
 		<div className='profile-groups'>
 			<div className='profile-groups-container'>
-				<GroupItem group={groups[0]} />
+				{groups.map((group, index) => (
+					<GroupItem group={group} key={index} />
+				))}
 			</div>
 		</div>
 	);

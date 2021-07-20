@@ -18,9 +18,13 @@ export const UserItem = ({ user, isFriend }) => {
 	return (
 		<div className='user-item' onClick={() => toUser(user.username)}>
 			<div className='user-item-profile-picture'>
-				<svg height='50' width='50'>
-					<circle cx='25' cy='25' r='25' />
-				</svg>
+				{user.profilePicture ? (
+					<img src={user.profilePicture} alt='Profile Picture' />
+				) : (
+					<svg height='50' width='50'>
+						<circle cx='25' cy='25' r='25' />
+					</svg>
+				)}
 			</div>
 
 			<div className='user-item-names'>

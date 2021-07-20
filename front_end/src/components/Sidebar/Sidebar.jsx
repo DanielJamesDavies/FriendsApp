@@ -24,7 +24,7 @@ export const Sidebar = () => {
 			<div className='sidebar-buttons'>
 				<button className='sidebar-button sidebar-button-user' onClick={() => toPage("/profile/")}>
 					{profilePicture ? (
-						<img className='sidebar-profile-picture' src={profilePicture} />
+						<img className='sidebar-profile-picture' src={profilePicture} alt='Profile Picture' />
 					) : (
 						<svg height='50' width='50'>
 							<circle cx='25' cy='25' r='25' />

@@ -3,9 +3,10 @@
 }
 
 .profile-groups .profile-groups-container {
-	margin: 0 auto;
+	margin: 0;
+	margin-left: -10px;
 
-	width: calc(100% - 20px);
+	width: calc(100% + 20px);
 
 	vertical-align: middle;
 	text-align: left;
