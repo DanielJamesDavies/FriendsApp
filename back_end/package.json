@@ -18,6 +18,7 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "nodemon server.js",
+		"install": "concurrently \"npm install\" \"npm install --prefix ../front_end\"",
 		"dev": "concurrently --kill-others-on-fail \"nodemon server.js\" \"npm start --prefix ../front_end\""
 	},
 	"keywords": [],
