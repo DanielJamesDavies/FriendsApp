@@ -30,6 +30,7 @@ export const Input = (props) => {
 				onFocus={() => setFocused(true)}
 				onBlur={() => setFocused(false)}
 				type={props.type === undefined ? null : props.type}
+				autoComplete={props.autocomplete}
 			/>
 		</div>
 	);

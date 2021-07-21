@@ -2,14 +2,14 @@
 	display: flex;
 	align-items: center;
 	margin: 0;
-	margin-top: 10px;
-	padding: 10px 0;
-	border-radius: 4px;
+	margin-top: 0px;
+	padding: 12px 12px;
+	border-radius: 8px;
 
-	width: 100%;
+	width: calc(100% - 24px);
 	height: 40px;
 
-	background: var(--grey2);
+	background: var(--grey1);
 }
 
 .top-bar-logo-container {

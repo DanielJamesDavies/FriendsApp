@@ -27,6 +27,15 @@ export const Login = () => {
 			<div className='login-container'>
 				<h1>Login</h1>
 
+				{error ? (
+					<div className='login-error-container'>
+						<p>
+							<b>Error: </b>
+							{error}
+						</p>
+					</div>
+				) : null}
+
 				<div className='login-input-container'>
 					<Input value={username} onChange={(e) => setUsername(e.target.value)} label={"Username"} type={"username"}></Input>
 				</div>

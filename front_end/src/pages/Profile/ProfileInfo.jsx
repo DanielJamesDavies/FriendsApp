@@ -20,9 +20,9 @@ export const ProfileInfo = ({ user }) => {
 	return (
 		<div className='profile-info'>
 			<div className='profile-info-more-top-info-container'>
-				{user.shortDescription === undefined ? null : (
-					<div className='profile-info-more-top-info profile-info-short-description'>
-						<p>{user.shortDescription}</p>
+				{user.bio === undefined ? null : (
+					<div className='profile-info-more-top-info profile-info-bio'>
+						<p>{user.bio}</p>
 					</div>
 				)}
 

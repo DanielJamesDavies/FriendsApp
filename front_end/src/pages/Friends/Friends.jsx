@@ -1,5 +1,8 @@
 // Packages
 
+// Components
+import { FriendsUserList } from "./FriendsUserList";
+
 // Logic
 
 // Context
@@ -16,6 +19,8 @@ export const Friends = () => {
 			<div className='page-title'>
 				<h1>Friends</h1>
 			</div>
+
+			<FriendsUserList />
 		</div>
 	);
 };

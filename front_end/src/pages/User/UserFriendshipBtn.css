@@ -1,0 +1,47 @@
+.user-friendship-btn {
+	display: inline-block;
+	margin: 0 10px;
+	border-radius: 100%;
+
+	height: 58px;
+	width: 58px;
+
+	vertical-align: middle;
+	text-align: center;
+	background: var(--grey2);
+	color: var(--blue);
+	transition: 0.2s;
+}
+
+.user-friendship-btn:hover {
+	cursor: pointer;
+	background: var(--blue);
+	color: #fff !important;
+}
+
+.user-friendship-btn svg {
+	margin-top: 12px;
+
+	vertical-align: middle;
+	text-align: center;
+	font-size: 2em;
+}
+
+.user-friendship-btn-favourited svg {
+	color: #99b309;
+}
+
+.user-friendship-btn-sent svg {
+}
+
+.user-friendship-btn-received svg {
+	color: #99b309;
+}
+
+.user-friendship-btn-remove svg {
+	color: #ff0000;
+}
+
+.user-friendship-btn-remove:hover svg {
+	color: #fff;
+}

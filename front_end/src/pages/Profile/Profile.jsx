@@ -19,10 +19,15 @@ import "./Profile.css";
 // Assets
 
 export const Profile = (props) => {
-	const { loading, getProfile, user } = ProfileLogic();
+	const { isMounted, loading, getProfile, user } = ProfileLogic();
 
 	useEffect(() => {
+		isMounted.current = true;
 		getProfile();
+		return () => {
+			isMounted.current = false;
+		};
+		// eslint-disable-next-line
 	}, []);
 
 	if (loading) {

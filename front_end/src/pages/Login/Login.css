@@ -79,3 +79,7 @@
 .login-submit-container .loading svg {
 	margin-top: 0;
 }
+
+.login-error-container p {
+	color: #ff0000;
+}

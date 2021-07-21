@@ -1,7 +1,7 @@
 // Packages
-import { FaUserPlus } from "react-icons/fa";
 
 // Components
+import { UserFriendshipBtn } from "./UserFriendshipBtn";
 
 // Logic
 import { UserInfoLogic } from "./UserInfoLogic";
@@ -33,9 +33,7 @@ export const UserInfo = ({ user }) => {
 					</div>
 				)}
 
-				<div className='user-info-add-btn'>
-					<FaUserPlus />
-				</div>
+				<UserFriendshipBtn friendships={user.friendships} className={"user-info-friendships-btn"} />
 			</div>
 
 			<div className='user-info-info-container'>

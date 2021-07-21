@@ -23,6 +23,7 @@ export const User = (props) => {
 
 	useEffect(() => {
 		getUser(props.match.params.username);
+		// eslint-disable-next-line
 	}, []);
 
 	if (loading) {
@@ -34,7 +35,7 @@ export const User = (props) => {
 	} else {
 		return (
 			<div className='page'>
-				<UserTop user={user} />
+				<UserTop user={user} getUser={getUser} />
 				<UserInfo user={user} />
 				<UserGroups user={user} />
 			</div>

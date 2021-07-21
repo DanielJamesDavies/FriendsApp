@@ -54,7 +54,7 @@ export const RegisterProfile = ({
 				<p className='register-image-input-label'>Profile Picture</p>
 				<button onClick={() => addProfilePictureInputRef.current.click()}>
 					{profilePicture.length !== 0 ? (
-						<img src={profilePicture} />
+						<img src={profilePicture} alt='' />
 					) : (
 						<svg height='60' width='60'>
 							<circle cx='30' cy='30' r='30' />
@@ -79,7 +79,7 @@ export const RegisterProfile = ({
 			<div className='register-image-input-container'>
 				<p className='register-image-input-label'>Banner</p>
 				<button onClick={() => addBannerInputRef.current.click()}>
-					{banner.length !== 0 ? <img src={banner} /> : <div className='register-banner-blank-input' />}
+					{banner.length !== 0 ? <img src={banner} alt='' /> : <div className='register-banner-blank-input' />}
 				</button>
 			</div>
 

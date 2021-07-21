@@ -7,41 +7,6 @@ const jwt = require("jsonwebtoken");
 
 const User = require("../models/User");
 const Profile = require("../models/Profile");
-const authenticate = require("./TokenAuthentication");
-
-// Get Users
-router.get("/", (req, res) => {
-	User.find()
-		.exec()
-		.then((result) => {
-			if (result) {
-				res.status(200).send(result);
-			} else {
-				res.status(404).send({ message: "Error: User not Found" });
-			}
-		})
-		.catch((err) => {
-			console.log(err);
-			res.status(500).send({ message: "Error: " + err });
-		});
-});
-
-// Get User by Id
-router.get("/:id", authenticate, (req, res) => {
-	User.findById(req.params.id)
-		.exec()
-		.then((result) => {
-			if (result) {
-				res.status(200).send(result);
-			} else {
-				res.status(404).send({ message: "Error: User not Found" });
-			}
-		})
-		.catch((err) => {
-			console.log(err);
-			res.status(500).send({ message: "Error: " + err });
-		});
-});
 
 // Create New User
 router.post("/", async (req, res) => {
@@ -126,19 +91,6 @@ router.post("/", async (req, res) => {
 		});
 });
 
-// Delete a User
-router.delete("/:id", (req, res) => {
-	User.deleteOne({ _id: req.params.id })
-		.exec()
-		.then((result) => {
-			res.status(200).send({ message: "User Deleted." });
-		})
-		.catch((err) => {
-			console.log(err);
-			res.status(500).send({ message: "Error: " + err });
-		});
-});
-
 // Login
 router.post("/login", async (req, res) => {
 	// Login Input Validation
@@ -169,19 +121,6 @@ router.post("/login", async (req, res) => {
 	const token = jwt.sign({ profile_id: user._id }, process.env.TOKEN_SECRET);
 
 	res.header("token", token).send({ message: "Logged in.", token: token, id: user.profile_id, profilePicture: profile.profilePicture });
-});
-
-// Change Username
-router.patch("/username/:id", (req, res) => {
-	Profile.update({ _id: req.params.id }, { $set: req.body })
-		.exec()
-		.then((result) => {
-			res.status(200).send({ message: "Username Updated." });
-		})
-		.catch((err) => {
-			console.log(err);
-			res.status(500).send({ message: "Error: " + err });
-		});
 });
 
 module.exports = router;

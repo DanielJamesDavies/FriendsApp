@@ -1,5 +1,5 @@
 // Packages
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import axios from "axios";
 
 // Components
@@ -15,6 +15,7 @@ import { UserContext } from "../../context/UserContext";
 
 export const ProfileLogic = () => {
 	const { id, token } = useContext(UserContext);
+	const isMounted = useRef(false);
 	const [loading, setLoading] = useState(true);
 	const [user, setUser] = useState(false);
 
@@ -24,9 +25,11 @@ export const ProfileLogic = () => {
 				token: token,
 			},
 		});
-		setUser(userData.data);
-		setLoading(false);
+		if (isMounted.current) {
+			setUser(userData.data);
+			setLoading(false);
+		}
 	}
 
-	return { loading, getProfile, user };
+	return { isMounted, loading, getProfile, user };
 };

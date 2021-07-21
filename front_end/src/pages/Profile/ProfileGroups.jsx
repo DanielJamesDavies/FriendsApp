@@ -4,7 +4,6 @@
 import { GroupItem } from "../../components/GroupItem/GroupItem";
 
 // Logic
-import { ProfileGroupsLogic } from "./ProfileGroupsLogic";
 
 // Context
 

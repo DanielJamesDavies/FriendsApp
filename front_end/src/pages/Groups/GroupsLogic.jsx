@@ -10,11 +10,10 @@ import { useState } from "react";
 // Styles
 
 // Assets
-import groups from './groupsData.json';
-
+import groupsData from "./groupsData.json";
 
 export const GroupsLogic = () => {
-    // const [groups, setGroups] = useState([]);
+	const [groups, setGroups] = useState(groupsData);
 
-    return { groups }
-}
+	return { groups, setGroups };
+};

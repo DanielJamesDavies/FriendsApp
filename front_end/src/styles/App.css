@@ -9,7 +9,7 @@
 @import url("https://fonts.googleapis.com/css?family=Inter:regular,bold,italic");
 
 .unauthorised {
-	background: linear-gradient(135deg, var(--blue), #ee32ff);
+	background: linear-gradient(135deg, #396afc, #2948ff);
 }
 
 .authorised {
@@ -21,7 +21,6 @@
 	border: 0;
 
 	width: 100%;
-	/* max-width: 1600px; */
 	height: 100vh;
 
 	text-align: center;

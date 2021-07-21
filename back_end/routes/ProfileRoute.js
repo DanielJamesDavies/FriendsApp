@@ -5,9 +5,9 @@ const Joi = require("@hapi/joi");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Profile = require("../models/Profile");
-const authenticate = require("./TokenAuthentication");
+const authenticate = require("../services/TokenAuthentication");
 
-// Get all Profiles
+// Get Profile
 router.get("/", authenticate, (req, res) => {
 	if (req.query.username) {
 		Profile.findOne({
@@ -25,20 +25,31 @@ router.get("/", authenticate, (req, res) => {
 				console.log(err);
 				return res.status(500).send({ message: "Error: " + err });
 			});
-	} else {
-		Profile.find()
-			.then((result) => {
-				if (result) {
-					res.status(200).send(result);
-				} else {
-					res.status(404).send({ message: "Error: Profiles not Found" });
-				}
-			})
-			.catch((err) => {
-				console.log(err);
-				res.status(500).send({ message: "Error: " + err });
-			});
 	}
+});
+
+// Get all Profiles for Meet Page
+router.get("/meet/:id/", authenticate, async (req, res) => {
+	const user = await Profile.findById(req.params.id)
+		.exec()
+		.catch((err) => {
+			console.log(err);
+			res.status(500).send({ message: "Error: " + err });
+		});
+	const users = await Profile.find().where("_id").nin(user.friendships.friends).ne(req.params.id).exec();
+	res.status(200).send(users);
+});
+
+// Get all Friends Profiles
+router.get("/friends/:id", authenticate, async (req, res) => {
+	const user = await Profile.findById(req.params.id)
+		.exec()
+		.catch((err) => {
+			console.log(err);
+			res.status(500).send({ message: "Error: " + err });
+		});
+	const friends = await Profile.find().where("_id").in(user.friendships.friends).exec();
+	res.status(200).send(friends);
 });
 
 // Get Profile by Id

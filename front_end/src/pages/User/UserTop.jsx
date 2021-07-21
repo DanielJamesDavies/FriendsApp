@@ -1,7 +1,7 @@
 // Packages
-import { FaUserPlus } from "react-icons/fa";
 
 // Components
+import { UserFriendshipBtn } from "./UserFriendshipBtn";
 
 // Logic
 import { UserTopLogic } from "./UserTopLogic";
@@ -14,7 +14,7 @@ import "./UserTop.css";
 
 // Assets
 
-export const UserTop = ({ user }) => {
+export const UserTop = ({ user, getUser }) => {
 	const { compatibilityValueClassName } = UserTopLogic();
 
 	return (
@@ -25,9 +25,13 @@ export const UserTop = ({ user }) => {
 
 			<div className='user-top-info-container'>
 				<div className='user-top-profile-picture'>
-					<svg height='70' width='70'>
-						<circle cx='35' cy='35' r='35' />
-					</svg>
+					{user.profilePicture ? (
+						<img src={user.profilePicture} alt='' />
+					) : (
+						<svg height='70' width='70'>
+							<circle cx='35' cy='35' r='35' />
+						</svg>
+					)}
 				</div>
 
 				<div className='user-top-info user-top-names'>
@@ -48,9 +52,13 @@ export const UserTop = ({ user }) => {
 					</div>
 				)}
 
-				<div className='user-top-add-btn'>
-					<FaUserPlus />
-				</div>
+				<UserFriendshipBtn
+					user_id={user._id}
+					username={user.username}
+					friendships={user.friendships}
+					getUser={getUser}
+					className={"user-top-friendships-btn"}
+				/>
 			</div>
 		</div>
 	);

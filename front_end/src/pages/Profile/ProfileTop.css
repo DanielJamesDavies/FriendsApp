@@ -40,6 +40,7 @@
 }
 
 .profile-top .profile-top-info-container .profile-top-profile-picture img {
+	border-radius: 100%;
 	width: 70px;
 	height: 70px;
 	object-fit: cover;
@@ -69,12 +70,12 @@
 	min-width: 140px;
 }
 
-.profile-top .profile-top-info-container .profile-top-short-description p {
+.profile-top .profile-top-info-container .profile-top-bio p {
 	margin: calc(18px - 0.5em) 0;
 }
 
 @media (max-width: 1100px) {
-	.profile-top .profile-top-info-container .profile-top-short-description {
+	.profile-top .profile-top-info-container .profile-top-bio {
 		display: none;
 	}
 }

@@ -11,13 +11,12 @@ import { useHistory } from "react-router-dom";
 
 // Assets
 
-
 export const GroupItemLogic = () => {
-    const history = useHistory();
+	const history = useHistory();
 
-    function toGroup(id) {
-        //history.push("/group/" + id);
-    }
+	function toGroup(id) {
+		history.push("/group/" + id);
+	}
 
-    return { toGroup }
-}
+	return { toGroup };
+};

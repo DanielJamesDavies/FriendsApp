@@ -5,7 +5,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-app.use(express.json({ limit: "50mb" }));
+app.use(express.json({ limit: "500mb" }));
 app.use(cors());
 
 // Mongoose Connection
@@ -25,6 +25,10 @@ app.use("/user", userRoute);
 // Profile Routes
 const profileRoute = require("./routes/ProfileRoute");
 app.use("/profile", profileRoute);
+
+// Friendship Routes
+const friendshipRoute = require("./routes/FriendshipRoute");
+app.use("/friendship", friendshipRoute);
 
 app.listen(port, () => {
 	console.log(port);

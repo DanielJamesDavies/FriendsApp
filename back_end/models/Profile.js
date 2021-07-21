@@ -31,6 +31,22 @@ const ProfileSchema = mongoose.Schema({
 		type: String,
 		require: true,
 	},
+	friendships: {
+		friends: {
+			type: [mongoose.Schema.Types.ObjectId],
+		},
+		favouriteFriends: {
+			type: [mongoose.Schema.Types.ObjectId],
+		},
+		friendRequests: {
+			sent: {
+				type: [mongoose.Schema.Types.ObjectId],
+			},
+			received: {
+				type: [mongoose.Schema.Types.ObjectId],
+			},
+		},
+	},
 });
 
 module.exports = mongoose.model("Profile", ProfileSchema);

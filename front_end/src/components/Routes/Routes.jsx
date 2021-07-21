@@ -26,7 +26,7 @@ export const Routes = ({ token }) => {
 
 	useEffect(() => {
 		if (!token && !["", "/", "/login", "/login/", "/register", "/register/"].includes(history.location.pathname)) history.push("/login");
-	}, []);
+	}, [token, history]);
 
 	return (
 		<>

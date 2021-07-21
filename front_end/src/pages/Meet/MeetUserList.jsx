@@ -18,10 +18,15 @@ import { useEffect } from "react";
 // Assets
 
 export const MeetUserList = () => {
-	const { loading, searchValue, changeSearchValue, filteredUsersList, getUsers } = MeetUserListLogic();
+	const { isMounted, loading, searchValue, changeSearchValue, filteredUsersList, getUsers } = MeetUserListLogic();
 
 	useEffect(() => {
+		isMounted.current = true;
 		getUsers();
+		return () => {
+			isMounted.current = false;
+		};
+		// eslint-disable-next-line
 	}, []);
 
 	if (loading) {
@@ -31,7 +36,13 @@ export const MeetUserList = () => {
 			<div className='users-list-container'>
 				<div className='users-list'>
 					<div className='users-list-search-bar'>
-						<Input value={searchValue} onChange={changeSearchValue} label={"Search for Users"} icon={FaSearch}></Input>
+						<Input
+							value={searchValue}
+							onChange={changeSearchValue}
+							label={"Search for Users"}
+							icon={FaSearch}
+							autocomplete={"off"}
+						></Input>
 					</div>
 
 					<div className='users-list-items-container'>

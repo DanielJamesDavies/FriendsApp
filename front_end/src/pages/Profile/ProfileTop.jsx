@@ -26,7 +26,7 @@ export const ProfileTop = ({ user }) => {
 			<div className='profile-top-info-container'>
 				<div className='profile-top-profile-picture'>
 					{user.profilePicture ? (
-						<img src={user.profilePicture} alt='Profile Picture' />
+						<img src={user.profilePicture} alt='' />
 					) : (
 						<svg height='70' width='70'>
 							<circle cx='35' cy='35' r='35' />
@@ -39,9 +39,9 @@ export const ProfileTop = ({ user }) => {
 					<p className='users-list-item-username'>@{user.username}</p>
 				</div>
 
-				{user.shortDescription === undefined ? null : (
-					<div className='profile-top-info profile-top-short-description'>
-						<p>{user.shortDescription}</p>
+				{user.bio === undefined ? null : (
+					<div className='profile-top-info profile-top-bio'>
+						<p>{user.bio}</p>
 					</div>
 				)}
 

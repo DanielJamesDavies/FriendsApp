@@ -1,5 +1,5 @@
 // Packages
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import axios from "axios";
 
 // Components
@@ -12,24 +12,24 @@ import { UserContext } from "../../context/UserContext";
 // Styles
 
 // Assets
-import users from "./users.json";
 
 export const MeetUserListLogic = () => {
+	const isMounted = useRef(false);
 	const [loading, setLoading] = useState(true);
 	const [searchValue, setSearchValue] = useState("");
 	const [usersList, setUsersList] = useState(false);
-	const [filteredUsersList, setFilteredUsersList] = useState(users);
+	const [filteredUsersList, setFilteredUsersList] = useState(false);
 	const { token, id } = useContext(UserContext);
 
 	async function getUsers() {
-		const users = await axios.get("http://localhost:3001/profile/", {
+		const users = await axios.get("http://localhost:3001/profile/meet/" + id, {
 			headers: { token: token },
 		});
-		const userIndex = users.data.findIndex((user) => user._id === id);
-		users.data.splice(userIndex, 1);
-		setUsersList(users.data);
-		setFilteredUsersList(users.data);
-		setLoading(false);
+		if (isMounted.current) {
+			setUsersList(users.data);
+			setFilteredUsersList(users.data);
+			setLoading(false);
+		}
 	}
 
 	function changeSearchValue(e) {
@@ -43,5 +43,5 @@ export const MeetUserListLogic = () => {
 		);
 	}
 
-	return { loading, searchValue, changeSearchValue, filteredUsersList, getUsers };
+	return { isMounted, loading, searchValue, changeSearchValue, filteredUsersList, getUsers };
 };
