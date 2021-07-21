@@ -16,14 +16,17 @@ import "./UserFriendshipBtn.css";
 // Assets
 
 export const UserFriendshipBtn = ({ user_id, username, friendships, className, getUser }) => {
-	const { sendFriendRequest, removeFriendRequest } = UserFriendshipBtnLogic();
-	const { id } = useContext(UserContext);
+	const { sendFriendRequest, removeFriendRequest, addFavourite } = UserFriendshipBtnLogic();
+	const { id, favouriteFriends } = useContext(UserContext);
 	className += " user-friendship-btn";
 
 	if (friendships.friends.includes(id)) {
 		return (
 			<>
-				<div className={friendships.favouriteFriends.includes(id) ? className + " user-friendship-btn-favourited" : className}>
+				<div
+					className={favouriteFriends.includes(user_id) ? className + " user-friendship-btn-favourited" : className}
+					onClick={() => addFavourite(user_id, username, getUser)}
+				>
 					<FaStar />
 				</div>
 				<div className={className + " user-friendship-btn-remove"} onClick={() => removeFriendRequest(user_id, username, getUser)}>
@@ -32,14 +35,14 @@ export const UserFriendshipBtn = ({ user_id, username, friendships, className, g
 			</>
 		);
 	}
-	if (friendships.friendRequests.received.includes(id)) {
+	if (friendships.requests.received.includes(id)) {
 		return (
 			<div className={className + " user-friendship-btn-sent"} onClick={() => removeFriendRequest(user_id, username, getUser)}>
 				<FaUserClock />
 			</div>
 		);
 	}
-	if (friendships.friendRequests.sent.includes(id)) {
+	if (friendships.requests.sent.includes(id)) {
 		return (
 			<div className={className + " user-friendship-btn-received"} onClick={() => sendFriendRequest(user_id, username, getUser)}>
 				<FaUserPlus />

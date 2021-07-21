@@ -35,10 +35,10 @@ const ProfileSchema = mongoose.Schema({
 		friends: {
 			type: [mongoose.Schema.Types.ObjectId],
 		},
-		favouriteFriends: {
+		favourite: {
 			type: [mongoose.Schema.Types.ObjectId],
 		},
-		friendRequests: {
+		requests: {
 			sent: {
 				type: [mongoose.Schema.Types.ObjectId],
 			},

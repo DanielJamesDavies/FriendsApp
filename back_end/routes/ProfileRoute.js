@@ -48,7 +48,9 @@ router.get("/friends/:id", authenticate, async (req, res) => {
 			console.log(err);
 			res.status(500).send({ message: "Error: " + err });
 		});
-	const friends = await Profile.find().where("_id").in(user.friendships.friends).exec();
+	const favourites = await Profile.find().where("_id").in(user.friendships.favourite).exec();
+	const nonFavourites = await Profile.find().where("_id").in(user.friendships.friends).nin(user.friendships.favourite).exec();
+	const friends = favourites.concat(nonFavourites);
 	res.status(200).send(friends);
 });
 

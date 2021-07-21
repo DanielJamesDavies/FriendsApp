@@ -17,6 +17,35 @@
 	background: var(--blue);
 }
 
+.user-item-notification-container {
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+	width: 16px;
+	vertical-align: middle;
+}
+
+.user-item-notification {
+	display: block;
+	content: "";
+	border-radius: 100%;
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+	margin-left: -4px;
+
+	width: 12px;
+	height: 12px;
+}
+
+.user-item-notification-colour-green {
+	color: var(--green);
+}
+
+.user-item-notification-colour-gold {
+	color: var(--gold);
+}
+
 .user-item-profile-picture {
 	display: inline-block;
 	width: 50px;

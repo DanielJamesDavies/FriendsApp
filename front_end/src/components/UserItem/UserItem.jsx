@@ -12,11 +12,25 @@ import "./UserItem.css";
 
 // Assets
 
-export const UserItem = ({ user, isFriend }) => {
+export const UserItem = ({ user, isFriend, notificationIcon, notificationCondition, notificationColour }) => {
 	const { toUser, compatibilityValueClassName } = UserItemLogic();
+	if (notificationIcon) var DynamicNotificationIcon = notificationIcon;
 
 	return (
 		<div className='user-item' onClick={() => toUser(user.username)}>
+			<div className='user-item-notification-container'>
+				{notificationCondition ? (
+					<div
+						className={
+							notificationColour
+								? "user-item-notification user-item-notification-colour-" + notificationColour
+								: "user-item-notification"
+						}
+					>
+						<DynamicNotificationIcon />
+					</div>
+				) : null}
+			</div>
 			<div className='user-item-profile-picture'>
 				{user.profilePicture ? (
 					<img src={user.profilePicture} alt='' />

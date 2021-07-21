@@ -28,14 +28,11 @@
 }
 
 .user-friendship-btn-favourited svg {
-	color: #99b309;
-}
-
-.user-friendship-btn-sent svg {
+	color: var(--gold);
 }
 
 .user-friendship-btn-received svg {
-	color: #99b309;
+	color: var(--green);
 }
 
 .user-friendship-btn-remove svg {

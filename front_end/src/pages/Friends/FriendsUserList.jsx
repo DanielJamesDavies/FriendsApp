@@ -1,5 +1,6 @@
 // Packages
-import { FaSearch } from "react-icons/fa";
+import { useContext } from "react";
+import { FaSearch, FaStar } from "react-icons/fa";
 
 // Components
 import { Loading } from "../../components/Loading/Loading";
@@ -10,6 +11,7 @@ import { Input } from "../../components/Input/Input";
 import { FriendsUserListLogic } from "./FriendsUserListLogic";
 
 // Context
+import { UserContext } from "../../context/UserContext";
 
 // Styles
 import "./FriendsUserList.css";
@@ -19,6 +21,7 @@ import { useEffect } from "react";
 
 export const FriendsUserList = () => {
 	const { isMounted, loading, searchValue, changeSearchValue, filteredFriendsList, getFriends } = FriendsUserListLogic();
+	const { favouriteFriends } = useContext(UserContext);
 
 	useEffect(() => {
 		isMounted.current = true;
@@ -47,7 +50,14 @@ export const FriendsUserList = () => {
 
 					<div className='friends-list-items-container'>
 						{filteredFriendsList.map((user, index) => (
-							<UserItem key={index} user={user} isFriend={false} />
+							<UserItem
+								key={index}
+								user={user}
+								isFriend={false}
+								notificationIcon={FaStar}
+								notificationCondition={favouriteFriends.includes(user._id)}
+								notificationColour={"gold"}
+							/>
 						))}
 					</div>
 				</div>

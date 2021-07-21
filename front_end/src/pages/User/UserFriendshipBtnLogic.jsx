@@ -14,7 +14,7 @@ import { UserContext } from "../../context/UserContext";
 // Assets
 
 export const UserFriendshipBtnLogic = () => {
-	const { token, id } = useContext(UserContext);
+	const { token, id, setFavouriteFriends } = useContext(UserContext);
 
 	async function sendFriendRequest(user_id, username, getUser) {
 		await axios.post(
@@ -30,7 +30,7 @@ export const UserFriendshipBtnLogic = () => {
 	}
 
 	async function removeFriendRequest(user_id, username, getUser) {
-		const result = await axios.post(
+		await axios.post(
 			"http://localhost:3001/friendship/remove/" + id + "/" + user_id,
 			{},
 			{
@@ -39,9 +39,22 @@ export const UserFriendshipBtnLogic = () => {
 				},
 			}
 		);
-		console.log(result);
 		getUser(username);
 	}
 
-	return { sendFriendRequest, removeFriendRequest };
+	async function addFavourite(user_id, username, getUser) {
+		const result = await axios.post(
+			"http://localhost:3001/friendship/favourite/" + id + "/" + user_id,
+			{},
+			{
+				headers: {
+					token: token,
+				},
+			}
+		);
+		if (result.data.favouriteFriends) setFavouriteFriends(result.data.favouriteFriends);
+		getUser(username);
+	}
+
+	return { sendFriendRequest, removeFriendRequest, addFavourite };
 };

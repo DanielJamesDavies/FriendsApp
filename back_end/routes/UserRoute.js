@@ -120,7 +120,13 @@ router.post("/login", async (req, res) => {
 	// Create token
 	const token = jwt.sign({ profile_id: user._id }, process.env.TOKEN_SECRET);
 
-	res.header("token", token).send({ message: "Logged in.", token: token, id: user.profile_id, profilePicture: profile.profilePicture });
+	res.header("token", token).send({
+		message: "Logged in.",
+		token: token,
+		id: user.profile_id,
+		profilePicture: profile.profilePicture,
+		favouriteFriends: profile.friendships.favourite,
+	});
 });
 
 module.exports = router;
