@@ -1,6 +1,6 @@
 // Packages
 import { useContext } from "react";
-import { FaHandshake, FaUser, FaUsers, FaCog } from "react-icons/fa";
+import { FaCommentAlt, FaHandshake, FaUser, FaUsers, FaCog } from "react-icons/fa";
 
 // Components
 
@@ -30,6 +30,10 @@ export const Sidebar = () => {
 							<circle cx='25' cy='25' r='25' />
 						</svg>
 					)}
+				</button>
+
+				<button className='sidebar-button sidebar-button-messages' onClick={() => toPage("/messages/")}>
+					<FaCommentAlt />
 				</button>
 
 				<button className='sidebar-button sidebar-button-meet' onClick={() => toPage("/meet/")}>

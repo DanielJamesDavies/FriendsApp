@@ -30,6 +30,10 @@ app.use("/profile", profileRoute);
 const friendshipRoute = require("./routes/FriendshipRoute");
 app.use("/friendship", friendshipRoute);
 
+// Chat Routes
+const chatRoute = require("./routes/ChatRoute");
+app.use("/chat", chatRoute);
+
 app.listen(port, () => {
 	console.log(port);
 });

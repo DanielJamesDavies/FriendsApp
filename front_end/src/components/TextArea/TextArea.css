@@ -43,7 +43,8 @@
 
 	background: rgba(0, 0, 0, 0);
 	color: #fff;
-	font-size: 1.2em;
+	font-size: 1em;
+	font-family: "Inter", sans-serif;
 	transition: 0.1s;
 }
 

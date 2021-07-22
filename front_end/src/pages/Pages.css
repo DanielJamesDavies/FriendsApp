@@ -24,7 +24,7 @@
 
 	width: calc(100% - 10%);
 	max-width: 1500px;
-	height: 100%;
+	height: calc(100% - 20px);
 
 	vertical-align: top;
 }

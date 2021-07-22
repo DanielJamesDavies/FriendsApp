@@ -1,0 +1,140 @@
+.chat-item {
+	position: relative;
+	margin: 12px 0;
+	padding: 16px;
+	border: 0;
+	border-radius: 8px;
+
+	width: calc(100% - 32px);
+
+	background: var(--grey2);
+	color: #fff;
+	transition: 0.2s;
+}
+
+.chat-item:hover {
+	cursor: pointer;
+	background: var(--blue);
+}
+
+.chat-item-notification-container {
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+	width: 16px;
+	vertical-align: middle;
+}
+
+.chat-item-notification {
+	display: block;
+	content: "";
+	border-radius: 100%;
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+	margin-left: -4px;
+
+	width: 12px;
+	height: 12px;
+}
+
+.chat-item-icon {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	vertical-align: middle;
+}
+
+.chat-item-icon svg {
+	fill: var(--blue);
+	transition: 0.2s;
+}
+
+.chat-item-icon img {
+	border-radius: 100%;
+	width: 50px;
+	height: 50px;
+	object-fit: cover;
+	vertical-align: middle;
+}
+
+.chat-item:hover .chat-item-icon svg {
+	fill: #fff;
+}
+
+.chat-item-text {
+	display: inline-block;
+	margin-left: 1.8em;
+
+	width: calc(60% - 16px - 16px - 50px - 1.8em);
+	word-wrap: break-word;
+	overflow: hidden;
+
+	vertical-align: middle;
+	font-size: 0.9em;
+}
+
+@media (max-width: 1000px) {
+	.chat-item-text {
+		width: calc(100% - 16px - 16px - 50px - 1.8em - 16px);
+	}
+}
+
+.chat-item-name {
+	margin: 0;
+	margin-bottom: 4px;
+	font-size: 1.05em;
+	transition: 0.2s;
+}
+
+.chat-item-last-message {
+	margin: 0;
+	font-size: 1em;
+	transition: 0.2s;
+	color: #ddd;
+}
+
+.chat-item-banner-container {
+	float: right;
+	position: relative;
+	margin-top: -16px;
+	margin-right: -16px;
+	border-radius: 0 8px 8px 0;
+
+	width: 40%;
+	height: 82px;
+}
+
+@media (max-width: 1000px) {
+	.chat-item-banner-container {
+		display: none;
+	}
+}
+
+.chat-item-banner-container .chat-item-banner {
+	display: inline-block;
+	border-radius: inherit;
+
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.chat-item-banner-container .chat-item-banner-hover-filter {
+	position: absolute;
+	display: inline-block;
+	content: "";
+	border-radius: inherit;
+
+	width: 0%;
+	height: 100%;
+
+	background: var(--blue);
+	opacity: 0;
+	transition: 0.2s;
+}
+
+.chat-item:hover .chat-item-banner-container .chat-item-banner-hover-filter {
+	width: 100%;
+	opacity: 1;
+}
