@@ -18,7 +18,7 @@ const ChatSchema = mongoose.Schema({
 		{
 			_id: mongoose.Schema.Types.ObjectId,
 			user_id: mongoose.Schema.Types.ObjectId,
-			text: String,
+			text: [String],
 			image: String,
 			date: { type: Date, default: Date.now },
 		},

@@ -18,7 +18,7 @@ import "./Chat.css";
 // Assets
 
 export const Chat = (props) => {
-	const { isMounted, loading, setLoading, chat, setChat, getChat } = ChatLogic();
+	const { isMounted, loading, setLoading, chat, setChat, getChat, chatInputHeight, setChatInputHeight } = ChatLogic();
 
 	useEffect(() => {
 		isMounted.current = true;
@@ -35,8 +35,20 @@ export const Chat = (props) => {
 		return (
 			<div className='page chat-page'>
 				<ChatTop chat={chat} setChat={setChat} setLoading={setLoading} />
-				<ChatMessages chat={chat} setChat={setChat} setLoading={setLoading} />
-				<ChatInput chat={chat} setChat={setChat} setLoading={setLoading} />
+				<ChatMessages
+					chat={chat}
+					setChat={setChat}
+					setLoading={setLoading}
+					chatInputHeight={chatInputHeight}
+					setChatInputHeight={setChatInputHeight}
+				/>
+				<ChatInput
+					chat={chat}
+					setChat={setChat}
+					setLoading={setLoading}
+					chatInputHeight={chatInputHeight}
+					setChatInputHeight={setChatInputHeight}
+				/>
 			</div>
 		);
 	}

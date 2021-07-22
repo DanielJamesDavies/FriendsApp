@@ -51,7 +51,7 @@ export const ChatItem = ({ chat, notificationIcon }) => {
 				<p className='chat-item-last-message'>
 					{chat.messages && chat.messages.length !== 0
 						? lastMessageNickname
-							? lastMessageNickname + ": " + chat.messages[chat.messages.length - 1].text
+							? lastMessageNickname + ": " + chat.messages[chat.messages.length - 1].text[0]
 							: ""
 						: "There are no messages in this chat."}
 				</p>

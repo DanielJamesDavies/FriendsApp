@@ -14,7 +14,8 @@ import "./ChatTop.css";
 export const ChatTop = ({ chat }) => {
 	return (
 		<div className='chat-top'>
-			<p>{chat.name}</p>
+			<img className='chat-top-icon' src={chat.icon} alt='' />
+			<p className='chat-top-name'>{chat.name}</p>
 		</div>
 	);
 };

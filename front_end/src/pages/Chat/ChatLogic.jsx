@@ -18,13 +18,14 @@ export const ChatLogic = () => {
 	const isMounted = useRef(false);
 	const [loading, setLoading] = useState(true);
 	const [chat, setChat] = useState(true);
+	const [chatInputHeight, setChatInputHeight] = useState("20px");
 
 	async function getChat(chat_id) {
 		setLoading(true);
 		var result = await axios.get("http://localhost:3001/chat/" + chat_id, {
 			headers: { token: token },
 		});
-		if (result.error) return "Error";
+		if (result.error || !result.data) return "Error";
 		result.data.chat.participants = result.data.participants;
 		if (isMounted.current) {
 			setChat(result.data.chat);
@@ -32,5 +33,5 @@ export const ChatLogic = () => {
 		}
 	}
 
-	return { isMounted, loading, setLoading, chat, setChat, getChat };
+	return { isMounted, loading, setLoading, chat, setChat, getChat, chatInputHeight, setChatInputHeight };
 };

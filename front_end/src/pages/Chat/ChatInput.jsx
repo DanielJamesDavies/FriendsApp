@@ -13,11 +13,25 @@ import "./ChatInput.css";
 
 // Assets
 
-export const ChatInput = ({ chat, setChat, setLoading }) => {
-	const { text, setText, sendMessage } = ChatInputLogic();
+export const ChatInput = ({ chat, setChat, setLoading, chatInputHeight, setChatInputHeight }) => {
+	const { text, changeText, sendMessage } = ChatInputLogic();
+
 	return (
 		<div className='chat-input-container'>
-			<textarea className='chat-input' value={text} onChange={(e) => setText(e.target.value)} placeholder='Enter Message' />
+			<div className='chat-input-text'>
+				<div id='chat-input-text'>
+					{text.map((paragraph, index) => {
+						return <p key={index}>{paragraph}</p>;
+					})}
+				</div>
+			</div>
+			<textarea
+				className='chat-input'
+				value={text.join("\n")}
+				onChange={(e) => changeText(e, setChatInputHeight)}
+				placeholder='Enter Message'
+				style={{ height: chatInputHeight }}
+			/>
 			<button className='chat-input-btn' onClick={() => sendMessage(chat._id, setChat, setLoading)}>
 				<FaPaperPlane />
 			</button>

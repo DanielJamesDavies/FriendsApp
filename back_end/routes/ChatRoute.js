@@ -83,14 +83,6 @@ router.post("/message/:id/", authenticate, async (req, res) => {
 			console.log(err);
 			res.status(500).send({ message: "Error: " + err });
 		});
-	// Message Input Validation
-	const messageSchema = Joi.object({
-		text: Joi.string(),
-	});
-	const messageValidationError = messageSchema.validate({
-		text: req.body.text,
-	}).error;
-	if (messageValidationError) return res.status(200).send({ error: messageValidationError });
 	chat.messages.push(req.body);
 	await chat.save();
 
