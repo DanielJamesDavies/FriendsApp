@@ -1,4 +1,5 @@
 // Packages
+import { useEffect } from "react";
 
 // Components
 
@@ -13,8 +14,17 @@ import "./ChatItem.css";
 // Assets
 
 export const ChatItem = ({ chat, notificationIcon }) => {
-	const { toChat } = ChatItemLogic();
+	const { isMounted, toChat, lastMessageNickname, getLastMessageNickname } = ChatItemLogic();
 	if (notificationIcon) var DynamicNotificationIcon = notificationIcon;
+	if (chat.messages && chat.messages.length !== 0) getLastMessageNickname(chat.messages[chat.messages.length - 1].user_id);
+
+	useEffect(() => {
+		isMounted.current = true;
+		return () => {
+			isMounted.current = false;
+		};
+		// eslint-disable-next-line
+	}, []);
 
 	return (
 		<div className='chat-item' onClick={() => toChat(chat._id)}>
@@ -39,7 +49,11 @@ export const ChatItem = ({ chat, notificationIcon }) => {
 			<div className='chat-item-text'>
 				<p className='chat-item-name'>{chat.name}</p>
 				<p className='chat-item-last-message'>
-					{chat.messages && chat.messages.length !== 0 ? chat.messages[chat.messages.length - 1] : "There are no messages in this chat."}
+					{chat.messages && chat.messages.length !== 0
+						? lastMessageNickname
+							? lastMessageNickname + ": " + chat.messages[chat.messages.length - 1].text
+							: ""
+						: "There are no messages in this chat."}
 				</p>
 			</div>
 

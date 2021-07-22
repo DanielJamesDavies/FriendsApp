@@ -1,0 +1,5 @@
+.chat-top {
+	border-radius: 8px;
+	height: 60px;
+	background: var(--grey2);
+}

@@ -14,12 +14,12 @@ import { UserContext } from "../../context/UserContext";
 // Assets
 
 export const MessagesListLogic = () => {
+	const { token, id } = useContext(UserContext);
 	const isMounted = useRef(false);
 	const [loading, setLoading] = useState(true);
 	const [searchValue, setSearchValue] = useState("");
 	const [chatsList, setChatsList] = useState(false);
 	const [filteredChatsList, setFilteredChatsList] = useState(false);
-	const { token, id } = useContext(UserContext);
 
 	async function getChats() {
 		const chats = await axios.get("http://localhost:3001/chat/messages/" + id, {
@@ -34,13 +34,7 @@ export const MessagesListLogic = () => {
 
 	function changeSearchValue(e) {
 		setSearchValue(e.target.value);
-		setFilteredChatsList(
-			chatsList.filter(
-				(user) =>
-					user.nickname.toLowerCase().includes(e.target.value.toLowerCase()) ||
-					user.username.toLowerCase().includes(e.target.value.toLowerCase())
-			)
-		);
+		setFilteredChatsList(chatsList.filter((chat) => chat.name.toLowerCase().includes(e.target.value.toLowerCase())));
 	}
 
 	return { isMounted, loading, searchValue, changeSearchValue, filteredChatsList, getChats };

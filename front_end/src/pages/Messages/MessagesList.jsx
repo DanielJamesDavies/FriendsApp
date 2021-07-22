@@ -1,4 +1,5 @@
 // Packages
+import { useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 
 // Components
@@ -14,7 +15,6 @@ import { MessagesListLogic } from "./MessagesListLogic";
 
 // Styles
 import "./MessagesList.css";
-import { useEffect } from "react";
 
 // Assets
 

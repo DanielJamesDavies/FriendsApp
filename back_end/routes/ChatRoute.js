@@ -26,7 +26,18 @@ router.get("/:id/", authenticate, async (req, res) => {
 			console.log(err);
 			res.status(500).send({ message: "Error: " + err });
 		});
-	res.status(200).send(chat);
+
+	let profile_ids = chat.participants.map((profile_id) => mongoose.Types.ObjectId(profile_id));
+	const profiles = await Profile.find()
+		.where("_id")
+		.in(profile_ids)
+		.exec()
+		.catch((err) => {
+			console.log(err);
+			res.status(500).send({ message: "Error: " + err });
+		});
+
+	res.status(200).send({ chat: chat, participants: profiles });
 });
 
 // Create Chat
@@ -61,7 +72,39 @@ router.post("/", authenticate, async (req, res) => {
 	});
 	chat.save();
 
-	res.status(200).send({ message: "New Chat Created." });
+	res.status(200).send({ message: "New Chat Created.", chat_id: chat_id });
+});
+
+// Send Message
+router.post("/message/:id/", authenticate, async (req, res) => {
+	const chat = await Chat.findById(req.params.id)
+		.exec()
+		.catch((err) => {
+			console.log(err);
+			res.status(500).send({ message: "Error: " + err });
+		});
+	// Message Input Validation
+	const messageSchema = Joi.object({
+		text: Joi.string(),
+	});
+	const messageValidationError = messageSchema.validate({
+		text: req.body.text,
+	}).error;
+	if (messageValidationError) return res.status(200).send({ error: messageValidationError });
+	chat.messages.push(req.body);
+	await chat.save();
+
+	let profile_ids = chat.participants.map((profile_id) => mongoose.Types.ObjectId(profile_id));
+	const profiles = await Profile.find()
+		.where("_id")
+		.in(profile_ids)
+		.exec()
+		.catch((err) => {
+			console.log(err);
+			res.status(500).send({ message: "Error: " + err });
+		});
+
+	res.status(200).send({ message: "Message Sent.", chat: chat, participants: profiles });
 });
 
 module.exports = router;

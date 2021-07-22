@@ -1,0 +1,83 @@
+.chat-messages-container {
+	margin-top: 10px;
+	padding: 0 12px;
+
+	height: calc(100vh - 20px - 60px - 10px - 60px - 10px);
+
+	overflow-y: overlay;
+}
+
+.chat-messages-container::-webkit-scrollbar {
+	width: 8px;
+	border-radius: 0;
+	background: var(--grey2);
+	transition: 0.2s;
+}
+
+.chat-messages-container::-webkit-scrollbar-thumb {
+	background: var(--blue);
+	border-radius: 4px;
+}
+
+.chat-message {
+	margin: 4px;
+
+	max-width: 60%;
+}
+
+.chat-message-self {
+	margin-left: auto;
+}
+
+.chat-message-other {
+	margin-right: auto;
+}
+
+.chat-message .chat-message-text {
+	margin: 0;
+	padding: 12px 16px;
+	border-radius: 8px;
+
+	text-align: left;
+}
+
+.chat-message-self .chat-message-text {
+	background: var(--blue);
+}
+
+.chat-message-other .chat-message-text {
+	background: var(--grey2);
+}
+
+.chat-message p {
+	margin: 0;
+}
+
+.chat-message-user {
+	margin-top: 8px;
+}
+
+.chat-message-user img {
+	display: inline-block;
+	margin: 0 4px;
+
+	width: 50px;
+	height: 50px;
+
+	vertical-align: middle;
+	object-fit: cover;
+}
+
+.chat-message-user .chat-message-user-names {
+	display: inline-block;
+	margin: 0 4px;
+	vertical-align: middle;
+}
+
+.chat-message-self .chat-message-user {
+	text-align: right;
+}
+
+.chat-message-other .chat-message-user {
+	text-align: left;
+}

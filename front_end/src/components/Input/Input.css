@@ -11,14 +11,14 @@
 
 	background: var(--grey2);
 	color: #777;
-	font-family: Calibri, sans-serif;
+	font-family: "Inter", sans-serif;
 	transition: 0.1s;
 	vertical-align: middle;
 }
 
 .input .label {
 	text-align: left;
-	font-size: 0.9em;
+	font-size: 0.8em;
 	font-weight: 500;
 	transition: 0.1s;
 	color: #bbb;
@@ -54,6 +54,7 @@
 	background: rgba(0, 0, 0, 0);
 	color: #fff;
 	font-size: 1.1em;
+	font-family: "Inter", sans-serif;
 	transition: 0.1s;
 }
 

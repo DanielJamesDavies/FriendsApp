@@ -8,6 +8,7 @@ import { Login } from "../../pages/Login/Login";
 import { Register } from "../../pages/Register/Register";
 import { Profile } from "../../pages/Profile/Profile";
 import { Messages } from "../../pages/Messages/Messages";
+import { Chat } from "../../pages/Chat/Chat";
 import { Meet } from "../../pages/Meet/Meet";
 import { Friends } from "../../pages/Friends/Friends";
 import { Groups } from "../../pages/Groups/Groups";
@@ -41,6 +42,7 @@ export const Routes = ({ token }) => {
 				<div className='page-container'>
 					<Route exact path='/profile' component={Profile} />
 					<Route exact path='/messages' component={Messages} />
+					<Route exact path='/chat/:id' component={Chat} />
 					<Route exact path='/meet' component={Meet} />
 					<Route exact path='/friends' component={Friends} />
 					<Route exact path='/groups' component={Groups} />
