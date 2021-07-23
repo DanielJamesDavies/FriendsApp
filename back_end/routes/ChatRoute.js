@@ -14,7 +14,21 @@ router.get("/messages/:id/", authenticate, async (req, res) => {
 			console.log(err);
 			res.status(500).send({ message: "Error: " + err });
 		});
-	const chats = await Chat.find().where("_id").in(user.chats).exec();
+	const chatsData = await Chat.find().where("_id").in(user.chats).exec();
+	const promises = chatsData.map(async (chat) => {
+		if (chat.messages.length === 0) return chat;
+		var profile = await Profile.findById(chat.messages[chat.messages.length - 1].user_id)
+			.exec()
+			.catch((err) => {
+				console.log(err);
+				res.status(500).send({ message: "Error: " + err });
+			});
+		var text = "";
+		if (chat.messages[chat.messages.length - 1].text.length > 0) text = chat.messages[chat.messages.length - 1].text[0];
+		chat.lastMessage = { nickname: profile.nickname, text: text };
+		return chat;
+	});
+	const chats = await Promise.all(promises);
 	res.status(200).send(chats);
 });
 

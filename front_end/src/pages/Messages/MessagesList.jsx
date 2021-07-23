@@ -1,12 +1,11 @@
 // Packages
 import { useEffect } from "react";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaPlus } from "react-icons/fa";
 
 // Components
 import { Loading } from "../../components/Loading/Loading";
 import { ChatItem } from "../../components/ChatItem/ChatItem";
 import { Input } from "../../components/Input/Input";
-import { FaPlus } from "react-icons/fa";
 
 // Logic
 import { MessagesListLogic } from "./MessagesListLogic";

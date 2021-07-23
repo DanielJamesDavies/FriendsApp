@@ -3,6 +3,8 @@ import { useEffect } from "react";
 
 // Components
 import { Loading } from "../../components/Loading/Loading";
+import { ChatsTop } from "./ChatsTop";
+import { ChatsList } from "./ChatsList";
 import { ChatTop } from "./ChatTop";
 import { ChatMessages } from "./ChatMessages";
 import { ChatInput } from "./ChatInput";
@@ -15,6 +17,7 @@ import { ChatLogic } from "./ChatLogic";
 // Styles
 import "../Pages.css";
 import "./Chat.css";
+
 // Assets
 
 export const Chat = (props) => {
@@ -27,29 +30,39 @@ export const Chat = (props) => {
 			isMounted.current = false;
 		};
 		// eslint-disable-next-line
-	}, []);
+	}, [props.match.params.id]);
 
-	if (loading) {
-		return <Loading />;
-	} else {
-		return (
-			<div className='page chat-page'>
-				<ChatTop chat={chat} setChat={setChat} setLoading={setLoading} />
-				<ChatMessages
-					chat={chat}
-					setChat={setChat}
-					setLoading={setLoading}
-					chatInputHeight={chatInputHeight}
-					setChatInputHeight={setChatInputHeight}
-				/>
-				<ChatInput
-					chat={chat}
-					setChat={setChat}
-					setLoading={setLoading}
-					chatInputHeight={chatInputHeight}
-					setChatInputHeight={setChatInputHeight}
-				/>
+	return (
+		<div className='page chat-page'>
+			<div className='chats-container'>
+				<ChatsTop />
+				<ChatsList />
 			</div>
-		);
-	}
+
+			{loading ? (
+				<div className='chat-container'>
+					<div className='chat-top'></div>
+					<Loading />
+				</div>
+			) : (
+				<div className='chat-container'>
+					<ChatTop chat={chat} setChat={setChat} setLoading={setLoading} />
+					<ChatMessages
+						chat={chat}
+						setChat={setChat}
+						setLoading={setLoading}
+						chatInputHeight={chatInputHeight}
+						setChatInputHeight={setChatInputHeight}
+					/>
+					<ChatInput
+						chat={chat}
+						setChat={setChat}
+						setLoading={setLoading}
+						chatInputHeight={chatInputHeight}
+						setChatInputHeight={setChatInputHeight}
+					/>
+				</div>
+			)}
+		</div>
+	);
 };

@@ -25,6 +25,10 @@
 	max-width: 60%;
 }
 
+.chat-message p {
+	margin: 0;
+}
+
 .chat-message-self {
 	margin-left: auto;
 }
@@ -36,21 +40,24 @@
 .chat-message .chat-message-text {
 	margin: 0;
 	padding: 12px 16px;
-	border-radius: 8px;
+	border-radius: 18px;
+	width: fit-content;
 
 	text-align: left;
 }
 
 .chat-message-self .chat-message-text {
+	margin-left: auto;
 	background: var(--blue);
 }
 
 .chat-message-other .chat-message-text {
+	margin-right: auto;
 	background: var(--grey2);
 }
 
-.chat-message p {
-	margin: 0;
+.chat-message-text p {
+	width: fit-content;
 }
 
 .chat-message-user {

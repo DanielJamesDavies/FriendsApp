@@ -1,0 +1,18 @@
+.chats-top {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 16px;
+	border-radius: 8px;
+	height: 70px;
+	background: linear-gradient(90deg, #30b2f2, #216cdb);
+	text-align: left;
+}
+
+.chats-top p {
+	margin: 0;
+	margin-left: 5px;
+	font-size: 1.8em;
+	font-weight: 700;
+	text-align: left;
+}

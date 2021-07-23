@@ -21,7 +21,6 @@ export const ChatMessages = ({ chat, setChat, setLoading, chatInputHeight, setCh
 			{chat.messages.length !== 0 ? null : <p>There are no currently messages in this chat.</p>}
 			{chat.messages.map((message, index) => (
 				<div className={message.user_id === id ? "chat-message chat-message-self" : "chat-message chat-message-other"} key={index}>
-					<div className='chat-message'></div>
 					<div className='chat-message-text'>
 						{message.text.map((paragraph, index) => {
 							return <p key={index}>{paragraph}</p>;

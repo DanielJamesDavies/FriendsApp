@@ -14,9 +14,8 @@ import "./ChatItem.css";
 // Assets
 
 export const ChatItem = ({ chat, notificationIcon }) => {
-	const { isMounted, toChat, lastMessageNickname, getLastMessageNickname } = ChatItemLogic();
+	const { isMounted, toChat } = ChatItemLogic();
 	if (notificationIcon) var DynamicNotificationIcon = notificationIcon;
-	if (chat.messages && chat.messages.length !== 0) getLastMessageNickname(chat.messages[chat.messages.length - 1].user_id);
 
 	useEffect(() => {
 		isMounted.current = true;
@@ -49,11 +48,7 @@ export const ChatItem = ({ chat, notificationIcon }) => {
 			<div className='chat-item-text'>
 				<p className='chat-item-name'>{chat.name}</p>
 				<p className='chat-item-last-message'>
-					{chat.messages && chat.messages.length !== 0
-						? lastMessageNickname
-							? lastMessageNickname + ": " + chat.messages[chat.messages.length - 1].text[0]
-							: ""
-						: "There are no messages in this chat."}
+					{chat.lastMessage ? chat.lastMessage.nickname + ": " + chat.lastMessage.text : "There are no messages in this chat."}
 				</p>
 			</div>
 

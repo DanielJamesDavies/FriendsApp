@@ -1,5 +1,20 @@
 .chat-page {
 	margin: 0 auto;
 	margin-top: 10px;
-	max-width: 1000px;
+	padding: 0;
+	width: calc(100% - 40px);
+	max-width: 100%;
+}
+
+.chats-container {
+	display: inline-block;
+	margin-right: 20px;
+	width: calc(40% - 20px);
+	vertical-align: top;
+}
+
+.chat-container {
+	display: inline-block;
+	width: 60%;
+	vertical-align: top;
 }

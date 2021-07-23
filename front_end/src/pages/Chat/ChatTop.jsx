@@ -14,7 +14,13 @@ import "./ChatTop.css";
 export const ChatTop = ({ chat }) => {
 	return (
 		<div className='chat-top'>
-			<img className='chat-top-icon' src={chat.icon} alt='' />
+			{chat.icon ? (
+				<img className='chat-top-icon' src={chat.icon} alt='' />
+			) : (
+				<svg className='chat-top-icon' height='50' width='50'>
+					<circle cx='25' cy='25' r='25' />
+				</svg>
+			)}
 			<p className='chat-top-name'>{chat.name}</p>
 		</div>
 	);

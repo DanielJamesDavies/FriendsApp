@@ -20,9 +20,14 @@ const ChatSchema = mongoose.Schema({
 			user_id: mongoose.Schema.Types.ObjectId,
 			text: [String],
 			image: String,
+			read_by: [mongoose.Schema.Types.ObjectId],
 			date: { type: Date, default: Date.now },
 		},
 	],
+	lastMessage: {
+		nickname: String,
+		text: String,
+	},
 });
 
 module.exports = mongoose.model("Chat", ChatSchema);
