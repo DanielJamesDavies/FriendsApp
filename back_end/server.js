@@ -34,6 +34,10 @@ app.use("/friendship", friendshipRoute);
 const chatRoute = require("./routes/ChatRoute");
 app.use("/chat", chatRoute);
 
+// Message Routes
+const messageRoute = require("./routes/MessageRoute");
+app.use("/message", messageRoute);
+
 app.listen(port, () => {
 	console.log(port);
 });

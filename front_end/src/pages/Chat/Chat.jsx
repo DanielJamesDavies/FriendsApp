@@ -47,13 +47,7 @@ export const Chat = (props) => {
 			) : (
 				<div className='chat-container'>
 					<ChatTop chat={chat} setChat={setChat} setLoading={setLoading} />
-					<ChatMessages
-						chat={chat}
-						setChat={setChat}
-						setLoading={setLoading}
-						chatInputHeight={chatInputHeight}
-						setChatInputHeight={setChatInputHeight}
-					/>
+					<ChatMessages chat={chat} setChat={setChat} setLoading={setLoading} chatInputHeight={chatInputHeight} />
 					<ChatInput
 						chat={chat}
 						setChat={setChat}

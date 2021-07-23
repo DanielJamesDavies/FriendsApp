@@ -8,6 +8,23 @@
 	--grey3: #282828;
 }
 
+::-webkit-scrollbar {
+	width: 8px;
+	border-radius: 0;
+	background: var(--grey2);
+	transition: 0.2s;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--blue);
+	border-radius: 4px;
+}
+
+::selection {
+	color: #fff;
+	background: #0044ff;
+}
+
 @import url("https://fonts.googleapis.com/css?family=Inter:regular,bold,italic");
 
 .unauthorised {

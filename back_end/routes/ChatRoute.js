@@ -89,28 +89,4 @@ router.post("/", authenticate, async (req, res) => {
 	res.status(200).send({ message: "New Chat Created.", chat_id: chat_id });
 });
 
-// Send Message
-router.post("/message/:id/", authenticate, async (req, res) => {
-	const chat = await Chat.findById(req.params.id)
-		.exec()
-		.catch((err) => {
-			console.log(err);
-			res.status(500).send({ message: "Error: " + err });
-		});
-	chat.messages.push(req.body);
-	await chat.save();
-
-	let profile_ids = chat.participants.map((profile_id) => mongoose.Types.ObjectId(profile_id));
-	const profiles = await Profile.find()
-		.where("_id")
-		.in(profile_ids)
-		.exec()
-		.catch((err) => {
-			console.log(err);
-			res.status(500).send({ message: "Error: " + err });
-		});
-
-	res.status(200).send({ message: "Message Sent.", chat: chat, participants: profiles });
-});
-
 module.exports = router;

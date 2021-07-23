@@ -25,7 +25,7 @@ export const ChatInputLogic = () => {
 	async function sendMessage(chat_id, setChat, setLoading) {
 		setLoading(true);
 		const result = await axios.post(
-			"http://localhost:3001/chat/message/" + chat_id,
+			"http://localhost:3001/message/" + chat_id,
 			{
 				user_id: id,
 				text: text,
@@ -35,7 +35,6 @@ export const ChatInputLogic = () => {
 			}
 		);
 		if (!result.data || result.data.error) return "Error";
-		console.log(result);
 		result.data.chat.participants = result.data.participants;
 		if (result.data.message) {
 			setText("");
