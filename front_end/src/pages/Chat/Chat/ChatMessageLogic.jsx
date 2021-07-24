@@ -24,7 +24,7 @@ export const ChatMessageLogic = () => {
 
 	async function readMessage(message, chat_id) {
 		if (isMounted) setReading(true);
-		await axios.post(
+		const result = await axios.post(
 			"http://localhost:3001/message/read/" + chat_id + "/" + message._id,
 			{
 				user_id: id,
@@ -34,6 +34,7 @@ export const ChatMessageLogic = () => {
 			}
 		);
 		if (isMounted) setReading(false);
+		if (isMounted && result.data.message) socket.emit("read-message", { message: result.data.message });
 	}
 
 	function selectMessageToEdit(message) {

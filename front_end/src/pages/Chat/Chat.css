@@ -14,7 +14,21 @@
 }
 
 .chat-container {
+	position: relative;
 	display: inline-block;
 	width: 60%;
 	vertical-align: top;
+}
+
+.chat-image-background {
+	position: absolute;
+	z-index: -1;
+	top: calc(50% - 10px);
+	left: calc(50% + 2px);
+	transform: translate(-50%, -50%);
+	width: calc(100% + 32px);
+	height: calc(100% + 20px);
+	object-fit: cover;
+	filter: brightness(60%);
+	opacity: 0.3;
 }

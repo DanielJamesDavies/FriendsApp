@@ -48,6 +48,7 @@ export const Chat = (props) => {
 
 			{!chat ? null : (
 				<div className='chat-container' style={loading ? { display: "none" } : {}}>
+					{!chat.banner ? null : <img className='chat-image-background' src={chat.banner} alt='' />}
 					<ChatTop chat={chat} setChat={setChat} setLoading={setLoading} />
 					<ChatMessages chat={chat} setChat={setChat} setLoading={setLoading} chatInputHeight={chatInputHeight} />
 					<ChatInput

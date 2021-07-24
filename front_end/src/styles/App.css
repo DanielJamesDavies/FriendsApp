@@ -28,11 +28,22 @@
 
 @import url("https://fonts.googleapis.com/css?family=Inter:regular,bold,italic");
 
-.unauthorised {
+.app-background {
+	position: absolute;
+	z-index: -2;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin: 0;
+	width: calc(100vw + 4px);
+	height: calc(100vh + 4px);
+}
+
+.unauthorised .app-background {
 	background: linear-gradient(135deg, #396afc, #2948ff);
 }
 
-.authorised {
+.authorised .app-background {
 	background: var(--grey1);
 }
 

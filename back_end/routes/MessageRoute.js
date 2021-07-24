@@ -14,11 +14,14 @@ router.post("/read/:chat_id/:message_id", authenticate, async (req, res) => {
 			res.status(500).send({ message: "Error: " + err });
 		});
 	var messageIndex = chat.messages.findIndex((message) => message._id.toString() === req.params.message_id);
-	if (messageIndex !== -1 && chat.messages[messageIndex] && !chat.messages[messageIndex].read_by.includes(req.body.user_id))
+	var message = {};
+	if (messageIndex !== -1 && chat.messages[messageIndex] && !chat.messages[messageIndex].read_by.includes(req.body.user_id)) {
 		chat.messages[messageIndex].read_by.push(req.body.user_id);
+		message = chat.messages[messageIndex];
+	}
 	await chat.save();
 
-	res.status(200).send({ message: "Message Read." });
+	res.status(200).send({ message: message });
 });
 
 // Edit Message

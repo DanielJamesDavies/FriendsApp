@@ -70,6 +70,9 @@ io.on("connection", (socket) => {
 		io.emit("receive-deleted-message", message);
 		chatUpdate(chat_id);
 	});
+	socket.on("read-message", ({ message }) => {
+		io.emit("receive-read-message", message);
+	});
 });
 
 async function chatUpdate(chat_id) {

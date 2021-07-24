@@ -57,6 +57,10 @@
 	color: #fff;
 }
 
+.chat-message-option-delete-btn:hover {
+	background: var(--red) !important;
+}
+
 .chat-message .chat-message-options button svg {
 	display: flex;
 	flex-direction: column;

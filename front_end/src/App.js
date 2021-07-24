@@ -23,6 +23,7 @@ function App() {
 		<BrowserRouter>
 			<div className={!token ? "unauthorised" : "authorised"}>
 				<div className='App'>
+					<div className='app-background'></div>
 					{!token ? null : <Sidebar />}
 					<Switch>
 						<Routes token={token} />

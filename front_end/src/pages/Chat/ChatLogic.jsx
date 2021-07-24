@@ -14,7 +14,7 @@ import { UserContext } from "../../context/UserContext";
 // Assets
 
 export const ChatLogic = () => {
-	const { token, socket } = useContext(UserContext);
+	const { token, id, socket } = useContext(UserContext);
 	const isMounted = useRef(false);
 	const [loading, setLoading] = useState(true);
 	const [chat, setChat] = useState(false);
@@ -46,6 +46,19 @@ export const ChatLogic = () => {
 			if (messageIndex) {
 				newChat.messages.splice(messageIndex, 1);
 				setChat(newChat);
+			}
+		}
+	});
+
+	socket.on("receive-read-message", (message) => {
+		if (message.user_id === id) {
+			var newChat = JSON.parse(JSON.stringify(chat));
+			if (newChat.messages) {
+				var messageIndex = newChat.messages.findIndex((e) => e._id === message._id);
+				if (messageIndex) {
+					newChat.messages[messageIndex] = message;
+					setChat(newChat);
+				}
 			}
 		}
 	});

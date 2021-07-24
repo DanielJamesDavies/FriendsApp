@@ -41,7 +41,7 @@ export const ChatMessage = ({ index, message, chat, setChat, setLoading, setMess
 			isMounted.current = false;
 		};
 		// eslint-disable-next-line
-	}, []);
+	}, [message]);
 
 	return (
 		<div className={message.user_id === id ? "chat-message chat-message-self" : "chat-message chat-message-other"}>
@@ -53,7 +53,7 @@ export const ChatMessage = ({ index, message, chat, setChat, setLoading, setMess
 					<button onClick={() => selectMessageToEdit(message)}>
 						<FaPencilAlt />
 					</button>
-					<button onClick={() => deleteMessage(message, chat._id, setLoading)}>
+					<button className='chat-message-option-delete-btn' onClick={() => deleteMessage(message, chat._id, setLoading)}>
 						<FaTimes />
 					</button>
 				</div>
