@@ -54,6 +54,12 @@ router.get("/friends/:id", authenticate, async (req, res) => {
 	res.status(200).send(friends);
 });
 
+// Get Multiple Profiles by Array of Ids
+router.post("/get-multiple", authenticate, async (req, res) => {
+	const profiles = await Profile.find().where("_id").in(req.body.ids).exec();
+	res.status(200).send(profiles);
+});
+
 // Get Profile by Id
 router.get("/:id", authenticate, (req, res) => {
 	Profile.findById(req.params.id)

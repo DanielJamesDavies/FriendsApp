@@ -7,7 +7,7 @@ import axios from "axios";
 // Logic
 
 // Context
-import { UserContext } from "../../context/UserContext";
+import { UserContext } from "../../../context/UserContext";
 
 // Styles
 
@@ -16,6 +16,7 @@ import { UserContext } from "../../context/UserContext";
 export const ChatInputLogic = () => {
 	const { token, id } = useContext(UserContext);
 	const [text, setText] = useState([""]);
+	const [sending, setSending] = useState(false);
 
 	function changeText(e, setChatInputHeight) {
 		setText(e.target.value.split("\n"));
@@ -23,6 +24,9 @@ export const ChatInputLogic = () => {
 	}
 
 	async function sendMessage(chat_id, setChat, setLoading) {
+		setSending(false);
+		if (text.join("\n").split(" ").join("") === "") return;
+
 		setLoading(true);
 		const result = await axios.post(
 			"http://localhost:3001/message/" + chat_id,
@@ -43,5 +47,5 @@ export const ChatInputLogic = () => {
 		setLoading(false);
 	}
 
-	return { text, changeText, sendMessage };
+	return { text, changeText, sendMessage, sending, setSending };
 };

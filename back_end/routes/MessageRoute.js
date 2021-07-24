@@ -13,9 +13,9 @@ router.post("/read/:chat_id/:message_id", authenticate, async (req, res) => {
 			console.log(err);
 			res.status(500).send({ message: "Error: " + err });
 		});
-	var messageIndex = chat.messages.findIndex((message) => message._id === req.params.message_id);
-	if (messageIndex && !chat.messages[messageIndex].readBy.includes(req.params.user_id))
-		chat.messages[messageIndex].readBy.push(req.params.user_id);
+	var messageIndex = chat.messages.findIndex((message) => message._id.toString() === req.params.message_id);
+	if (messageIndex !== -1 && chat.messages[messageIndex] && !chat.messages[messageIndex].read_by.includes(req.body.user_id))
+		chat.messages[messageIndex].read_by.push(req.body.user_id);
 	await chat.save();
 
 	res.status(200).send({ message: "Message Read." });
@@ -57,8 +57,10 @@ router.post("/delete/:chat_id/:message_id", authenticate, async (req, res) => {
 			console.log(err);
 			res.status(500).send({ message: "Error: " + err });
 		});
-	var messageIndex = chat.messages.findIndex((message) => message._id === req.params.message_id);
-	if (messageIndex) chat.messages.splice(messageIndex, 1);
+	var messageIndex = chat.messages.findIndex((message) => message._id.toString() === req.params.message_id);
+	if (messageIndex && chat.messages[messageIndex] && chat.messages[messageIndex].user_id.toString() === req.body.user_id) {
+		chat.messages.splice(messageIndex, 1);
+	}
 	await chat.save();
 
 	let profile_ids = chat.participants.map((profile_id) => mongoose.Types.ObjectId(profile_id));

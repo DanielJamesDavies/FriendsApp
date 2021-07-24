@@ -7,7 +7,7 @@ import axios from "axios";
 // Logic
 
 // Context
-import { UserContext } from "../../context/UserContext";
+import { UserContext } from "../../../context/UserContext";
 
 // Styles
 

@@ -1,0 +1,22 @@
+.chat-messages-container {
+	display: inline-block;
+	margin-top: 10px;
+	padding: 0 12px;
+
+	height: calc(100vh - 10px - 70px - 10px - 60px - 10px);
+
+	overflow-y: overlay;
+	overflow-x: hidden;
+}
+
+.chat-messages-container::-webkit-scrollbar {
+	width: 8px;
+	border-radius: 0;
+	background: var(--grey2);
+	transition: 0.2s;
+}
+
+.chat-messages-container::-webkit-scrollbar-thumb {
+	background: var(--blue);
+	border-radius: 4px;
+}

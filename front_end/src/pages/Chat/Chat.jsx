@@ -3,11 +3,11 @@ import { useEffect } from "react";
 
 // Components
 import { Loading } from "../../components/Loading/Loading";
-import { ChatsTop } from "./ChatsTop";
-import { ChatsList } from "./ChatsList";
-import { ChatTop } from "./ChatTop";
-import { ChatMessages } from "./ChatMessages";
-import { ChatInput } from "./ChatInput";
+import { ChatsTop } from "./Chats/ChatsTop";
+import { ChatsList } from "./Chats/ChatsList";
+import { ChatTop } from "./Chat/ChatTop";
+import { ChatMessages } from "./Chat/ChatMessages";
+import { ChatInput } from "./Chat/ChatInput";
 
 // Logic
 import { ChatLogic } from "./ChatLogic";

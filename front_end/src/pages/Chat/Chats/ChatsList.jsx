@@ -3,10 +3,10 @@ import { useEffect } from "react";
 import { FaSearch, FaPlus } from "react-icons/fa";
 
 // Components
-import { Loading } from "../../components/Loading/Loading";
+import { Loading } from "../../../components/Loading/Loading";
 import { ChatsListLogic } from "./ChatsListLogic";
-import { ChatItem } from "../../components/ChatItem/ChatItem";
-import { Input } from "../../components/Input/Input";
+import { ChatItem } from "../../../components/ChatItem/ChatItem";
+import { Input } from "../../../components/Input/Input";
 
 // Logic
 
@@ -28,6 +28,7 @@ export const ChatsList = (props) => {
 		};
 		// eslint-disable-next-line
 	}, []);
+
 	if (loading) {
 		return <Loading />;
 	} else {

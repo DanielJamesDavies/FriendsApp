@@ -14,7 +14,7 @@ import "./ChatInput.css";
 // Assets
 
 export const ChatInput = ({ chat, setChat, setLoading, chatInputHeight, setChatInputHeight }) => {
-	const { text, changeText, sendMessage } = ChatInputLogic();
+	const { text, changeText, sendMessage, sending, setSending } = ChatInputLogic();
 
 	return (
 		<div className='chat-input-container'>
@@ -32,7 +32,11 @@ export const ChatInput = ({ chat, setChat, setLoading, chatInputHeight, setChatI
 				placeholder='Enter Message'
 				style={{ height: chatInputHeight }}
 			/>
-			<button className='chat-input-btn' onClick={() => sendMessage(chat._id, setChat, setLoading)}>
+			<button
+				className={sending ? "chat-input-btn chat-input-btn-sending" : "chat-input-btn"}
+				onClick={() => setSending(true)}
+				onAnimationEnd={() => sendMessage(chat._id, setChat, setLoading)}
+			>
 				<FaPaperPlane />
 			</button>
 		</div>

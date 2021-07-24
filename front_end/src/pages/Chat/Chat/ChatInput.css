@@ -71,6 +71,36 @@
 }
 
 .chat-input-btn svg {
-	margin-top: 2px;
-	margin-left: -3px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: auto;
+	margin-left: 8px;
+}
+
+.chat-input-btn-sending svg {
+	animation: send-btn-animation 0.9s 1 ease-in;
+}
+
+@keyframes send-btn-animation {
+	0% {
+		margin-top: 0px;
+		margin-left: 8px;
+		opacity: 1;
+	}
+	26% {
+		margin-top: -35px;
+		margin-left: 30px;
+		opacity: 0;
+	}
+	52% {
+		margin-top: 35px;
+		margin-left: -22px;
+		opacity: 0;
+	}
+	80% {
+		margin-top: 0px;
+		margin-left: 8px;
+		opacity: 1;
+	}
 }
