@@ -1,7 +1,6 @@
 // Packages
 import { useContext, useRef, useState } from "react";
 import axios from "axios";
-import io from "socket.io-client";
 
 // Components
 
@@ -15,13 +14,12 @@ import { UserContext } from "../../../context/UserContext";
 // Assets
 
 export const ChatsListLogic = () => {
-	const { token, id } = useContext(UserContext);
+	const { token, id, socket } = useContext(UserContext);
 	const isMounted = useRef(false);
 	const [loading, setLoading] = useState(true);
 	const [searchValue, setSearchValue] = useState("");
 	const [chatsList, setChatsList] = useState(false);
 	const [filteredChatsList, setFilteredChatsList] = useState(false);
-	const socket = io.connect("http://localhost:3001/");
 
 	socket.on("receive-chat-update", (chat) => {
 		if (chatsList) {

@@ -51,7 +51,6 @@ router.post("/delete/:chat_id/:message_id", authenticate, async (req, res) => {
 		});
 	var messageIndex = chat.messages.findIndex((message) => message._id.toString() === req.params.message_id);
 	var message = {};
-	console.log(messageIndex);
 	if (messageIndex !== -1 && chat.messages[messageIndex] && chat.messages[messageIndex].user_id.toString() === req.body.user_id) {
 		message = chat.messages.splice(messageIndex, 1)[0];
 	}

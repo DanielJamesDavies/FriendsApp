@@ -1,7 +1,6 @@
 // Packages
 import { useContext, useRef, useState } from "react";
 import axios from "axios";
-import io from "socket.io-client";
 
 // Components
 
@@ -15,14 +14,13 @@ import { UserContext } from "../../../context/UserContext";
 // Assets
 
 export const ChatMessageLogic = () => {
-	const { token, id } = useContext(UserContext);
+	const { token, id, socket } = useContext(UserContext);
 	const isMounted = useRef(false);
 	const [reading, setReading] = useState(false);
 	const [editMessageId, setEditMessageId] = useState(false);
 	const [editMessageText, setEditMessageText] = useState([""]);
 	const [editMessageHeight, setEditMessageHeight] = useState("20px");
 	const [editMessageWidth, setEditMessageWidth] = useState("20px");
-	const socket = io.connect("http://localhost:3001/");
 
 	async function readMessage(message, chat_id) {
 		if (isMounted) setReading(true);

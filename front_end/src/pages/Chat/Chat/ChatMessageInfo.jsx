@@ -35,7 +35,7 @@ export const ChatMessageInfo = ({ messageInfo, setMessageInfo, chatInputHeight }
 
 	if (!messageInfo) return null;
 
-	var date = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60 * 1000).toUTCString();
+	var date = new Date(new Date(messageInfo.date).getTime() - new Date().getTimezoneOffset() * 60 * 1000).toUTCString();
 
 	if (loading)
 		return (

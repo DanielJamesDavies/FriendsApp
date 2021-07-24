@@ -1,7 +1,6 @@
 // Packages
 import { useContext, useRef, useState } from "react";
 import axios from "axios";
-import io from "socket.io-client";
 
 // Components
 
@@ -15,11 +14,10 @@ import { UserContext } from "../../../context/UserContext";
 // Assets
 
 export const ChatInputLogic = () => {
-	const { token, id } = useContext(UserContext);
+	const { token, id, socket } = useContext(UserContext);
 	const isMounted = useRef(false);
 	const [text, setText] = useState([""]);
 	const [sending, setSending] = useState(false);
-	const socket = io.connect("http://localhost:3001/");
 
 	function changeText(e, setChatInputHeight) {
 		if (isMounted) {

@@ -39,8 +39,11 @@ const messageRoute = require("./routes/MessageRoute");
 app.use("/message", messageRoute);
 
 const server = app.listen(port, () => {
-	console.log(port);
+	console.log("Listening on port: " + port);
 });
+
+const Chat = require("./models/Chat");
+const Profile = require("./models/Profile");
 
 const io = require("socket.io")(server, {
 	cors: {
@@ -51,10 +54,9 @@ const io = require("socket.io")(server, {
 	allowEIO3: true,
 });
 
-const Chat = require("./models/Chat");
-const Profile = require("./models/Profile");
-
 io.on("connection", (socket) => {
+	var date = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60 * 1000).toUTCString();
+	console.log(date + " | socket.io connected established.");
 	// Message Update
 	socket.on("send-message", ({ message, chat_id }) => {
 		io.emit("receive-sent-message", message);

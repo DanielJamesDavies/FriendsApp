@@ -1,7 +1,6 @@
 // Packages
 import { useContext, useRef, useState } from "react";
 import axios from "axios";
-import io from "socket.io-client";
 
 // Components
 
@@ -15,12 +14,11 @@ import { UserContext } from "../../context/UserContext";
 // Assets
 
 export const ChatLogic = () => {
-	const { token } = useContext(UserContext);
+	const { token, socket } = useContext(UserContext);
 	const isMounted = useRef(false);
 	const [loading, setLoading] = useState(true);
 	const [chat, setChat] = useState(false);
 	const [chatInputHeight, setChatInputHeight] = useState("20px");
-	const socket = io.connect("http://localhost:3001/");
 
 	socket.on("receive-sent-message", (message) => {
 		var newChat = JSON.parse(JSON.stringify(chat));
