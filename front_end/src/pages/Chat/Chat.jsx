@@ -39,13 +39,15 @@ export const Chat = (props) => {
 				<ChatsList />
 			</div>
 
-			{loading ? (
+			{!loading ? null : (
 				<div className='chat-container'>
 					<div className='chat-top'></div>
 					<Loading />
 				</div>
-			) : (
-				<div className='chat-container'>
+			)}
+
+			{!chat ? null : (
+				<div className='chat-container' style={loading ? { display: "none" } : {}}>
 					<ChatTop chat={chat} setChat={setChat} setLoading={setLoading} />
 					<ChatMessages chat={chat} setChat={setChat} setLoading={setLoading} chatInputHeight={chatInputHeight} />
 					<ChatInput

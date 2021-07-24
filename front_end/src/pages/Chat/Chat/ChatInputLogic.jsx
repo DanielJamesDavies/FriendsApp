@@ -1,6 +1,7 @@
 // Packages
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import axios from "axios";
+import io from "socket.io-client";
 
 // Components
 
@@ -15,19 +16,23 @@ import { UserContext } from "../../../context/UserContext";
 
 export const ChatInputLogic = () => {
 	const { token, id } = useContext(UserContext);
+	const isMounted = useRef(false);
 	const [text, setText] = useState([""]);
 	const [sending, setSending] = useState(false);
+	const socket = io.connect("http://localhost:3001/");
 
 	function changeText(e, setChatInputHeight) {
-		setText(e.target.value.split("\n"));
-		setTimeout(() => setChatInputHeight(document.getElementById("chat-input-text").offsetHeight + "px"), 1);
+		if (isMounted) {
+			setText(e.target.value.split("\n"));
+			setTimeout(() => setChatInputHeight(document.getElementById("chat-input-text").offsetHeight + "px"), 1);
+		}
 	}
 
-	async function sendMessage(chat_id, setChat, setLoading) {
-		setSending(false);
+	async function sendMessage(chat_id, setLoading) {
+		if (isMounted) setSending(false);
 		if (text.join("\n").split(" ").join("") === "") return;
 
-		setLoading(true);
+		if (isMounted) setLoading(true);
 		const result = await axios.post(
 			"http://localhost:3001/message/" + chat_id,
 			{
@@ -39,13 +44,12 @@ export const ChatInputLogic = () => {
 			}
 		);
 		if (!result.data || result.data.error) return "Error";
-		result.data.chat.participants = result.data.participants;
 		if (result.data.message) {
-			setText("");
-			setChat(result.data.chat);
+			setText([""]);
+			socket.emit("send-message", { message: result.data.message, chat_id: chat_id });
 		}
-		setLoading(false);
+		if (isMounted) setLoading(false);
 	}
 
-	return { text, changeText, sendMessage, sending, setSending };
+	return { isMounted, text, changeText, sendMessage, sending, setSending };
 };

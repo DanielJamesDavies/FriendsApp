@@ -1,6 +1,7 @@
 // Packages
 import { useContext, useRef, useState } from "react";
 import axios from "axios";
+import io from "socket.io-client";
 
 // Components
 
@@ -21,9 +22,10 @@ export const ChatMessageLogic = () => {
 	const [editMessageText, setEditMessageText] = useState([""]);
 	const [editMessageHeight, setEditMessageHeight] = useState("20px");
 	const [editMessageWidth, setEditMessageWidth] = useState("20px");
+	const socket = io.connect("http://localhost:3001/");
 
 	async function readMessage(message, chat_id) {
-		setReading(true);
+		if (isMounted) setReading(true);
 		await axios.post(
 			"http://localhost:3001/message/read/" + chat_id + "/" + message._id,
 			{
@@ -37,14 +39,16 @@ export const ChatMessageLogic = () => {
 	}
 
 	function selectMessageToEdit(message) {
-		setEditMessageId(message._id);
-		setEditMessageText(message.text);
-		setTimeout(() => setEditMessageHeight(document.getElementById("chat-message-edit-text-hidden").offsetHeight + "px"), 5);
-		setTimeout(() => setEditMessageWidth(document.getElementById("chat-message-edit-textarea").offsetWidth + "px"), 1);
+		if (isMounted) {
+			setEditMessageId(message._id);
+			setEditMessageText(message.text);
+			setTimeout(() => setEditMessageHeight(document.getElementById("chat-message-edit-text-hidden").offsetHeight + "px"), 5);
+			setTimeout(() => setEditMessageWidth(document.getElementById("chat-message-edit-textarea").offsetWidth + "px"), 1);
+		}
 	}
 
-	async function deleteMessage(message, chat_id, setChat, setLoading) {
-		setLoading(true);
+	async function deleteMessage(message, chat_id, setLoading) {
+		if (isMounted) setLoading(true);
 		const result = await axios.post(
 			"http://localhost:3001/message/delete/" + chat_id + "/" + message._id,
 			{
@@ -55,23 +59,24 @@ export const ChatMessageLogic = () => {
 			}
 		);
 		if (!result.data || result.data.error) return "Error";
-		result.data.chat.participants = result.data.participants;
 		if (result.data.message && isMounted) {
 			setEditMessageId(false);
 			setEditMessageText("");
-			setChat(result.data.chat);
+			socket.emit("delete-message", { message: result.data.message, chat_id: chat_id });
 		}
 		if (isMounted) setLoading(false);
 	}
 
 	function changeMessageText(e) {
-		setEditMessageText(e.target.value.split("\n"));
-		setTimeout(() => setEditMessageHeight(document.getElementById("chat-message-edit-text-hidden").offsetHeight + "px"), 5);
-		setTimeout(() => setEditMessageWidth(document.getElementById("chat-message-edit-textarea").offsetWidth + "px"), 1);
+		if (isMounted) {
+			setEditMessageText(e.target.value.split("\n"));
+			setTimeout(() => setEditMessageHeight(document.getElementById("chat-message-edit-text-hidden").offsetHeight + "px"), 5);
+			setTimeout(() => setEditMessageWidth(document.getElementById("chat-message-edit-textarea").offsetWidth + "px"), 1);
+		}
 	}
 
-	async function saveEditedMessage(chat_id, setChat, setLoading) {
-		setLoading(true);
+	async function saveEditedMessage(chat_id, setLoading) {
+		if (isMounted) setLoading(true);
 		const result = await axios.post(
 			"http://localhost:3001/message/edit/" + chat_id + "/" + editMessageId,
 			{
@@ -83,18 +88,19 @@ export const ChatMessageLogic = () => {
 			}
 		);
 		if (!result.data || result.data.error) return "Error";
-		result.data.chat.participants = result.data.participants;
 		if (result.data.message && isMounted) {
 			setEditMessageId(false);
 			setEditMessageText("");
-			setChat(result.data.chat);
+			socket.emit("edit-message", { message: result.data.message, chat_id: chat_id });
 		}
 		if (isMounted) setLoading(false);
 	}
 
 	function revertMessageText() {
-		setEditMessageId(false);
-		setEditMessageText("");
+		if (isMounted) {
+			setEditMessageId(false);
+			setEditMessageText("");
+		}
 	}
 
 	return {

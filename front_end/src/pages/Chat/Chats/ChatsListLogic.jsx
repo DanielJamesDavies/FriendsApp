@@ -1,6 +1,7 @@
 // Packages
 import { useContext, useRef, useState } from "react";
 import axios from "axios";
+import io from "socket.io-client";
 
 // Components
 
@@ -20,6 +21,16 @@ export const ChatsListLogic = () => {
 	const [searchValue, setSearchValue] = useState("");
 	const [chatsList, setChatsList] = useState(false);
 	const [filteredChatsList, setFilteredChatsList] = useState(false);
+	const socket = io.connect("http://localhost:3001/");
+
+	socket.on("receive-chat-update", (chat) => {
+		if (chatsList) {
+			var newChatsList = JSON.parse(JSON.stringify(chatsList));
+			newChatsList[newChatsList.findIndex((e) => e._id === chat._id)] = chat;
+			setChatsList(newChatsList);
+			setFilteredChatsList(newChatsList.filter((chat) => chat.name.toLowerCase().includes(searchValue.toLowerCase())));
+		}
+	});
 
 	async function getChats() {
 		const chats = await axios.get("http://localhost:3001/chat/messages/" + id, {

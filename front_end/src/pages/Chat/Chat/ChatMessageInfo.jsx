@@ -45,6 +45,12 @@ export const ChatMessageInfo = ({ messageInfo, setMessageInfo, chatInputHeight }
 					height: "calc(100vh - 10px - 70px - 10px - " + chatInputHeight + " - 30px - 60px)",
 				}}
 			>
+				<div className='chat-message-info-title'>
+					<button className='chat-message-info-close-btn' onClick={() => setMessageInfo(false)}>
+						<FaTimes />
+					</button>
+					<p>Message Information</p>
+				</div>
 				<Loading />
 			</div>
 		);

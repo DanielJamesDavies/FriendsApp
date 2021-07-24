@@ -53,7 +53,7 @@ export const ChatMessage = ({ index, message, chat, setChat, setLoading, setMess
 					<button onClick={() => selectMessageToEdit(message)}>
 						<FaPencilAlt />
 					</button>
-					<button onClick={() => deleteMessage(message, chat._id, setChat, setLoading)}>
+					<button onClick={() => deleteMessage(message, chat._id, setLoading)}>
 						<FaTimes />
 					</button>
 				</div>
@@ -82,7 +82,7 @@ export const ChatMessage = ({ index, message, chat, setChat, setLoading, setMess
 						style={{ height: editMessageHeight }}
 					/>
 
-					<button className='chat-message-edit-text-save-btn' onClick={() => saveEditedMessage(chat._id, setChat, setLoading)}>
+					<button className='chat-message-edit-text-save-btn' onClick={() => saveEditedMessage(chat._id, setLoading)}>
 						<FaSave />
 					</button>
 
