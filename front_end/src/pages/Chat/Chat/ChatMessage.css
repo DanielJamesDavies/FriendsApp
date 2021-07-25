@@ -27,7 +27,7 @@
 	padding: 8px 6px;
 	border-radius: 12px;
 
-	background: var(--grey2);
+	background: var(--grey3);
 	transition: 0.2s;
 }
 
@@ -91,7 +91,7 @@
 
 .chat-message-other .chat-message-text {
 	margin-right: auto;
-	background: var(--grey2);
+	background: var(--grey3);
 }
 
 .chat-message-text p {
@@ -112,7 +112,7 @@
 	width: calc(100% - 24px - 8px - 100px);
 
 	vertical-align: middle;
-	background: var(--grey2);
+	background: var(--grey3);
 	color: #fff;
 	font-family: "Inter", sans-serif;
 	font-size: 1em;
@@ -157,7 +157,7 @@
 	height: 42px;
 
 	vertical-align: top;
-	background: var(--grey2);
+	background: var(--grey3);
 	color: var(--blue);
 	font-size: 1.2em;
 	transition: 0.2s;

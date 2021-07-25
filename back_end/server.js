@@ -54,25 +54,57 @@ const io = require("socket.io")(server, {
 	allowEIO3: true,
 });
 
+const chats = [];
+const users = [];
+
 io.on("connection", (socket) => {
 	var date = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60 * 1000).toUTCString();
-	console.log(date + " | socket.io connected established.");
+	console.log("socket.io | " + date + " | Connected established.");
+
+	socket.on("join-chats", ({ user_id, chat_ids }) => {
+		var userIndex = users.findIndex((user) => user._id === user_id);
+
+		if (userIndex !== -1) {
+			users[userIndex].chats.forEach((id) => {
+				socket.leave(id);
+			});
+		} else {
+			users.push({ _id: user_id, chats: [] });
+			userIndex = users.findIndex((user) => user._id === user_id);
+		}
+
+		chat_ids.forEach((chat_id) => {
+			if (!chats.includes(chat_id)) chats.push(chat_id);
+		});
+
+		var chatsToJoin = chat_ids.concat(users[userIndex].chats.filter((id) => chat_ids.indexOf(id) === -1));
+		socket.join(chatsToJoin);
+		console.log("socket.io | User ID, " + user_id + " , joined the following chats.", chatsToJoin);
+	});
+
 	// Message Update
 	socket.on("send-message", ({ message, chat_id }) => {
-		io.emit("receive-sent-message", message);
-		chatUpdate(chat_id);
+		if (chats.includes(chat_id)) {
+			io.to(chat_id).emit("receive-sent-message", { message: message, chat_id: chat_id });
+			chatUpdate(chat_id);
+		}
 	});
 	socket.on("edit-message", ({ message, chat_id }) => {
-		io.emit("receive-edited-message", message);
-		chatUpdate(chat_id);
+		if (chats.includes(chat_id)) {
+			io.to(chat_id).emit("receive-edited-message", { message: message, chat_id: chat_id });
+			chatUpdate(chat_id);
+		}
 	});
 	socket.on("delete-message", ({ message, chat_id }) => {
-		console.log("delete-message");
-		io.emit("receive-deleted-message", message);
-		chatUpdate(chat_id);
+		if (chats.includes(chat_id)) {
+			io.to(chat_id).emit("receive-deleted-message", { message: message, chat_id: chat_id });
+			chatUpdate(chat_id);
+		}
 	});
-	socket.on("read-message", ({ message }) => {
-		io.emit("receive-read-message", message);
+	socket.on("read-message", ({ message, chat_id }) => {
+		if (chats.includes(chat_id)) {
+			io.to(chat_id).emit("receive-read-message", { message: message, chat_id: chat_id });
+		}
 	});
 });
 
@@ -96,5 +128,5 @@ async function chatUpdate(chat_id) {
 		chat.lastMessage = { nickname: profile.nickname, text: text };
 	}
 
-	io.emit("receive-chat-update", chat);
+	io.to(chat_id).emit("receive-chat-update", chat);
 }

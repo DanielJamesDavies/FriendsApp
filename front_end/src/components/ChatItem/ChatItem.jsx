@@ -26,7 +26,7 @@ export const ChatItem = ({ chat, notificationIcon }) => {
 	}, []);
 
 	return (
-		<div className='chat-item' onClick={() => toChat(chat._id)}>
+		<div className={chat.banner ? "chat-item chat-item-with-banner" : "chat-item"} onClick={() => toChat(chat._id)}>
 			<div className='chat-item-notification-container'>
 				{false ? (
 					<div className={"chat-item-notification"}>

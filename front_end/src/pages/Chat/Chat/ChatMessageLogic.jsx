@@ -36,7 +36,7 @@ export const ChatMessageLogic = () => {
 			}
 		);
 		if (isMounted) setReading(false);
-		if (isMounted && result.data.message) socket.emit("read-message", { message: result.data.message });
+		if (isMounted && result.data.message) socket.emit("read-message", { message: result.data.message, chat_id: chat_id });
 	}
 
 	function selectMessageToEdit(message) {

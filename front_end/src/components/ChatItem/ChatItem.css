@@ -67,7 +67,7 @@
 	display: inline-block;
 	margin-left: 1.8em;
 
-	width: calc(60% - 16px - 16px - 50px - 1.8em);
+	width: calc(100% - 16px - 16px - 50px - 1.8em - 16px);
 	word-wrap: break-word;
 	overflow: hidden;
 
@@ -75,8 +75,12 @@
 	font-size: 0.9em;
 }
 
+.chat-item-with-banner .chat-item-text {
+	width: calc(60% - 16px - 16px - 50px - 1.8em);
+}
+
 @media (max-width: 1000px) {
-	.chat-item-text {
+	.chat-item-with-banner .chat-item-text {
 		width: calc(100% - 16px - 16px - 50px - 1.8em - 16px);
 	}
 }
