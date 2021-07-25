@@ -1,5 +1,5 @@
 // Packages
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 
 // Components
@@ -8,34 +8,31 @@ import axios from "axios";
 
 // Context
 import { UserContext } from "../../../context/UserContext";
+import { ChatContext } from "../../../context/ChatContext";
 
 // Styles
 
 // Assets
 
 export const ChatsListLogic = () => {
-	const { token, id, socket } = useContext(UserContext);
+	const { token, id } = useContext(UserContext);
+	const { chats, setChats } = useContext(ChatContext);
 	const isMounted = useRef(false);
 	const [loading, setLoading] = useState(true);
 	const [searchValue, setSearchValue] = useState("");
-	const [chatsList, setChatsList] = useState(false);
 	const [filteredChatsList, setFilteredChatsList] = useState(false);
 
-	socket.on("receive-chat-update", (chat) => {
-		if (chatsList) {
-			var newChatsList = JSON.parse(JSON.stringify(chatsList));
-			newChatsList[newChatsList.findIndex((e) => e._id === chat._id)] = chat;
-			setChatsList(newChatsList);
-			setFilteredChatsList(newChatsList.filter((chat) => chat.name.toLowerCase().includes(searchValue.toLowerCase())));
-		}
-	});
+	useEffect(() => {
+		if (chats) setFilteredChatsList(chats.filter((chat) => chat.name.toLowerCase().includes(searchValue.toLowerCase())));
+		// eslint-disable-next-line
+	}, [chats]);
 
 	async function getChats() {
 		const chats = await axios.get("http://localhost:3001/chat/messages/" + id, {
 			headers: { token: token },
 		});
 		if (isMounted.current) {
-			setChatsList(chats.data);
+			setChats(chats.data);
 			setFilteredChatsList(chats.data);
 			setLoading(false);
 		}
@@ -43,7 +40,7 @@ export const ChatsListLogic = () => {
 
 	function changeSearchValue(e) {
 		setSearchValue(e.target.value);
-		setFilteredChatsList(chatsList.filter((chat) => chat.name.toLowerCase().includes(e.target.value.toLowerCase())));
+		setFilteredChatsList(chats.filter((chat) => chat.name.toLowerCase().includes(e.target.value.toLowerCase())));
 	}
 
 	return { isMounted, loading, searchValue, changeSearchValue, filteredChatsList, getChats };

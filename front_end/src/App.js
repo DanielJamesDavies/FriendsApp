@@ -10,6 +10,7 @@ import { Routes } from "./components/Routes/Routes";
 
 // Context
 import { UserContext } from "./context/UserContext";
+import { SocketListeners } from "./context/SocketListeners";
 
 // Styles
 import "./styles/App.css";
@@ -18,6 +19,7 @@ import "./styles/App.css";
 
 function App() {
 	const { token } = useContext(UserContext);
+	SocketListeners();
 
 	return (
 		<BrowserRouter>

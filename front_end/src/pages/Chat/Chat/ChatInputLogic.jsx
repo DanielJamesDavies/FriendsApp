@@ -8,13 +8,15 @@ import axios from "axios";
 
 // Context
 import { UserContext } from "../../../context/UserContext";
+import { ChatContext } from "../../../context/ChatContext";
 
 // Styles
 
 // Assets
 
 export const ChatInputLogic = () => {
-	const { token, id, socket } = useContext(UserContext);
+	const { token, id } = useContext(UserContext);
+	const { socket } = useContext(ChatContext);
 	const isMounted = useRef(false);
 	const [text, setText] = useState([""]);
 	const [sending, setSending] = useState(false);

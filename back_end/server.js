@@ -67,6 +67,7 @@ io.on("connection", (socket) => {
 		chatUpdate(chat_id);
 	});
 	socket.on("delete-message", ({ message, chat_id }) => {
+		console.log("delete-message");
 		io.emit("receive-deleted-message", message);
 		chatUpdate(chat_id);
 	});

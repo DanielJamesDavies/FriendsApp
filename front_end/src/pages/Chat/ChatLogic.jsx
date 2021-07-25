@@ -1,5 +1,5 @@
 // Packages
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 
 // Components
@@ -8,60 +8,23 @@ import axios from "axios";
 
 // Context
 import { UserContext } from "../../context/UserContext";
+import { ChatContext } from "../../context/ChatContext";
 
 // Styles
 
 // Assets
 
 export const ChatLogic = () => {
-	const { token, id, socket } = useContext(UserContext);
+	const { token } = useContext(UserContext);
+	const { chat, setChat, connectSocket } = useContext(ChatContext);
 	const isMounted = useRef(false);
 	const [loading, setLoading] = useState(true);
-	const [chat, setChat] = useState(false);
 	const [chatInputHeight, setChatInputHeight] = useState("20px");
 
-	socket.on("receive-sent-message", (message) => {
-		var newChat = JSON.parse(JSON.stringify(chat));
-		if (newChat.messages) {
-			newChat.messages.push(message);
-			setChat(newChat);
-		}
-	});
-
-	socket.on("receive-edited-message", (message) => {
-		var newChat = JSON.parse(JSON.stringify(chat));
-		if (newChat.messages) {
-			var messageIndex = newChat.messages.findIndex((e) => e._id === message._id);
-			if (messageIndex) {
-				newChat.messages[messageIndex] = message;
-				setChat(newChat);
-			}
-		}
-	});
-
-	socket.on("receive-deleted-message", (message) => {
-		var newChat = JSON.parse(JSON.stringify(chat));
-		if (newChat.messages) {
-			var messageIndex = newChat.messages.findIndex((e) => e._id === message._id);
-			if (messageIndex) {
-				newChat.messages.splice(messageIndex, 1);
-				setChat(newChat);
-			}
-		}
-	});
-
-	socket.on("receive-read-message", (message) => {
-		if (message.user_id === id) {
-			var newChat = JSON.parse(JSON.stringify(chat));
-			if (newChat.messages) {
-				var messageIndex = newChat.messages.findIndex((e) => e._id === message._id);
-				if (messageIndex) {
-					newChat.messages[messageIndex] = message;
-					setChat(newChat);
-				}
-			}
-		}
-	});
+	useEffect(() => {
+		connectSocket(token);
+		// eslint-disable-next-line
+	}, []);
 
 	async function getChat(chat_id) {
 		setLoading(true);
@@ -70,7 +33,7 @@ export const ChatLogic = () => {
 		});
 		if (result.error || !result.data) return "Error";
 		result.data.chat.participants = result.data.participants;
-		if (isMounted.current) {
+		if (isMounted.current && result.data.chat._id === chat_id) {
 			setChat(result.data.chat);
 			setLoading(false);
 		}
