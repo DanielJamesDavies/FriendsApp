@@ -11,6 +11,7 @@ import { ChatMessagesLogic } from "./ChatMessagesLogic";
 
 // Styles
 import "./ChatMessages.css";
+import { useEffect } from "react";
 
 // Assets
 

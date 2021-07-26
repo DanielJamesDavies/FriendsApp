@@ -50,7 +50,7 @@
 	border-radius: 4px;
 
 	vertical-align: middle;
-	background: var(--grey3);
+	background: var(--grey2);
 	color: var(--blue);
 	transition: 0.2s;
 }

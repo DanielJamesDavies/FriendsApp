@@ -1,4 +1,5 @@
 // Packages
+import { FaEdit } from "react-icons/fa";
 
 // Components
 
@@ -11,7 +12,7 @@ import "./ChatTop.css";
 
 // Assets
 
-export const ChatTop = ({ chat }) => {
+export const ChatTop = ({ chat, setChat, setLoading, setIsEditingChat }) => {
 	return (
 		<div className='chat-top'>
 			{chat.icon ? (
@@ -22,6 +23,9 @@ export const ChatTop = ({ chat }) => {
 				</svg>
 			)}
 			<p className='chat-top-name'>{chat.name}</p>
+			<button className='chat-top-edit-btn' onClick={() => setIsEditingChat(true)}>
+				<FaEdit />
+			</button>
 		</div>
 	);
 };

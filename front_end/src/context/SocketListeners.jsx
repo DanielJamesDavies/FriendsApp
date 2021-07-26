@@ -53,7 +53,7 @@ export const SocketListeners = () => {
 			socket.on("receive-edited-message", ({ message, chat_id }) => {
 				if (newChat.messages && newChat._id === chat_id) {
 					var messageIndex = newChat.messages.findIndex((e) => e._id === message._id);
-					if (messageIndex) {
+					if (messageIndex !== -1) {
 						newChat.messages[messageIndex] = message;
 						setChat(newChat);
 					}

@@ -8,6 +8,7 @@ import { ChatsList } from "./Chats/ChatsList";
 import { ChatTop } from "./Chat/ChatTop";
 import { ChatMessages } from "./Chat/ChatMessages";
 import { ChatInput } from "./Chat/ChatInput";
+import { ChatEdit } from "./Chat/ChatEdit";
 
 // Logic
 import { ChatLogic } from "./ChatLogic";
@@ -21,7 +22,8 @@ import "./Chat.css";
 // Assets
 
 export const Chat = (props) => {
-	const { isMounted, loading, setLoading, chat, setChat, getChat, chatInputHeight, setChatInputHeight } = ChatLogic();
+	const { isMounted, loading, setLoading, chat, setChat, getChat, chatInputHeight, setChatInputHeight, isEditingChat, setIsEditingChat } =
+		ChatLogic();
 
 	useEffect(() => {
 		isMounted.current = true;
@@ -48,16 +50,22 @@ export const Chat = (props) => {
 
 			{!chat ? null : (
 				<div className='chat-container' style={loading ? { display: "none" } : {}}>
-					{!chat.banner ? null : <img className='chat-image-background' src={chat.banner} alt='' />}
-					<ChatTop chat={chat} setChat={setChat} setLoading={setLoading} />
-					<ChatMessages chat={chat} setChat={setChat} setLoading={setLoading} chatInputHeight={chatInputHeight} />
-					<ChatInput
-						chat={chat}
-						setChat={setChat}
-						setLoading={setLoading}
-						chatInputHeight={chatInputHeight}
-						setChatInputHeight={setChatInputHeight}
-					/>
+					{!isEditingChat ? (
+						<>
+							{!chat.banner ? null : <img className='chat-image-background' src={chat.banner} alt='' />}
+							<ChatTop chat={chat} setChat={setChat} setLoading={setLoading} setIsEditingChat={setIsEditingChat} />
+							<ChatMessages chat={chat} setChat={setChat} setLoading={setLoading} chatInputHeight={chatInputHeight} />
+							<ChatInput
+								chat={chat}
+								setChat={setChat}
+								setLoading={setLoading}
+								chatInputHeight={chatInputHeight}
+								setChatInputHeight={setChatInputHeight}
+							/>
+						</>
+					) : (
+						<ChatEdit chat={chat} setIsEditingChat={setIsEditingChat} />
+					)}
 				</div>
 			)}
 		</div>

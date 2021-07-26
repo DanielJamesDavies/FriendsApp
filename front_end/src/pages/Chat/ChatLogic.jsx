@@ -1,6 +1,7 @@
 // Packages
 import { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 // Components
 
@@ -20,11 +21,18 @@ export const ChatLogic = () => {
 	const isMounted = useRef(false);
 	const [loading, setLoading] = useState(true);
 	const [chatInputHeight, setChatInputHeight] = useState("20px");
+	const [isEditingChat, setIsEditingChat] = useState(false);
+	const history = useHistory();
 
 	useEffect(() => {
 		connectSocket(token);
 		// eslint-disable-next-line
 	}, []);
+
+	useEffect(() => {
+		setIsEditingChat(false);
+		// eslint-disable-next-line
+	}, [history.location]);
 
 	async function getChat(chat_id) {
 		setLoading(true);
@@ -39,5 +47,5 @@ export const ChatLogic = () => {
 		}
 	}
 
-	return { isMounted, loading, setLoading, chat, setChat, getChat, chatInputHeight, setChatInputHeight };
+	return { isMounted, loading, setLoading, chat, setChat, getChat, chatInputHeight, setChatInputHeight, isEditingChat, setIsEditingChat };
 };
