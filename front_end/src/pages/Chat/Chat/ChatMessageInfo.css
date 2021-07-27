@@ -29,7 +29,7 @@
 
 	background: rgba(0, 0, 0, 0);
 	color: #fff;
-	font-size: 1.4em;
+	font-size: 1.4rem;
 	vertical-align: middle;
 	transition: 0.2s;
 }
@@ -56,7 +56,7 @@
 
 	text-align: left;
 	vertical-align: middle;
-	font-size: 1.1em;
+	font-size: 1.1rem;
 }
 
 .chat-message-info-read-by-container {

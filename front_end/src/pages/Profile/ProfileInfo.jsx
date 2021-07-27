@@ -14,22 +14,22 @@ import "./ProfileInfo.css";
 
 // Assets
 
-export const ProfileInfo = ({ user }) => {
+export const ProfileInfo = ({ profile }) => {
 	const { compatibilityValueClassName } = ProfileInfoLogic();
 
 	return (
 		<div className='profile-info'>
 			<div className='profile-info-more-top-info-container'>
-				{user.bio === undefined ? null : (
+				{profile.bio === undefined ? null : (
 					<div className='profile-info-more-top-info profile-info-bio'>
-						<p>{user.bio}</p>
+						<p>{profile.bio}</p>
 					</div>
 				)}
 
-				{user.compatibility === undefined ? null : (
+				{profile.compatibility === undefined ? null : (
 					<div className='profile-info-more-top-info profile-info-compatibility'>
 						<p className='profile-info-compatibility-label'>Compatibility</p>
-						<p className={compatibilityValueClassName(user.compatibility)}>{user.compatibility}%</p>
+						<p className={compatibilityValueClassName(profile.compatibility)}>{profile.compatibility}%</p>
 					</div>
 				)}
 
@@ -39,9 +39,9 @@ export const ProfileInfo = ({ user }) => {
 			</div>
 
 			<div className='profile-info-info-container'>
-				{user.description === undefined || user.description.length === 0 ? null : (
+				{profile.description === undefined || profile.description.length === 0 ? null : (
 					<div className='profile-info-description'>
-						{user.description.map((paragraph, index) => (
+						{profile.description.map((paragraph, index) => (
 							<p key={index}>{paragraph}</p>
 						))}
 					</div>

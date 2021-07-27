@@ -58,11 +58,11 @@
 
 .profile-info .profile-info-more-top-info-container .profile-info-compatibility .profile-info-compatibility-label {
 	margin-bottom: 2px;
-	font-size: 0.85em;
+	font-size: 0.85rem;
 }
 
 .profile-info .profile-info-more-top-info-container .profile-info-compatibility .profile-info-compatibility-value {
-	font-size: 1.1em;
+	font-size: 1.1rem;
 }
 
 .profile-info-compatibility-value-very-low {
@@ -111,7 +111,7 @@
 
 	vertical-align: middle;
 	text-align: center;
-	font-size: 2em;
+	font-size: 2rem;
 }
 
 .profile-info .profile-info-info-container {

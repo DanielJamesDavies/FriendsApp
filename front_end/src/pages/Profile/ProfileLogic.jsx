@@ -17,19 +17,20 @@ export const ProfileLogic = () => {
 	const { id, token } = useContext(UserContext);
 	const isMounted = useRef(false);
 	const [loading, setLoading] = useState(true);
-	const [user, setUser] = useState(false);
+	const [profile, setProfile] = useState(false);
 
 	async function getProfile() {
-		const userData = await axios.get("http://localhost:3001/profile/" + id, {
+		const result = await axios.get("http://localhost:3001/profile/" + id, {
 			headers: {
 				token: token,
 			},
 		});
-		if (isMounted.current) {
-			setUser(userData.data);
+		if (isMounted.current && result.data) {
+			result.data.profile.interests = result.data.interests;
+			setProfile(result.data.profile);
 			setLoading(false);
 		}
 	}
 
-	return { isMounted, loading, getProfile, user };
+	return { isMounted, loading, getProfile, profile };
 };

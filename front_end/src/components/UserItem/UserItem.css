@@ -72,25 +72,25 @@
 
 .user-item-names {
 	display: inline-block;
-	margin-left: 0.8em;
+	margin-left: 0.8rem;
 
 	width: 20%;
 	max-width: 300px;
 
 	vertical-align: middle;
-	font-size: 0.9em;
+	font-size: 0.9rem;
 }
 
 @media (max-width: 1000px) {
 	.user-item-names {
-		width: calc(50% - 50px - 0.8em);
+		width: calc(50% - 50px - 0.8rem);
 		max-width: 50%;
 	}
 }
 
 @media (max-width: 600px) {
 	.user-item-names {
-		width: calc(100% - 50px - 0.8em);
+		width: calc(100% - 50px - 0.8rem);
 		max-width: 100%;
 	}
 }
@@ -99,7 +99,7 @@
 .user-item-username,
 .user-item-status {
 	margin: 0;
-	font-size: 1.05em;
+	font-size: 1rem;
 	transition: 0.2s;
 }
 
@@ -108,7 +108,7 @@
 }
 
 .user-item-username {
-	font-size: 1em;
+	font-size: 0.9rem;
 }
 
 .user-item-second-info {
@@ -117,7 +117,7 @@
 	width: 30%;
 	max-width: 350px;
 
-	font-size: 0.9em;
+	font-size: 0.9rem;
 	vertical-align: middle;
 }
 
@@ -144,7 +144,7 @@
 
 .user-item-status {
 	margin-top: 8px;
-	font-size: 0.88em;
+	font-size: 0.88rem;
 }
 
 .user-item-status-online {
@@ -172,7 +172,7 @@
 
 	vertical-align: middle;
 	text-align: center;
-	font-size: 1em;
+	font-size: 1rem;
 }
 
 .user-item-compatibility-label {
@@ -183,7 +183,7 @@
 .user-item-compatibility-value {
 	display: inline-block;
 	margin: 0;
-	margin-top: 0.25em;
+	margin-top: 0.25rem;
 }
 
 .user-item:hover .user-item-compatibility-value {

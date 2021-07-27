@@ -1,6 +1,5 @@
 .groups-page .page-title {
-	background: linear-gradient(90deg, #00b2ca, #1d4e89);
-	background: linear-gradient(90deg, #4ded30, #00ab08);
+	background: var(--groupsGradient);
 }
 
 .groups-container {

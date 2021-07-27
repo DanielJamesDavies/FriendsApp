@@ -18,7 +18,7 @@
 
 .input .label {
 	text-align: left;
-	font-size: 0.8em;
+	font-size: 0.8rem;
 	font-weight: 500;
 	transition: 0.1s;
 	color: #bbb;
@@ -27,7 +27,7 @@
 .input-empty .label {
 	margin-top: 10px;
 
-	font-size: 1.1em;
+	font-size: 1.1rem;
 	color: #bbb;
 	vertical-align: middle;
 }
@@ -40,7 +40,7 @@
 
 .input-empty .label svg {
 	margin-right: 18px;
-	font-size: 1.2em;
+	font-size: 1.3rem;
 }
 
 .input input {
@@ -53,7 +53,7 @@
 
 	background: rgba(0, 0, 0, 0);
 	color: #fff;
-	font-size: 1.1em;
+	font-size: 1.1rem;
 	font-family: "Inter", sans-serif;
 	transition: 0.1s;
 }
@@ -71,7 +71,7 @@
 }
 
 .input-empty input {
-	margin-top: -1.15em;
+	margin-top: -1.3rem;
 }
 
 .input-focused {

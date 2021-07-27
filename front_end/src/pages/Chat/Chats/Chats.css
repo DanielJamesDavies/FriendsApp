@@ -8,7 +8,7 @@
 	width: calc(100% - 18px - 32px);
 	height: 70px;
 
-	background: linear-gradient(90deg, #30b2f2, #216cdb);
+	background: var(--messagesGradient);
 	text-align: left;
 }
 

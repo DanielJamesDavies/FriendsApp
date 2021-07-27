@@ -14,9 +14,12 @@ import "./ProfileGroups.css";
 // Assets
 import groups from "./groups.json";
 
-export const ProfileGroups = ({ user }) => {
+export const ProfileGroups = ({ profile }) => {
 	return (
 		<div className='profile-groups'>
+			<div className='profile-groups-title'>
+				<h2>Groups</h2>
+			</div>
 			<div className='profile-groups-container'>
 				{groups.map((group, index) => (
 					<GroupItem group={group} key={index} />

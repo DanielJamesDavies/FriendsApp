@@ -15,7 +15,7 @@ import "./ChatEdit.css";
 // Assets
 
 export const ChatEdit = ({ chat, setIsEditingChat }) => {
-	const { icon, setIcon, name, setName, participants, editBannerInputRef, addParticipant, saveChat } = ChatEditLogic({ chat });
+	const { name, setName } = ChatEditLogic({ chat });
 
 	return (
 		<div className='chat-edit-container'>

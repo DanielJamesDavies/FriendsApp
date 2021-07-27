@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { Loading } from "../../components/Loading/Loading";
 import { ProfileTop } from "./ProfileTop";
 import { ProfileInfo } from "./ProfileInfo";
+import { ProfileInterests } from "./ProfileInterests";
 import { ProfileGroups } from "./ProfileGroups";
 
 // Logic
@@ -19,7 +20,7 @@ import "./Profile.css";
 // Assets
 
 export const Profile = (props) => {
-	const { isMounted, loading, getProfile, user } = ProfileLogic();
+	const { isMounted, loading, getProfile, profile } = ProfileLogic();
 
 	useEffect(() => {
 		isMounted.current = true;
@@ -40,9 +41,11 @@ export const Profile = (props) => {
 		return (
 			<div className='page'>
 				<div className='profile-page'>
-					<ProfileTop user={user} />
-					<ProfileInfo user={user} />
-					<ProfileGroups user={user} />
+					<ProfileTop profile={profile} />
+					<ProfileInfo profile={profile} />
+					{!profile.interests ? null : <ProfileInterests profile={profile} />}
+					{!profile.groups ? null : <ProfileGroups profile={profile} />}
+					<ProfileGroups />
 				</div>
 			</div>
 		);

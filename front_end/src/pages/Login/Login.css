@@ -39,7 +39,7 @@
 	vertical-align: middle;
 	background: var(--grey2);
 	color: var(--blue);
-	font-size: 1em;
+	font-size: 1rem;
 	transition: 0.2s;
 }
 
@@ -54,15 +54,15 @@
 	margin: 0;
 
 	vertical-align: middle;
-	font-size: 1em;
+	font-size: 1rem;
 }
 
 .login-submit-container button svg {
 	display: inline-block;
-	margin-left: 0.4em;
+	margin-left: 0.4rem;
 
 	vertical-align: middle;
-	font-size: 1.25em;
+	font-size: 1.25rem;
 }
 
 .login-submit-container .loading {

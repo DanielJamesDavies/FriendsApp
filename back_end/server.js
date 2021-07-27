@@ -38,6 +38,10 @@ app.use("/chat", chatRoute);
 const messageRoute = require("./routes/MessageRoute");
 app.use("/message", messageRoute);
 
+// Interest Routes
+const interestRoute = require("./routes/InterestRoute");
+app.use("/interest", interestRoute);
+
 const server = app.listen(port, () => {
 	console.log("Listening on port: " + port);
 });

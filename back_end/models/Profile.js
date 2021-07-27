@@ -48,6 +48,9 @@ const ProfileSchema = mongoose.Schema({
 		},
 	},
 	chats: [mongoose.Schema.Types.ObjectId],
+	interests: {
+		type: [mongoose.Schema.Types.ObjectId],
+	},
 });
 
 module.exports = mongoose.model("Profile", ProfileSchema);

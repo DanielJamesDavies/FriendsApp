@@ -1,10 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
-const Joi = require("@hapi/joi");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
 const Profile = require("../models/Profile");
+const Interest = require("../models/Interest");
 const authenticate = require("../services/TokenAuthentication");
 
 // Get Profile
@@ -61,20 +59,29 @@ router.post("/get-multiple", authenticate, async (req, res) => {
 });
 
 // Get Profile by Id
-router.get("/:id", authenticate, (req, res) => {
-	Profile.findById(req.params.id)
+router.get("/:id", authenticate, async (req, res) => {
+	const profile = await Profile.findById(req.params.id)
 		.exec()
-		.then((result) => {
-			if (result) {
-				res.status(200).send(result);
-			} else {
-				res.status(404).send({ message: "Error: Profile not Found" });
-			}
-		})
 		.catch((err) => {
 			console.log(err);
 			res.status(500).send({ message: "Error: " + err });
 		});
+
+	if (!profile) return res.status(404).send({ message: "Error: Profile not Found" });
+	if (!profile.interests) return res.status(200).send({ profile: profile, interests: [] });
+
+	const interestPromises = profile.interests.map(async (interest) => {
+		var interest = await Interest.findById(interest)
+			.exec()
+			.catch((err) => {
+				console.log(err);
+				res.status(500).send({ message: "Error: " + err });
+			});
+		return interest;
+	});
+	const interests = await Promise.all(interestPromises);
+
+	res.status(200).send({ profile: profile, interests: interests });
 });
 
 module.exports = router;

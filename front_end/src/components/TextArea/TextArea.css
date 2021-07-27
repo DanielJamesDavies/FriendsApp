@@ -18,7 +18,7 @@
 
 .text-area label {
 	text-align: left;
-	font-size: 0.9em;
+	font-size: 0.9rem;
 	font-weight: 500;
 	transition: 0.1s;
 	color: #aaa;
@@ -27,7 +27,7 @@
 .text-area-empty label {
 	margin-top: 8px;
 
-	font-size: 1.1em;
+	font-size: 1.1rem;
 }
 
 .text-area textarea {
@@ -39,11 +39,11 @@
 	min-width: 100%;
 	width: 100%;
 	max-width: 100%;
-	min-height: 1.3em;
+	min-height: 1.3rem;
 
 	background: rgba(0, 0, 0, 0);
 	color: #fff;
-	font-size: 1em;
+	font-size: 1rem;
 	font-family: "Inter", sans-serif;
 	transition: 0.1s;
 }

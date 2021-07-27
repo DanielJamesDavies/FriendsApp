@@ -19,7 +19,7 @@ export const ChatEditLogic = ({ chat }) => {
 			return participant._id;
 		})
 	);
-	const [banner, setBanner] = useState(chat.banner);
+	//const [banner, setBanner] = useState(chat.banner);
 	const editBannerInputRef = useRef();
 
 	console.log(participants);
@@ -30,7 +30,7 @@ export const ChatEditLogic = ({ chat }) => {
 	}
 
 	function saveChat() {
-		var newChat = { name: name, participants: participants, banner: banner };
+		//var newChat = { name: name, participants: participants, banner: banner };
 	}
 
 	return { icon, setIcon, name, setName, participants, editBannerInputRef, addParticipant, saveChat };

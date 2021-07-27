@@ -46,7 +46,7 @@
 
 	vertical-align: middle;
 	background: rgba(0, 0, 0, 0);
-	font-size: 1em;
+	font-size: 1rem;
 	color: var(--blue);
 	transition: 0.2s;
 }
@@ -96,7 +96,7 @@
 
 .chat-message-text p {
 	width: fit-content;
-	min-height: 1em;
+	min-height: 1rem;
 }
 
 .chat-message-edit-text {
@@ -115,7 +115,7 @@
 	background: var(--grey3);
 	color: #fff;
 	font-family: "Inter", sans-serif;
-	font-size: 1em;
+	font-size: 1rem;
 	overflow: hidden;
 	resize: none;
 	transition: 0.1s;
@@ -137,7 +137,7 @@
 
 	overflow: hidden;
 	word-wrap: break-word;
-	font-size: 1em;
+	font-size: 1rem;
 	font-family: "Inter", sans-serif;
 	text-align: left;
 }
@@ -159,7 +159,7 @@
 	vertical-align: top;
 	background: var(--grey3);
 	color: var(--blue);
-	font-size: 1.2em;
+	font-size: 1.2rem;
 	transition: 0.2s;
 }
 
