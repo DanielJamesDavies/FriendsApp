@@ -24,7 +24,7 @@
 
 	width: 100%;
 
-	transition: 0.2s;
+	transition: 0.4s;
 }
 
 .group-item:hover .group-item-image {
@@ -41,7 +41,7 @@
 
 	background: var(--grey2);
 	color: #fff;
-	transition: 0.2s;
+	transition: 0.4s;
 }
 
 .group-item:hover .group-item-info {

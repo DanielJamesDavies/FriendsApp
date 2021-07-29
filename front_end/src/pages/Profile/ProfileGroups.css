@@ -11,14 +11,13 @@
 	justify-content: center;
 	flex-direction: column;
 	margin: 10px 0.5rem;
-	padding: 0 16px;
 	border-radius: 8px;
 
-	width: calc(100% - 18px - 32px);
-	height: 70px;
+	width: 150px;
+	height: 60px;
 
 	background: var(--groupsGradient);
-	text-align: left;
+	text-align: center;
 }
 
 .profile-groups .profile-groups-container {

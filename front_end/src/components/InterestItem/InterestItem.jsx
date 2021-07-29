@@ -13,7 +13,7 @@ import "./InterestItem.css";
 
 // Assets
 
-export const InterestItem = ({ interest, buttonOnClick, buttonLabel }) => {
+export const InterestItem = ({ interest, onItemClick }) => {
 	const { isMounted } = InterestItemLogic();
 
 	useEffect(() => {
@@ -25,7 +25,10 @@ export const InterestItem = ({ interest, buttonOnClick, buttonLabel }) => {
 	}, []);
 
 	return (
-		<div className={interest.banner ? "interest-item interest-item-with-banner" : "interest-item"}>
+		<div
+			className={interest.banner ? "interest-item interest-item-with-banner" : "interest-item"}
+			onClick={onItemClick ? () => onItemClick(interest) : () => {}}
+		>
 			{interest.banner === undefined ? null : (
 				<div className='interest-item-banner-container'>
 					<div className='interest-item-banner-hover-filter' />
@@ -35,11 +38,6 @@ export const InterestItem = ({ interest, buttonOnClick, buttonLabel }) => {
 
 			<div className='interest-item-info-container'>
 				<p className='interest-item-name'>{interest.name}</p>
-				{!buttonOnClick || !buttonLabel ? null : (
-					<button className='interest-item-btn' onClick={buttonOnClick}>
-						{buttonLabel}
-					</button>
-				)}
 			</div>
 		</div>
 	);

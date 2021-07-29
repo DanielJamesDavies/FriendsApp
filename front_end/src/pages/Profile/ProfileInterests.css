@@ -7,18 +7,37 @@
 }
 
 .profile-interests-title {
-	display: flex;
+	display: inline-flex;
 	justify-content: center;
 	flex-direction: column;
 	margin: 10px 0.5rem;
-	padding: 0 16px;
 	border-radius: 8px;
 
-	width: calc(100% - 18px - 32px);
-	height: 70px;
+	width: 150px;
+	height: 60px;
 
 	background: var(--interestsGradient);
-	text-align: left;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.profile-interests-find-btn {
+	display: inline-block;
+	margin: 10px 0.5rem;
+	padding: 10px 12px;
+	border-radius: 8px;
+
+	background: var(--grey1);
+	color: var(--blue);
+	vertical-align: middle;
+	transition: 0.2s;
+}
+
+.profile-interests-find-btn:hover {
+	cursor: pointer;
+	background: var(--grey2);
+	background: var(--blue);
+	color: #fff;
 }
 
 .profile-interests .profile-interests-container {
