@@ -1,6 +1,6 @@
 // Packages
 import { useContext } from "react";
-import { FaCommentAlt, FaHandshake, FaUser, FaUsers, FaCog } from "react-icons/fa";
+import { FaCommentAlt, FaHandshake, FaUser, FaUsers, FaCog, FaHeart } from "react-icons/fa";
 
 // Components
 
@@ -32,16 +32,20 @@ export const Sidebar = () => {
 					)}
 				</button>
 
-				<button className='sidebar-button sidebar-button-messages' onClick={() => toPage("/messages/")}>
-					<FaCommentAlt />
-				</button>
-
 				<button className='sidebar-button sidebar-button-meet' onClick={() => toPage("/meet/")}>
 					<FaHandshake />
 				</button>
 
+				<button className='sidebar-button sidebar-button-interests' onClick={() => toPage("/interests/")}>
+					<FaHeart />
+				</button>
+
 				<button className='sidebar-button sidebar-button-friends' onClick={() => toPage("/friends/")}>
 					<FaUser />
+				</button>
+
+				<button className='sidebar-button sidebar-button-messages' onClick={() => toPage("/messages/")}>
+					<FaCommentAlt />
 				</button>
 
 				<button className='sidebar-button sidebar-button-groups' onClick={() => toPage("/groups/")}>

@@ -33,9 +33,9 @@ export const MessagesList = () => {
 		return <Loading />;
 	} else {
 		return (
-			<div className='chats-list-container'>
-				<div className='chats-list'>
-					<div className='chats-list-search-bar'>
+			<div className='messages-list-container'>
+				<div className='messages-list'>
+					<div className='messages-list-search-bar'>
 						<Input
 							value={searchValue}
 							onChange={changeSearchValue}
@@ -45,7 +45,7 @@ export const MessagesList = () => {
 						></Input>
 					</div>
 
-					<div className='chats-list-items-container'>
+					<div className='messages-list-items-container'>
 						{filteredChatsList.map((chat, index) => (
 							<ChatItem key={index} chat={chat} notificationIcon={FaPlus} />
 						))}

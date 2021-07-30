@@ -1,38 +1,36 @@
-.chats-list-container {
+.messages-list-container {
 	display: inline-block;
 	margin: 0 auto;
 	padding: 0;
 
-	height: 100vh;
 	width: 100%;
 
 	vertical-align: top;
 }
 
-.chats-list {
+.messages-list {
 	margin: 0;
 	margin-left: auto;
 	padding: 0;
 
-	height: 100vh;
 	width: 100%;
 
 	vertical-align: top;
 	text-align: left;
 }
 
-.chats-list-search-bar {
+.messages-list-search-bar {
 	margin: 20px 0;
 	border-radius: 8px;
 
 	width: 100%;
 }
 
-.chats-list-search-bar .input {
+.messages-list-search-bar .input {
 	width: calc(100% - 32px - 8px);
 }
 
-.chats-list-items-container {
+.messages-list-items-container {
 	margin-top: 1rem;
 	padding: 0;
 }

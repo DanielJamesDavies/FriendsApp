@@ -60,4 +60,15 @@ router.get("/find-new/:user_id", authenticate, async (req, res) => {
 	res.status(200).send(interests);
 });
 
+// Get a Profile's Interests
+router.get("/profile/:id", authenticate, async (req, res) => {
+	const profile = await Profile.findById(req.params.id)
+		.exec()
+		.catch((err) => {
+			console.log(err);
+			res.status(500).send({ message: "Error: " + err });
+		});
+	res.status(200).send(profile.interests);
+});
+
 module.exports = router;

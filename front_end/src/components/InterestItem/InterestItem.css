@@ -19,7 +19,13 @@
 
 @media (max-width: 1400px) {
 	.interest-item {
-		width: calc(100% - 20px);
+		width: calc(33.33% - 20px);
+	}
+}
+
+@media (max-width: 1000px) {
+	.interest-item {
+		width: calc(50% - 20px);
 	}
 }
 

@@ -1,0 +1,25 @@
+.interests-list-container {
+	display: inline-block;
+	margin: 0 auto;
+	padding: 0;
+
+	width: 100%;
+
+	vertical-align: top;
+}
+
+.interests-list-search-bar {
+	margin: 20px 0;
+	border-radius: 8px;
+	width: calc(100%);
+}
+
+.interests-list-search-bar .input {
+	width: calc(100% - 32px - 8px);
+}
+
+.interests-list-items-container {
+	margin-left: -10px;
+	width: calc(100% + 20px);
+	text-align: left;
+}

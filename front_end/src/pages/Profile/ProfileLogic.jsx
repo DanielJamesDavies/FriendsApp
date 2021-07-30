@@ -32,5 +32,5 @@ export const ProfileLogic = () => {
 		}
 	}
 
-	return { isMounted, loading, getProfile, profile };
+	return { isMounted, loading, getProfile, profile, setProfile };
 };

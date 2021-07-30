@@ -29,6 +29,11 @@
 	transition: 0.2s;
 }
 
+.sidebar-button:focus {
+	background: var(--grey2);
+	color: var(--blue);
+}
+
 .sidebar-button:hover {
 	cursor: pointer;
 	background: var(--blue);

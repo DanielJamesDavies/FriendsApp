@@ -20,7 +20,7 @@ import "./Profile.css";
 // Assets
 
 export const Profile = (props) => {
-	const { isMounted, loading, getProfile, profile } = ProfileLogic();
+	const { isMounted, loading, getProfile, profile, setProfile } = ProfileLogic();
 
 	useEffect(() => {
 		isMounted.current = true;
@@ -43,7 +43,7 @@ export const Profile = (props) => {
 				<div className='profile-page'>
 					<ProfileTop profile={profile} />
 					<ProfileInfo profile={profile} />
-					{!profile.interests ? null : <ProfileInterests profile={profile} />}
+					{!profile.interests ? null : <ProfileInterests profile={profile} setProfile={setProfile} />}
 					{!profile.groups ? null : <ProfileGroups profile={profile} />}
 					<ProfileGroups />
 				</div>

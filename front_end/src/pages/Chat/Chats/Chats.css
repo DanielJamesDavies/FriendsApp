@@ -33,8 +33,14 @@
 }
 
 .chats-list-search-bar {
+	margin: 20px 0;
+	border-radius: 8px;
 	padding-right: 18px;
 	width: calc(100% - 18px);
+}
+
+.chats-list-search-bar .input {
+	width: calc(100% - 32px - 8px);
 }
 
 .chats-list-items-container {
