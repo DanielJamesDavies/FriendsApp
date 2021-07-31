@@ -4,9 +4,11 @@ const mongoose = require("mongoose");
 const Joi = require("@hapi/joi");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const jwt_decode = require("jwt-decode");
 
 const User = require("../models/User");
 const Profile = require("../models/Profile");
+const authenticate = require("../services/TokenAuthentication");
 
 // Create New User
 router.post("/", async (req, res) => {
@@ -23,12 +25,12 @@ router.post("/", async (req, res) => {
 	const profileSchema = Joi.object({
 		username: Joi.string().min(1).max(32).required(),
 		nickname: Joi.string().min(1).max(32).required(),
-		bio: Joi.string().min(1).max(32).required(),
+		briefDescription: Joi.string().min(1).max(32).required(),
 	});
 	const profileToValidate = {
 		username: req.body.user.username,
 		nickname: req.body.profile.nickname,
-		bio: req.body.profile.bio,
+		briefDescription: req.body.profile.briefDescription,
 	};
 	const profileValidationError = profileSchema.validate(profileToValidate).error;
 	if (profileValidationError) return res.status(200).send({ error: profileValidationError });
@@ -70,8 +72,8 @@ router.post("/", async (req, res) => {
 				_id: profile_id,
 				username: req.body.user.username,
 				nickname: req.body.profile.nickname,
-				bio: req.body.profile.bio,
-				description: req.body.profile.description,
+				briefDescription: req.body.profile.briefDescription,
+				fullDescription: req.body.profile.fullDescription,
 				profilePicture: req.body.profile.profilePicture,
 				banner: req.body.profile.banner,
 			});
@@ -118,7 +120,7 @@ router.post("/login", async (req, res) => {
 	if (!isCorrectPassword) return res.status(200).send({ error: "Incorrect Password." });
 
 	// Create token
-	const token = jwt.sign({ profile_id: user._id }, process.env.TOKEN_SECRET);
+	const token = jwt.sign({ user_id: user._id }, process.env.TOKEN_SECRET);
 
 	res.header("token", token).send({
 		message: "Logged in.",
@@ -127,6 +129,53 @@ router.post("/login", async (req, res) => {
 		profilePicture: profile.profilePicture,
 		favouriteFriends: profile.friendships.favourite,
 	});
+});
+
+router.post("/username-available", authenticate, async (req, res) => {
+	if (!req.body.username) return res.status(200).send({ error: "Username not found." });
+	var usernameExists = await User.findOne({
+		username: req.body.username,
+	}).exec();
+	if (usernameExists) return res.status(200).send({ error: "Username already taken." });
+	return res.status(200).send({ message: "Username available." });
+});
+
+router.post("/change-username", authenticate, async (req, res) => {
+	if (!req.body.username || req.body.username.split(" ").join("") === "") return res.status(200).send({ error: "Username not found." });
+	var usernameExists = await User.findOne({
+		username: req.body.username,
+	}).exec();
+	if (usernameExists) return res.status(200).send({ error: "Username already taken." });
+
+	try {
+		var { user_id } = jwt_decode(req.header("token"));
+	} catch (error) {
+		res.status(200).send({ error: "Authentication Error." });
+	}
+	var user = await User.findById(user_id)
+		.exec()
+		.catch((err) => {
+			console.log(err);
+			res.status(500).send({ message: "Error: " + err });
+		});
+	if (!user) return res.status(200).send({ error: "User not found." });
+
+	const profile = await Profile.findById(user.profile_id)
+		.exec()
+		.catch((err) => {
+			console.log(err);
+			res.status(500).send({ message: "Error: " + err });
+		});
+	if (!profile) return res.status(200).send({ error: "Profile not found." });
+
+	user.username = req.body.username;
+	profile.username = req.body.username;
+	if (user.username === profile.username) {
+		user.save();
+		profile.save();
+	}
+
+	res.status(200).send({ profile: profile });
 });
 
 module.exports = router;

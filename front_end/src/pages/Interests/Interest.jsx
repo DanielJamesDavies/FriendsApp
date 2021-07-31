@@ -16,7 +16,7 @@ import "./Interest.css";
 // Assets
 
 export const Interest = ({ interest, setInterest, userInterests, setUserInterests }) => {
-	const { isMounted, loading, addInterestToProfile, removeInterestFromProfile } = InterestLogic();
+	const { isMounted, addInterestToProfile, removeInterestFromProfile } = InterestLogic();
 
 	useEffect(() => {
 		isMounted.current = true;

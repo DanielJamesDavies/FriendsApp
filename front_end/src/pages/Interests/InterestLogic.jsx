@@ -1,5 +1,5 @@
 // Packages
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef } from "react";
 import axios from "axios";
 
 // Components
@@ -16,10 +16,8 @@ import { UserContext } from "../../context/UserContext";
 export const InterestLogic = () => {
 	const { id, token } = useContext(UserContext);
 	const isMounted = useRef(false);
-	const [loading, setLoading] = useState(true);
 
 	async function addInterestToProfile(interest, setUserInterests) {
-		setLoading(true);
 		const result = await axios.post(
 			"http://localhost:3001/profile/add-interest/" + id + "/" + interest._id,
 			{},
@@ -29,14 +27,10 @@ export const InterestLogic = () => {
 				},
 			}
 		);
-		if (isMounted.current && result.data) {
-			setUserInterests(result.data.profileInterests);
-		}
-		setLoading(false);
+		if (isMounted.current && result.data) setUserInterests(result.data.profileInterests);
 	}
 
 	async function removeInterestFromProfile(interest, setUserInterests) {
-		setLoading(true);
 		const result = await axios.post(
 			"http://localhost:3001/profile/remove-interest/" + id + "/" + interest._id,
 			{},
@@ -46,11 +40,8 @@ export const InterestLogic = () => {
 				},
 			}
 		);
-		if (isMounted.current && result.data) {
-			setUserInterests(result.data.profileInterests);
-		}
-		setLoading(false);
+		if (isMounted.current && result.data) setUserInterests(result.data.profileInterests);
 	}
 
-	return { isMounted, loading, addInterestToProfile, removeInterestFromProfile };
+	return { isMounted, addInterestToProfile, removeInterestFromProfile };
 };

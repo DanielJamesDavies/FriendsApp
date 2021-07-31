@@ -58,32 +58,6 @@ router.post("/get-multiple", authenticate, async (req, res) => {
 	res.status(200).send(profiles);
 });
 
-// Get Profile by Id
-router.get("/:id", authenticate, async (req, res) => {
-	const profile = await Profile.findById(req.params.id)
-		.exec()
-		.catch((err) => {
-			console.log(err);
-			res.status(500).send({ message: "Error: " + err });
-		});
-
-	if (!profile) return res.status(404).send({ message: "Error: Profile not Found" });
-	if (!profile.interests) return res.status(200).send({ profile: profile, interests: [] });
-
-	const interestPromises = profile.interests.map(async (interest) => {
-		var interest = await Interest.findById(interest)
-			.exec()
-			.catch((err) => {
-				console.log(err);
-				res.status(500).send({ message: "Error: " + err });
-			});
-		return interest;
-	});
-	const interests = await Promise.all(interestPromises);
-
-	res.status(200).send({ profile: profile, interests: interests });
-});
-
 // Add interest to user profile
 router.post("/add-interest/:user_id/:interest_id", authenticate, async (req, res) => {
 	const profile = await Profile.findById(req.params.user_id)
@@ -139,6 +113,52 @@ router.post("/remove-interest/:user_id/:interest_id", authenticate, async (req, 
 	profile.save();
 
 	res.status(200).send({ profileInterests: profile.interests });
+});
+
+// Get Profile by Id
+router.get("/:id", authenticate, async (req, res) => {
+	const profile = await Profile.findById(req.params.id)
+		.exec()
+		.catch((err) => {
+			console.log(err);
+			res.status(500).send({ message: "Error: " + err });
+		});
+
+	if (!profile) return res.status(404).send({ message: "Error: Profile not Found" });
+	if (!profile.interests) return res.status(200).send({ profile: profile, interests: [] });
+
+	const interestPromises = profile.interests.map(async (interest) => {
+		var interest = await Interest.findById(interest)
+			.exec()
+			.catch((err) => {
+				console.log(err);
+				res.status(500).send({ message: "Error: " + err });
+			});
+		return interest;
+	});
+	const interests = await Promise.all(interestPromises);
+
+	res.status(200).send({ profile: profile, interests: interests });
+});
+
+// Change Profile by Id
+router.post("/:id", authenticate, async (req, res) => {
+	const profile = await Profile.findById(req.params.id)
+		.exec()
+		.catch((err) => {
+			console.log(err);
+			res.status(500).send({ message: "Error: " + err });
+		});
+	if (!profile) return res.status(404).send({ message: "Error: Profile not Found" });
+
+	if (req.body.nickname) profile.nickname = req.body.nickname;
+	if (req.body.banner) profile.banner = req.body.banner;
+	if (req.body.briefDescription) profile.briefDescription = req.body.briefDescription;
+	if (req.body.fullDescription) profile.fullDescription = req.body.fullDescription;
+	if (req.body.interests) profile.interests = req.body.interests;
+	profile.save();
+
+	res.status(200).send({ profile: profile });
 });
 
 module.exports = router;

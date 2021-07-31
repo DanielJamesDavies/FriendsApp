@@ -20,9 +20,9 @@ export const UserInfo = ({ user }) => {
 	return (
 		<div className='user-info'>
 			<div className='user-info-more-top-info-container'>
-				{user.bio === undefined ? null : (
-					<div className='user-info-more-top-info user-info-bio'>
-						<p>{user.bio}</p>
+				{user.briefDescription === undefined ? null : (
+					<div className='user-info-more-top-info user-info-briefDescription'>
+						<p>{user.briefDescription}</p>
 					</div>
 				)}
 
@@ -37,9 +37,9 @@ export const UserInfo = ({ user }) => {
 			</div>
 
 			<div className='user-info-info-container'>
-				{user.description === undefined || user.description.length === 0 ? null : (
-					<div className='user-info-description'>
-						{user.description.map((paragraph, index) => (
+				{user.fullDescription === undefined || user.fullDescription.length === 0 ? null : (
+					<div className='user-info-full-description'>
+						{user.fullDescription.map((paragraph, index) => (
 							<p key={index}>{paragraph}</p>
 						))}
 					</div>

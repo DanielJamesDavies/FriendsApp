@@ -19,7 +19,7 @@ export const ChatMessageInfoLogic = () => {
 	const [loading, setLoading] = useState(false);
 	const [readByProfiles, setReadByProfiles] = useState(false);
 
-	async function getReadByProfiles(readByList, messageInfo, setMessageInfo) {
+	async function getReadByProfiles(readByList) {
 		setLoading(true);
 
 		const result = await axios.post(
@@ -31,7 +31,6 @@ export const ChatMessageInfoLogic = () => {
 				headers: { token: token },
 			}
 		);
-		console.log(result.data);
 		if (!result.data || result.data.error) return "Error";
 		if (isMounted) {
 			setReadByProfiles(result.data);

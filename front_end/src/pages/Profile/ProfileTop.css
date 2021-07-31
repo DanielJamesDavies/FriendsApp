@@ -70,12 +70,12 @@
 	min-width: 140px;
 }
 
-.profile-top .profile-top-info-container .profile-top-bio p {
+.profile-top .profile-top-info-container .profile-top-briefDescription p {
 	margin: calc(18px - 0.5em) 0;
 }
 
 @media (max-width: 1100px) {
-	.profile-top .profile-top-info-container .profile-top-bio {
+	.profile-top .profile-top-info-container .profile-top-briefDescription {
 		display: none;
 	}
 }

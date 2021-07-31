@@ -15,7 +15,7 @@ import "./ProfileTop.css";
 // Assets
 
 export const ProfileTop = ({ profile }) => {
-	const { compatibilityValueClassName } = ProfileTopLogic();
+	const { history, compatibilityValueClassName } = ProfileTopLogic();
 
 	return (
 		<div className='profile-top'>
@@ -39,9 +39,9 @@ export const ProfileTop = ({ profile }) => {
 					<p>@{profile.username}</p>
 				</div>
 
-				{profile.bio === undefined ? null : (
-					<div className='profile-top-info profile-top-bio'>
-						<p>{profile.bio}</p>
+				{profile.briefDescription === undefined ? null : (
+					<div className='profile-top-info profile-top-briefDescription'>
+						<p>{profile.briefDescription}</p>
 					</div>
 				)}
 
@@ -52,7 +52,7 @@ export const ProfileTop = ({ profile }) => {
 					</div>
 				)}
 
-				<div className='profile-top-add-btn'>
+				<div className='profile-top-add-btn' onClick={() => history.push("/profile/edit/")}>
 					<FaUserEdit />
 				</div>
 			</div>

@@ -1,0 +1,47 @@
+.revert-btn {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	margin: 2px 4px;
+	border: 0;
+	border-radius: 100%;
+	background: var(--grey3);
+	color: #fff;
+	font-size: 1.3rem;
+	transition: 0.2s;
+	vertical-align: middle;
+}
+
+.revert-btn:focus {
+	background: var(--blue);
+	color: #fff;
+}
+
+.revert-btn:hover {
+	cursor: pointer;
+	background: var(--blue);
+	color: #fff;
+}
+
+.revert-btn svg {
+	margin-top: 6px;
+}
+
+.revert-btn-saved {
+	background: #999;
+	color: #fff;
+}
+
+.revert-btn-saved:hover {
+	background: #999;
+	color: #fff;
+}
+
+.revert-btn-saved:focus {
+	background: #999;
+	color: #fff;
+}
+
+.revert-btn .save-btn-saving {
+	background: #a00;
+}

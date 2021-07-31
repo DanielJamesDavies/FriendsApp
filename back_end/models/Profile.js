@@ -14,13 +14,13 @@ const ProfileSchema = mongoose.Schema({
 		min: 1,
 		max: 32,
 	},
-	bio: {
+	briefDescription: {
 		type: String,
 		require: true,
 		min: 1,
 		max: 32,
 	},
-	description: {
+	fullDescription: {
 		type: [String],
 	},
 	profilePicture: {

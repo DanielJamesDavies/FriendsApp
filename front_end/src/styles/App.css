@@ -7,12 +7,14 @@
 	--grey1: #111111;
 	--grey2: #1f1f1f;
 	--grey3: #404040;
+	--profileGradient: linear-gradient(90deg, #caccd1, #81838a); /* Light Grey */
 	--interestsGradient: linear-gradient(90deg, #2c87ff, #1a23a1); /* Darker Blue */
 	--messagesGradient: linear-gradient(90deg, #30b2f2, #216cdb); /* Lighter Blue */
 	--meetGradient: linear-gradient(90deg, #ff5c00, #ff00b8); /* Red to Pink */
 	--friendsGradient: linear-gradient(90deg, #5adb43, #096b0e); /* More Saturated Green */
 	--friendsGradient: linear-gradient(90deg, #1ed3a6, #197e43); /* Less Saturated Green */
 	--groupsGradient: linear-gradient(90deg, #e100ff, #6900d1); /* Pink to Purple */
+	--settingsGradient: linear-gradient(90deg, #737b80, #292f33); /* Dark Grey */
 }
 
 ::-webkit-scrollbar {

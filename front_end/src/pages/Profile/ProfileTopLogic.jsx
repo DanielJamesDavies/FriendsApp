@@ -1,4 +1,5 @@
 // Packages
+import { useHistory } from "react-router-dom";
 
 // Components
 
@@ -11,6 +12,8 @@
 // Assets
 
 export const ProfileTopLogic = () => {
+	const history = useHistory();
+
 	function compatibilityValueClassName(compatibility) {
 		var className = "profile-top-compatibility-value ";
 		if (compatibility >= 0 && compatibility < 20) return className + "profile-top-compatibility-value-very-low";
@@ -20,5 +23,5 @@ export const ProfileTopLogic = () => {
 		if (compatibility >= 80 && compatibility < 100) return className + "profile-top-compatibility-value-very-high";
 	}
 
-	return { compatibilityValueClassName };
+	return { history, compatibilityValueClassName };
 };

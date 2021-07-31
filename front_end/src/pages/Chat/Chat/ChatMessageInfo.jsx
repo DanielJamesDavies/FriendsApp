@@ -23,7 +23,7 @@ export const ChatMessageInfo = ({ messageInfo, setMessageInfo, chatInputHeight }
 
 		if (messageInfo) {
 			if (messageInfo.read_by.length === 0) setReadByProfiles(false);
-			if (messageInfo.read_by.length !== 0) getReadByProfiles(messageInfo.read_by, messageInfo, setMessageInfo);
+			if (messageInfo.read_by.length !== 0) getReadByProfiles(messageInfo.read_by);
 			if (messageInfo.read_by.length === 0) setLoading(false);
 		}
 

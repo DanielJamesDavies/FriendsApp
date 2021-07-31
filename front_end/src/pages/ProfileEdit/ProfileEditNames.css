@@ -1,0 +1,16 @@
+.profile-edit-names-container {
+	width: calc(40% - 24px - 48px);
+	max-width: 394px;
+}
+
+.username-available-message {
+	margin: 0;
+	margin-top: 8px;
+	margin-left: 8px;
+	color: var(--green);
+}
+
+.username-not-available-message {
+	margin-left: 8px;
+	color: var(--red);
+}

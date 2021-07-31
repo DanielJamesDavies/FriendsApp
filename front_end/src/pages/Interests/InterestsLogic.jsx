@@ -27,10 +27,8 @@ export const InterestsLogic = () => {
 				token: token,
 			},
 		});
-		if (isMounted.current && result.data) {
-			setInterest(result.data);
-		}
-		if (userInterests) setLoading(false);
+		if (isMounted.current && result.data) setInterest(result.data);
+		if (isMounted.current && userInterests) setLoading(false);
 	}
 
 	async function getUserInterests(interest_id) {
@@ -40,10 +38,8 @@ export const InterestsLogic = () => {
 				token: token,
 			},
 		});
-		if (isMounted.current && result.data) {
-			setUserInterests(result.data);
-		}
-		if (!interest_id || interest) setLoading(false);
+		if (isMounted.current && result.data) setUserInterests(result.data);
+		if (isMounted.current && (!interest_id || interest)) setLoading(false);
 	}
 
 	return { isMounted, loading, interest, setInterest, userInterests, setUserInterests, getInterest, getUserInterests };

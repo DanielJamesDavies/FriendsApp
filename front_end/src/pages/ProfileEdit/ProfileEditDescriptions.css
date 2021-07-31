@@ -1,0 +1,27 @@
+.profile-edit-descriptions-container {
+	min-width: calc(100% - 394px - 24px - 48px - 24px - 48px);
+	width: calc(60% - 24px - 48px);
+}
+
+.profile-edit-form-input-title h3 {
+	display: inline-block;
+	margin-left: 10px;
+	width: calc(100% - 106px);
+	font-size: 1.3rem;
+	font-weight: 700;
+	vertical-align: middle;
+}
+
+.profile-edit-descriptions-container .input {
+	width: calc(100% - 8px - 32px);
+}
+
+.profile-edit-form-input-container .text-area {
+	width: calc(100% - 32px);
+	background: var(--grey1);
+	resize: vertical;
+}
+
+.profile-edit-form-input-container .text-area textarea {
+	resize: vertical;
+}

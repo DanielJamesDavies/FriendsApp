@@ -26,8 +26,8 @@ export const RegisterLogic = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [nickname, setNickname] = useState("");
-	const [bio, setBio] = useState("");
-	const [description, setDescription] = useState([]);
+	const [briefDescription, setBriefDescription] = useState("");
+	const [fullDescription, setFullDescription] = useState([]);
 	const [profilePicture, setProfilePicture] = useState("");
 	const [banner, setBanner] = useState([]);
 
@@ -71,8 +71,8 @@ export const RegisterLogic = () => {
 	}
 
 	async function submit() {
-		if (nickname === "" || bio === "" || description.length === 0 || profilePicture.length === 0 || banner.length === 0)
-			return setError("Please add a Profile Picture and Banner, and enter a Nickname, Bio, and Description.");
+		if (nickname === "" || briefDescription === "" || fullDescription.length === 0 || profilePicture.length === 0 || banner.length === 0)
+			return setError("Please add a Profile Picture and Banner, and enter a Nickname, Brief Description, and Full Description.");
 		if (getImageFileSize(profilePicture) >= 1000000) return setError("Please add a Profile Picture that has a file size smaller than 1MB.");
 		if (getImageFileSize(banner) >= 1000000) return setError("Please add a Banner that has a file size smaller than 1MB.");
 		setError("");
@@ -86,8 +86,8 @@ export const RegisterLogic = () => {
 			},
 			profile: {
 				nickname: nickname,
-				bio: bio,
-				description: description,
+				briefDescription: briefDescription,
+				fullDescription: fullDescription,
 				profilePicture: profilePicture,
 				banner: banner,
 			},
@@ -112,10 +112,10 @@ export const RegisterLogic = () => {
 		setPassword,
 		nickname,
 		setNickname,
-		bio,
-		setBio,
-		description,
-		setDescription,
+		briefDescription,
+		setBriefDescription,
+		fullDescription,
+		setFullDescription,
 		profilePicture,
 		changeProfilePicture,
 		banner,

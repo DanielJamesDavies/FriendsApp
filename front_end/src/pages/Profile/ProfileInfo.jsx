@@ -20,9 +20,9 @@ export const ProfileInfo = ({ profile }) => {
 	return (
 		<div className='profile-info'>
 			<div className='profile-info-more-top-info-container'>
-				{profile.bio === undefined ? null : (
-					<div className='profile-info-more-top-info profile-info-bio'>
-						<p>{profile.bio}</p>
+				{profile.briefDescription === undefined ? null : (
+					<div className='profile-info-more-top-info profile-info-briefDescription'>
+						<p>{profile.briefDescription}</p>
 					</div>
 				)}
 
@@ -39,9 +39,9 @@ export const ProfileInfo = ({ profile }) => {
 			</div>
 
 			<div className='profile-info-info-container'>
-				{profile.description === undefined || profile.description.length === 0 ? null : (
-					<div className='profile-info-description'>
-						{profile.description.map((paragraph, index) => (
+				{profile.fullDescription === undefined || profile.fullDescription.length === 0 ? null : (
+					<div className='profile-info-full-description'>
+						{profile.fullDescription.map((paragraph, index) => (
 							<p key={index}>{paragraph}</p>
 						))}
 					</div>

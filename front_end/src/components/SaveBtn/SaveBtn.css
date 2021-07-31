@@ -1,0 +1,47 @@
+.save-btn {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	margin: 2px 4px;
+	border: 0;
+	border-radius: 100%;
+	background: var(--grey3);
+	color: #fff;
+	font-size: 1.35rem;
+	transition: 0.2s;
+	vertical-align: middle;
+}
+
+.save-btn:focus {
+	background: var(--blue);
+	color: #fff;
+}
+
+.save-btn:hover {
+	cursor: pointer;
+	background: var(--blue);
+	color: #fff;
+}
+
+.save-btn svg {
+	margin-top: 6px;
+}
+
+.save-btn-saved {
+	background: #999;
+	color: #fff;
+}
+
+.save-btn-saved:hover {
+	background: #999;
+	color: #fff;
+}
+
+.save-btn-saved:focus {
+	background: #999;
+	color: #fff;
+}
+
+.save-btn .save-btn-saving {
+	background: #a00;
+}

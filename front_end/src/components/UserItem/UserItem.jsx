@@ -47,7 +47,7 @@ export const UserItem = ({ user, isFriend, notificationIcon, notificationConditi
 			</div>
 
 			<div className='user-item-second-info'>
-				<p className='user-item-bio'>{user.bio}</p>
+				<p className='user-item-briefDescription'>{user.briefDescription}</p>
 
 				{!isFriend ? null : (
 					<p

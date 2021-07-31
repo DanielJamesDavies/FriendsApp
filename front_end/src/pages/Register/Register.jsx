@@ -26,10 +26,10 @@ export const Register = () => {
 		setPassword,
 		nickname,
 		setNickname,
-		bio,
-		setBio,
-		description,
-		setDescription,
+		briefDescription,
+		setBriefDescription,
+		fullDescription,
+		setFullDescription,
 		profilePicture,
 		changeProfilePicture,
 		banner,
@@ -65,10 +65,10 @@ export const Register = () => {
 					<RegisterProfile
 						nickname={nickname}
 						setNickname={setNickname}
-						bio={bio}
-						setBio={setBio}
-						description={description}
-						setDescription={setDescription}
+						briefDescription={briefDescription}
+						setBriefDescription={setBriefDescription}
+						fullDescription={fullDescription}
+						setFullDescription={setFullDescription}
 						profilePicture={profilePicture}
 						changeProfilePicture={changeProfilePicture}
 						banner={banner}

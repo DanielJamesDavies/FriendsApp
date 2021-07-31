@@ -47,7 +47,7 @@
 	vertical-align: middle;
 }
 
-.user-info .user-info-more-top-info-container .user-info-bio p {
+.user-info .user-info-more-top-info-container .user-info-briefDescription p {
 	margin: calc(18px - 0.5em) 0;
 }
 
@@ -89,7 +89,7 @@
 	width: 100%;
 }
 
-.user-info .user-info-description {
+.user-info .user-info-full-description {
 	display: inline-block;
 	margin: 10px 10px;
 	margin-left: 0;
@@ -106,7 +106,7 @@
 }
 
 @media (max-width: 1200px) {
-	.user-info .user-info-description {
+	.user-info .user-info-full-description {
 		display: block;
 		width: calc(100% - 30px);
 	}

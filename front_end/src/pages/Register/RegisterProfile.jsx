@@ -20,10 +20,10 @@ import "./RegisterForm.css";
 export const RegisterProfile = ({
 	nickname,
 	setNickname,
-	bio,
-	setBio,
-	description,
-	setDescription,
+	briefDescription,
+	setBriefDescription,
+	fullDescription,
+	setFullDescription,
 	profilePicture,
 	changeProfilePicture,
 	banner,
@@ -83,19 +83,25 @@ export const RegisterProfile = ({
 				</button>
 			</div>
 
-			{/* Bio Input */}
+			{/* BriefDescription Input */}
 			<div className='register-input-container'>
-				<Input value={bio} onChange={(e) => setBio(e.target.value)} label={"Bio"} type={"bio"} id={"input-bio"}></Input>
+				<Input
+					value={briefDescription}
+					onChange={(e) => setBriefDescription(e.target.value)}
+					label={"BriefDescription"}
+					type={"briefDescription"}
+					id={"input-briefDescription"}
+				></Input>
 			</div>
 
 			{/* Description Input */}
 			<div className='register-input-container'>
 				<TextArea
-					value={description.join("\n")}
-					onChange={(e) => setDescription(e.target.value.split("\n"))}
+					value={fullDescription.join("\n")}
+					onChange={(e) => setFullDescription(e.target.value.split("\n"))}
 					label={"Description"}
-					type={"description"}
-					id={"input-description"}
+					type={"fullDescription"}
+					id={"input-fullDescription"}
 				></TextArea>
 			</div>
 
