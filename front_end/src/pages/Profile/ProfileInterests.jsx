@@ -13,7 +13,7 @@ import "./ProfileInterests.css";
 
 // Assets
 
-export const ProfileInterests = ({ profile }) => {
+export const ProfileInterests = ({ interests }) => {
 	const { history, showAllInterests, setShowAllInterests } = ProfileInterestsLogic();
 
 	return (
@@ -22,14 +22,14 @@ export const ProfileInterests = ({ profile }) => {
 				<h2>Interests</h2>
 			</div>
 			<div className='profile-interests-container'>
-				{profile.interests.map((interest, index) =>
+				{interests.map((interest, index) =>
 					showAllInterests || index < 8 ? (
 						<InterestItem key={index} interest={interest} onItemClick={() => history.push("/interests/" + interest._id)} />
 					) : null
 				)}
 			</div>
 
-			{profile.interests.length <= 8 ? null : (
+			{interests.length <= 8 ? null : (
 				<div className='profile-show-interests-btn-container'>
 					{showAllInterests ? (
 						<button onClick={() => setShowAllInterests(false)}>Show Less</button>

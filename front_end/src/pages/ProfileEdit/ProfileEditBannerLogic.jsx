@@ -14,6 +14,7 @@ import { UserContext } from "../../context/UserContext";
 // Assets
 
 export const ProfileEditBannerLogic = ({ profile }) => {
+	const resizebase64 = require("resize-base64");
 	const { id, token } = useContext(UserContext);
 	const isMounted = useRef(false);
 	const [banner, setBanner] = useState(profile.banner);
@@ -26,15 +27,43 @@ export const ProfileEditBannerLogic = ({ profile }) => {
 		fr.readAsDataURL(e.target.files[0]);
 		fr.onload = () => {
 			bannerInputRef.current.value = [];
-			setBanner(fr.result);
-			setBannerMessage(false);
-			var imageLength = fr.result.split(",")[1].split("=")[0].length;
-			var imageSize = Math.floor(imageLength - (imageLength / 8) * 2);
-			if (imageSize > 1000000) setBannerMessage("Image too large.");
+
+			var image = new Image();
+			image.onload = async () => {
+				const { imageWidth, imageHeight } = getMaxImageSize(image.width, image.height, 1500, 500);
+
+				if (imageWidth !== image.width || imageHeight !== image.height) {
+					image = resizebase64(fr.result, imageWidth, imageHeight);
+				}
+
+				var imageLength = image.split(",")[1].split("=")[0].length;
+				var imageSize = Math.floor(imageLength - (imageLength / 8) * 2);
+				if (imageSize > 1000000) setBannerMessage("Image too large.");
+
+				setBanner(image);
+				setBannerMessage(false);
+			};
+
+			image.src = fr.result;
 		};
 		fr.onerror = (error) => {
 			return console.log(error);
 		};
+	}
+
+	function getMaxImageSize(currentWidth, currentHeight, maxWidth, maxHeight) {
+		var imageWidth = currentWidth;
+		var imageHeight = currentHeight;
+		if (imageHeight > maxHeight) {
+			imageHeight = maxHeight;
+			imageWidth = maxHeight * (currentWidth / currentHeight);
+		}
+		if (imageWidth > maxWidth) {
+			imageWidth = maxWidth;
+			imageHeight = maxWidth * (currentHeight / currentWidth);
+		}
+
+		return { imageWidth, imageHeight };
 	}
 
 	async function saveBanner(setProfile) {

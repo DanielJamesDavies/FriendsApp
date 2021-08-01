@@ -33,7 +33,7 @@ export const InterestsLogic = () => {
 
 	async function getUserInterests(interest_id) {
 		setLoading(true);
-		var result = await axios.get("http://localhost:3001/interest/profile/" + id, {
+		var result = await axios.get("http://localhost:3001/interest/profile-list/" + id, {
 			headers: {
 				token: token,
 			},

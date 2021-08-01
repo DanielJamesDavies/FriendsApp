@@ -6,6 +6,7 @@ import { Loading } from "../../components/Loading/Loading";
 import { ProfileTop } from "./ProfileTop";
 import { ProfileInfo } from "./ProfileInfo";
 import { ProfileInterests } from "./ProfileInterests";
+import { ProfileInterestsPlaceholder } from "./ProfileInterestsPlaceholder";
 import { ProfileGroups } from "./ProfileGroups";
 
 // Logic
@@ -20,7 +21,7 @@ import "./Profile.css";
 // Assets
 
 export const Profile = (props) => {
-	const { isMounted, loading, getProfile, profile, setProfile } = ProfileLogic();
+	const { isMounted, loading, getProfile, profile, interests } = ProfileLogic();
 
 	useEffect(() => {
 		isMounted.current = true;
@@ -43,9 +44,14 @@ export const Profile = (props) => {
 				<div className='profile-page'>
 					<ProfileTop profile={profile} />
 					<ProfileInfo profile={profile} />
-					{!profile.interests ? null : <ProfileInterests profile={profile} setProfile={setProfile} />}
-					{!profile.groups ? null : <ProfileGroups profile={profile} />}
-					<ProfileGroups />
+					{!interests ? (
+						!profile.interests ? null : (
+							<ProfileInterestsPlaceholder interests={profile.interests} />
+						)
+					) : (
+						<ProfileInterests interests={interests} />
+					)}
+					{profile.groups === false ? null : <ProfileGroups profile={profile} />}
 				</div>
 			</div>
 		);

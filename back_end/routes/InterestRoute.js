@@ -16,17 +16,6 @@ router.get("/", authenticate, async (req, res) => {
 	res.status(200).send(interests);
 });
 
-// Get Interest by Id
-router.get("/:id/", authenticate, async (req, res) => {
-	const interest = await Interest.findById(req.params.id)
-		.exec()
-		.catch((err) => {
-			console.log(err);
-			res.status(500).send({ message: "Error: " + err });
-		});
-	res.status(200).send(interest);
-});
-
 // Create Interest
 router.post("/", authenticate, async (req, res) => {
 	const interest = new Interest({
@@ -60,8 +49,8 @@ router.get("/find-new/:user_id", authenticate, async (req, res) => {
 	res.status(200).send(interests);
 });
 
-// Get a Profile's Interests
-router.get("/profile/:id", authenticate, async (req, res) => {
+// Get a Profile's Interests List
+router.get("/profile-list/:id", authenticate, async (req, res) => {
 	const profile = await Profile.findById(req.params.id)
 		.exec()
 		.catch((err) => {
@@ -69,6 +58,33 @@ router.get("/profile/:id", authenticate, async (req, res) => {
 			res.status(500).send({ message: "Error: " + err });
 		});
 	res.status(200).send(profile.interests);
+});
+
+// Get a Profile's Full Interests
+router.post("/profile-full/", authenticate, async (req, res) => {
+	if (!req.body.interests) return res.status(200).send({ message: "No Interests" });
+	const interestPromises = req.body.interests.map(async (interest) => {
+		var interest = await Interest.findById(interest)
+			.exec()
+			.catch((err) => {
+				console.log(err);
+				res.status(500).send({ message: "Error: " + err });
+			});
+		return interest;
+	});
+	const interests = await Promise.all(interestPromises);
+	res.status(200).send({ interests: interests });
+});
+
+// Get Interest by Id
+router.get("/:id/", authenticate, async (req, res) => {
+	const interest = await Interest.findById(req.params.id)
+		.exec()
+		.catch((err) => {
+			console.log(err);
+			res.status(500).send({ message: "Error: " + err });
+		});
+	res.status(200).send(interest);
 });
 
 module.exports = router;

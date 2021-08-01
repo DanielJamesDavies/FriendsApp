@@ -1,0 +1,38 @@
+.interest-placeholder-item {
+	position: relative;
+	display: inline-block;
+	margin: 10px;
+	border-radius: 4px;
+
+	width: calc(25% - 20px);
+	max-width: 360px;
+	height: 100px;
+
+	background: var(--grey2);
+	vertical-align: middle;
+	transition: 0.4s;
+}
+
+.interest-placeholder-item-name {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 4px;
+
+	height: 1.2em;
+	width: calc(60% - 20px);
+
+	background: linear-gradient(-45deg, var(--grey2), var(--grey2), var(--grey3), var(--grey3), var(--grey2), var(--grey2));
+	background-size: 400%;
+	animation: background-gradient-animation 5s linear infinite;
+}
+
+@keyframes background-gradient-animation {
+	0% {
+		background-position: 0%;
+	}
+	100% {
+		background-position: 400%;
+	}
+}

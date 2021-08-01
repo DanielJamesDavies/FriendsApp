@@ -125,20 +125,7 @@ router.get("/:id", authenticate, async (req, res) => {
 		});
 
 	if (!profile) return res.status(404).send({ message: "Error: Profile not Found" });
-	if (!profile.interests) return res.status(200).send({ profile: profile, interests: [] });
-
-	const interestPromises = profile.interests.map(async (interest) => {
-		var interest = await Interest.findById(interest)
-			.exec()
-			.catch((err) => {
-				console.log(err);
-				res.status(500).send({ message: "Error: " + err });
-			});
-		return interest;
-	});
-	const interests = await Promise.all(interestPromises);
-
-	res.status(200).send({ profile: profile, interests: interests });
+	res.status(200).send({ profile: profile });
 });
 
 // Change Profile by Id
