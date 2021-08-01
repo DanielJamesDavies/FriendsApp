@@ -23,6 +23,15 @@
 	text-align: left;
 }
 
+@media (max-width: 1350px) {
+	.profile-edit-form-container {
+		display: block;
+		min-width: calc(100% - 48px - 24px) !important;
+		width: calc(100% - 48px - 24px) !important;
+		max-width: calc(100% - 48px - 24px) !important;
+	}
+}
+
 .profile-edit-form-title {
 	margin-left: 8px;
 	margin-bottom: 24px;

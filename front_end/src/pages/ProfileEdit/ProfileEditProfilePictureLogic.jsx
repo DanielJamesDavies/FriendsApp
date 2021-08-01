@@ -13,24 +13,24 @@ import { UserContext } from "../../context/UserContext";
 
 // Assets
 
-export const ProfileEditBannerLogic = ({ profile }) => {
-	const { id, token } = useContext(UserContext);
+export const ProfileEditProfilePictureLogic = ({ profile }) => {
+	const { id, token, setProfilePicture } = useContext(UserContext);
 	const isMounted = useRef(false);
-	const [banner, setBanner] = useState(profile.banner);
-	const bannerInputRef = useRef();
-	const [bannerMessage, setBannerMessage] = useState(false);
+	const [picture, setPicture] = useState(profile.profilePicture);
+	const profilePictureInputRef = useRef();
+	const [profilePictureMessage, setProfilePictureMessage] = useState(false);
 
-	async function changeBanner(e) {
+	async function changeProfilePicture(e) {
 		if (e.target.files.length === 0) return false;
 		const fr = new FileReader();
 		fr.readAsDataURL(e.target.files[0]);
 		fr.onload = () => {
-			bannerInputRef.current.value = [];
+			profilePictureInputRef.current.value = [];
 
 			var image = new Image();
 			image.onload = async () => {
 				var nonResizedImage = fr.result;
-				var { resizedImage, resizedImageSize } = resizeImage(image, 1500, 650);
+				var { resizedImage, resizedImageSize } = resizeImage(image, 300, 300);
 
 				var imageLength = nonResizedImage.split(",")[1].split("=")[0].length;
 				var imageSize = Math.floor(imageLength - (imageLength / 8) * 2);
@@ -43,10 +43,10 @@ export const ProfileEditBannerLogic = ({ profile }) => {
 				}
 
 				if (imageSize > 1500000) {
-					setBannerMessage("Image too large.");
+					setProfilePictureMessage("Image too large.");
 				} else {
-					setBanner(image);
-					setBannerMessage(false);
+					setPicture(image);
+					setProfilePictureMessage(false);
 				}
 			};
 
@@ -87,25 +87,26 @@ export const ProfileEditBannerLogic = ({ profile }) => {
 		return { imageWidth, imageHeight };
 	}
 
-	async function saveBanner(setProfile) {
-		if (banner === profile.banner || banner === false) return false;
-		var result = await axios.post("http://localhost:3001/profile/" + id, { banner: banner }, { headers: { token: token } });
+	async function saveProfilePicture(setProfile) {
+		if (picture === profile.profilePicture || picture === false) return false;
+		var result = await axios.post("http://localhost:3001/profile/" + id, { profilePicture: picture }, { headers: { token: token } });
 		if (result.data && result.data.profile) {
 			setProfile(result.data.profile);
+			if (result.data.profile.profilePicture) setProfilePicture(result.data.profile.profilePicture);
 		}
 	}
 
-	function revertBanner() {
-		setBanner(profile.banner);
+	function revertProfilePicture() {
+		setProfilePicture(profile.profilePicture);
 	}
 
 	return {
 		isMounted,
-		banner,
-		bannerInputRef,
-		bannerMessage,
-		changeBanner,
-		saveBanner,
-		revertBanner,
+		profilePicture: picture,
+		profilePictureInputRef,
+		profilePictureMessage,
+		changeProfilePicture,
+		saveProfilePicture,
+		revertProfilePicture,
 	};
 };

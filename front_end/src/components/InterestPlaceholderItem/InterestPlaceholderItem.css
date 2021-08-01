@@ -13,6 +13,18 @@
 	transition: 0.4s;
 }
 
+@media (max-width: 1400px) {
+	.interest-placeholder-item {
+		width: calc(33.33% - 20px);
+	}
+}
+
+@media (max-width: 1000px) {
+	.interest-placeholder-item {
+		width: calc(50% - 20px);
+	}
+}
+
 .interest-placeholder-item-name {
 	position: absolute;
 	top: 50%;

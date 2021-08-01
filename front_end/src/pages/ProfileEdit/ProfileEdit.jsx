@@ -4,8 +4,9 @@ import { useEffect } from "react";
 // Components
 import { Loading } from "../../components/Loading/Loading";
 import { ProfileEditNames } from "./ProfileEditNames";
-import { ProfileEditDescriptions } from "./ProfileEditDescriptions";
+import { ProfileEditProfilePicture } from "./ProfileEditProfilePicture";
 import { ProfileEditBanner } from "./ProfileEditBanner";
+import { ProfileEditDescriptions } from "./ProfileEditDescriptions";
 
 // Logic
 import { ProfileEditLogic } from "./ProfileEditLogic";
@@ -46,6 +47,7 @@ export const ProfileEdit = (props) => {
 				<div className='profile-edit-forms-container'>
 					<ProfileEditNames profile={profile} setProfile={setProfile} />
 					<ProfileEditDescriptions profile={profile} setProfile={setProfile} />
+					<ProfileEditProfilePicture profile={profile} setProfile={setProfile} />
 					<ProfileEditBanner profile={profile} setProfile={setProfile} />
 				</div>
 			</div>

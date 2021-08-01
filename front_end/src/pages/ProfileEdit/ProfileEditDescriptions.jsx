@@ -49,8 +49,14 @@ export const ProfileEditDescriptions = ({ profile, setProfile }) => {
 			<div className='profile-edit-form-input-container'>
 				<div className='profile-edit-form-input-title'>
 					<h3>Brief Description</h3>
-					<SaveBtn isSaved={briefDescription === profile.briefDescription} onClick={() => saveBriefDescription(setProfile)} />
-					<RevertBtn isSaved={briefDescription === profile.briefDescription} onClick={revertBriefDescription} />
+					<SaveBtn
+						isSaved={briefDescription === JSON.parse(JSON.stringify(profile.briefDescription))}
+						onClick={() => saveBriefDescription(setProfile)}
+					/>
+					<RevertBtn
+						isSaved={briefDescription === JSON.parse(JSON.stringify(profile.briefDescription))}
+						onClick={revertBriefDescription}
+					/>
 				</div>
 				<Input
 					id='brief-description-input'
@@ -64,8 +70,14 @@ export const ProfileEditDescriptions = ({ profile, setProfile }) => {
 			<div className='profile-edit-form-input-container'>
 				<div className='profile-edit-form-input-title'>
 					<h3>Full Description</h3>
-					<SaveBtn isSaved={fullDescription === profile.fullDescription} onClick={() => saveFullDescription(setProfile)} />
-					<RevertBtn isSaved={fullDescription === profile.fullDescription} onClick={revertFullDescription} />
+					<SaveBtn
+						isSaved={JSON.stringify(fullDescription) === JSON.stringify(profile.fullDescription)}
+						onClick={() => saveFullDescription(setProfile)}
+					/>
+					<RevertBtn
+						isSaved={JSON.stringify(fullDescription) === JSON.stringify(profile.fullDescription)}
+						onClick={revertFullDescription}
+					/>
 				</div>
 				<TextArea
 					value={fullDescription.join("\n")}

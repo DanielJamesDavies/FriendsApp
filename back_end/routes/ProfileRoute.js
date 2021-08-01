@@ -139,10 +139,23 @@ router.post("/:id", authenticate, async (req, res) => {
 	if (!profile) return res.status(404).send({ message: "Error: Profile not Found" });
 
 	if (req.body.nickname) profile.nickname = req.body.nickname;
-	if (req.body.banner) profile.banner = req.body.banner;
+
+	if (req.body.profilePicture) {
+		var imageLength = req.body.profilePicture.split(",")[1].split("=")[0].length;
+		var imageSize = Math.floor(imageLength - (imageLength / 8) * 2);
+		if (imageSize <= 1500000) profile.profilePicture = req.body.profilePicture;
+	}
+
+	if (req.body.banner) {
+		var imageLength = req.body.banner.split(",")[1].split("=")[0].length;
+		var imageSize = Math.floor(imageLength - (imageLength / 8) * 2);
+		if (imageSize <= 1500000) profile.banner = req.body.banner;
+	}
+
 	if (req.body.briefDescription) profile.briefDescription = req.body.briefDescription;
 	if (req.body.fullDescription) profile.fullDescription = req.body.fullDescription;
 	if (req.body.interests) profile.interests = req.body.interests;
+
 	profile.save();
 
 	res.status(200).send({ profile: profile });

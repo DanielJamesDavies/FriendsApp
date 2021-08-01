@@ -1,9 +1,11 @@
 .profile-edit-banner-container {
-	width: 100%;
+	min-width: calc(100% - 394px - 24px - 48px - 24px - 48px);
+	width: calc(60% - 24px - 48px);
 }
 
 .profile-edit-form-banner-container {
 	position: relative;
+	margin: auto;
 	border-radius: 8px;
 	width: 100%;
 	max-width: 1500px;

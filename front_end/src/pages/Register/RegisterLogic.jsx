@@ -39,30 +39,97 @@ export const RegisterLogic = () => {
 	}
 
 	function changeProfilePicture(e) {
-		if (e.target.files.length !== 0)
-			convertToBase64(e.target.files[0]).then((res) => {
-				setProfilePicture(res);
-			});
+		if (e.target.files.length === 0) return false;
+		const fr = new FileReader();
+		fr.readAsDataURL(e.target.files[0]);
+		fr.onload = () => {
+			addBannerInputRef.current.value = [];
+
+			var image = new Image();
+			image.onload = async () => {
+				var nonResizedImage = fr.result;
+				var { resizedImage, resizedImageSize } = resizeImage(image, 300, 300);
+
+				var imageLength = nonResizedImage.split(",")[1].split("=")[0].length;
+				var imageSize = Math.floor(imageLength - (imageLength / 8) * 2);
+
+				if (resizedImageSize >= imageSize) {
+					image = nonResizedImage;
+				} else {
+					image = resizedImage;
+					imageSize = resizedImageSize;
+				}
+
+				if (imageSize <= 1500000) setProfilePicture(image);
+			};
+
+			image.src = fr.result;
+		};
+		fr.onerror = (error) => {
+			return console.log(error);
+		};
 	}
 
-	function changeBanner(e) {
-		if (e.target.files.length !== 0)
-			convertToBase64(e.target.files[0]).then((res) => {
-				setBanner(res);
-			});
+	async function changeBanner(e) {
+		if (e.target.files.length === 0) return false;
+		const fr = new FileReader();
+		fr.readAsDataURL(e.target.files[0]);
+		fr.onload = () => {
+			addBannerInputRef.current.value = [];
+
+			var image = new Image();
+			image.onload = async () => {
+				var nonResizedImage = fr.result;
+				var { resizedImage, resizedImageSize } = resizeImage(image, 1500, 650);
+
+				var imageLength = nonResizedImage.split(",")[1].split("=")[0].length;
+				var imageSize = Math.floor(imageLength - (imageLength / 8) * 2);
+
+				if (resizedImageSize >= imageSize) {
+					image = nonResizedImage;
+				} else {
+					image = resizedImage;
+					imageSize = resizedImageSize;
+				}
+
+				if (imageSize <= 1500000) setBanner(image);
+			};
+
+			image.src = fr.result;
+		};
+		fr.onerror = (error) => {
+			return console.log(error);
+		};
 	}
 
-	async function convertToBase64(file) {
-		return new Promise((resolve, reject) => {
-			const fileReader = new FileReader();
-			fileReader.readAsDataURL(file);
-			fileReader.onload = () => {
-				resolve(fileReader.result);
-			};
-			fileReader.onerror = (error) => {
-				reject(error);
-			};
-		});
+	function resizeImage(image, maxWidth, maxHeight) {
+		const { imageWidth, imageHeight } = getMaxImageSize(image.width, image.height, maxWidth, maxHeight);
+		var canvas = document.createElement("canvas");
+		canvas.width = imageWidth;
+		canvas.height = imageHeight;
+		var ctx = canvas.getContext("2d");
+		ctx.drawImage(image, 0, 0, imageWidth, imageHeight);
+		var resizedImage = canvas.toDataURL();
+
+		var imageLength = resizedImage.split(",")[1].split("=")[0].length;
+		var resizedImageSize = Math.floor(imageLength - (imageLength / 8) * 2);
+
+		return { resizedImage, resizedImageSize };
+	}
+
+	function getMaxImageSize(currentWidth, currentHeight, maxWidth, maxHeight) {
+		var imageWidth = currentWidth;
+		var imageHeight = currentHeight;
+		if (imageHeight > maxHeight) {
+			imageHeight = maxHeight;
+			imageWidth = maxHeight * (currentWidth / currentHeight);
+		}
+		if (imageWidth > maxWidth) {
+			imageWidth = maxWidth;
+			imageHeight = maxWidth * (currentHeight / currentWidth);
+		}
+
+		return { imageWidth, imageHeight };
 	}
 
 	function getImageFileSize(image) {
