@@ -33,7 +33,7 @@
 	position: absolute;
 	z-index: -1;
 	visibility: hidden;
-	min-height: 1rem;
+	min-height: 20px;
 	overflow: hidden;
 	word-wrap: break-word;
 	font-size: 1rem;
@@ -43,9 +43,13 @@
 	width: calc(100% - 50px - 10px - 32px - 8px) !important;
 }
 
+#chat-input-text {
+	min-height: 20px;
+}
+
 .chat-input-container .chat-input-text p {
 	margin: 0;
-	height: 20px;
+	min-height: 20px;
 }
 
 .chat-input-btn {

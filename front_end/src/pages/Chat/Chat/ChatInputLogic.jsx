@@ -1,5 +1,5 @@
 // Packages
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef, useState, useLayoutEffect } from "react";
 import axios from "axios";
 
 // Components
@@ -14,19 +14,22 @@ import { ChatContext } from "../../../context/ChatContext";
 
 // Assets
 
-export const ChatInputLogic = () => {
+export const ChatInputLogic = ({ setChatInputHeight }) => {
 	const { token, id } = useContext(UserContext);
 	const { socket } = useContext(ChatContext);
 	const isMounted = useRef(false);
 	const [text, setText] = useState([""]);
 	const [sending, setSending] = useState(false);
 
-	function changeText(e, setChatInputHeight) {
-		if (isMounted) {
-			setText(e.target.value.split("\n"));
-			setTimeout(() => setChatInputHeight(document.getElementById("chat-input-text").offsetHeight + "px"), 1);
-		}
+	function changeText(e) {
+		if (isMounted) setText(e.target.value.split("\n"));
 	}
+
+	useLayoutEffect(() => {
+		var height = document.getElementById("chat-input-text").offsetHeight;
+		console.log(height);
+		setChatInputHeight(height === 0 ? "20px" : height + "px");
+	}, [text]);
 
 	async function sendMessage(chat_id, setLoading) {
 		if (isMounted) setSending(false);

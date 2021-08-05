@@ -15,7 +15,7 @@ import "./ChatInput.css";
 // Assets
 
 export const ChatInput = ({ chat, setChat, setLoading, chatInputHeight, setChatInputHeight }) => {
-	const { isMounted, text, changeText, sendMessage, sending, setSending } = ChatInputLogic();
+	const { isMounted, text, changeText, sendMessage, sending, setSending } = ChatInputLogic({ setChatInputHeight });
 
 	useEffect(() => {
 		isMounted.current = true;
@@ -37,7 +37,7 @@ export const ChatInput = ({ chat, setChat, setLoading, chatInputHeight, setChatI
 			<textarea
 				className='chat-input'
 				value={text.join("\n")}
-				onChange={(e) => changeText(e, setChatInputHeight)}
+				onChange={changeText}
 				placeholder='Enter Message'
 				style={{ height: chatInputHeight }}
 			/>
