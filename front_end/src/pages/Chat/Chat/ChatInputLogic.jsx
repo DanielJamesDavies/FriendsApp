@@ -21,15 +21,16 @@ export const ChatInputLogic = ({ setChatInputHeight }) => {
 	const [text, setText] = useState([""]);
 	const [sending, setSending] = useState(false);
 
-	function changeText(e) {
-		if (isMounted) setText(e.target.value.split("\n"));
-	}
-
 	useLayoutEffect(() => {
 		var height = document.getElementById("chat-input-text").offsetHeight;
 		console.log(height);
 		setChatInputHeight(height === 0 ? "20px" : height + "px");
+		// eslint-disable-next-line
 	}, [text]);
+
+	function changeText(e) {
+		if (isMounted) setText(e.target.value.split("\n"));
+	}
 
 	async function sendMessage(chat_id, setLoading) {
 		if (isMounted) setSending(false);

@@ -36,7 +36,8 @@ export const ProfileEditDescriptionsLogic = ({ profile }) => {
 	}
 
 	async function saveFullDescription(setProfile) {
-		if (fullDescription.split(" ").join("") === "") return false;
+		if (Array.isArray(fullDescription) && fullDescription.join("").split(" ").join("") === "") return false;
+		if (!Array.isArray(fullDescription) && fullDescription.split(" ").join("") === "") return false;
 		var result = await axios.post("http://localhost:3001/profile/" + id, { fullDescription: fullDescription }, { headers: { token: token } });
 		if (result.data && result.data.profile) {
 			setProfile(result.data.profile);

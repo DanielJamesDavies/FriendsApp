@@ -21,7 +21,3 @@
 	background: var(--grey1);
 	resize: vertical;
 }
-
-.profile-edit-form-input-container .text-area textarea {
-	resize: vertical;
-}

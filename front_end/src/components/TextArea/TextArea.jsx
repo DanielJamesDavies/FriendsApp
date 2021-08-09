@@ -1,5 +1,5 @@
 // Packages
-import React, { useState } from "react";
+import React, { useRef, useState, useLayoutEffect } from "react";
 
 // Components
 
@@ -13,7 +13,20 @@ import "./TextArea.css";
 // Assets
 
 export const TextArea = (props) => {
+	let textArea = useRef(null);
+	let textHeightElement = useRef(null);
 	const [focused, setFocused] = useState(false);
+
+	useLayoutEffect(() => {
+		initialAutoSize();
+	});
+
+	function initialAutoSize() {
+		if (textArea.current !== null && textHeightElement !== null) {
+			textArea.current.setAttribute("style", "height: calc(" + textHeightElement.current.clientHeight + "px);");
+			textHeightElement.current.setAttribute("style", "width: calc(" + textArea.current.clientWidth + "px);");
+		}
+	}
 
 	return (
 		<div
@@ -30,13 +43,24 @@ export const TextArea = (props) => {
 			<label htmlFor='text-area'>{props.label}</label>
 
 			<textarea
+				ref={textArea}
+				id={props.id ? props.id : "input"}
 				value={props.value === undefined ? "" : props.value}
 				onChange={props.onChange}
-				id={props.id ? props.id : "input"}
 				onFocus={() => setFocused(true)}
 				onBlur={() => setFocused(false)}
 				type={props.type === undefined ? null : props.type}
 			/>
+
+			<div className='text-area-height-element'>
+				<div ref={textHeightElement}>
+					{props.value === undefined
+						? ""
+						: props.value.split("\n").map((paragraph, index) => {
+								return <p key={index}>{paragraph}</p>;
+						  })}
+				</div>
+			</div>
 		</div>
 	);
 };
