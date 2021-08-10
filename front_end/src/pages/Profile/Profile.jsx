@@ -21,7 +21,7 @@ import "./Profile.css";
 // Assets
 
 export const Profile = (props) => {
-	const { isMounted, loading, getProfile, profile, interests } = ProfileLogic();
+	const { isMounted, loading, getProfile, profile, interests, setInterests } = ProfileLogic();
 
 	useEffect(() => {
 		isMounted.current = true;
@@ -49,7 +49,7 @@ export const Profile = (props) => {
 							<ProfileInterestsPlaceholder interests={profile.interests} />
 						)
 					) : (
-						<ProfileInterests interests={interests} />
+						<ProfileInterests interests={interests} setInterests={setInterests} />
 					)}
 					{profile.groups === false ? null : <ProfileGroups profile={profile} />}
 				</div>

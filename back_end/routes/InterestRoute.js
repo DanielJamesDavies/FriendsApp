@@ -60,8 +60,8 @@ router.get("/profile-list/:id", authenticate, async (req, res) => {
 	res.status(200).send(profile.interests);
 });
 
-// Get a Profile's Full Interests
-router.post("/profile-full/", authenticate, async (req, res) => {
+// Get a List of Interests with all data
+router.post("/get-all/", authenticate, async (req, res) => {
 	if (!req.body.interests) return res.status(200).send({ message: "No Interests" });
 	const interestPromises = req.body.interests.map(async (interest) => {
 		var interest = await Interest.findById(interest)
@@ -69,6 +69,7 @@ router.post("/profile-full/", authenticate, async (req, res) => {
 			.catch((err) => {
 				console.log(err);
 				res.status(500).send({ message: "Error: " + err });
+				return {};
 			});
 		return interest;
 	});

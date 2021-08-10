@@ -18,10 +18,12 @@ export const TextArea = (props) => {
 	const [focused, setFocused] = useState(false);
 
 	useLayoutEffect(() => {
-		initialAutoSize();
+		resizeTextArea();
 	});
 
-	function initialAutoSize() {
+	window.addEventListener("resize", resizeTextArea);
+
+	function resizeTextArea() {
 		if (textArea.current !== null && textHeightElement !== null) {
 			textArea.current.setAttribute("style", "height: calc(" + textHeightElement.current.clientHeight + "px);");
 			textHeightElement.current.setAttribute("style", "width: calc(" + textArea.current.clientWidth + "px);");

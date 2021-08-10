@@ -31,7 +31,7 @@ export const ProfileLogic = () => {
 		}
 
 		var interestsResult = await axios.post(
-			"http://localhost:3001/interest/profile-full/",
+			"http://localhost:3001/interest/get-all/",
 			{ interests: interestsList },
 			{ headers: { token: token } }
 		);
@@ -40,5 +40,5 @@ export const ProfileLogic = () => {
 		}
 	}
 
-	return { isMounted, loading, getProfile, profile, interests };
+	return { isMounted, loading, getProfile, profile, interests, setInterests };
 };

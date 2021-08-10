@@ -51,10 +51,6 @@
 	transition: 0s;
 }
 
-.dark-theme .text-area textarea {
-	color: #fff;
-}
-
 .text-area textarea:focus {
 	outline: 0;
 }

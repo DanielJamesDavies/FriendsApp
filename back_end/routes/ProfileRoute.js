@@ -154,9 +154,20 @@ router.post("/:id", authenticate, async (req, res) => {
 
 	if (req.body.briefDescription) profile.briefDescription = req.body.briefDescription;
 	if (req.body.fullDescription) profile.fullDescription = req.body.fullDescription;
-	if (req.body.interests) profile.interests = req.body.interests;
+	if (req.body.interests) {
+		const interestPromises = req.body.interests
+			.map(async (interest) => {
+				const interestExists = await Interest.exists({ _id: interest });
+				if (interestExists) return interest;
+				return -1;
+			})
+			.filter((interest) => interest !== -1);
+		profile.interests = await Promise.all(interestPromises);
+	}
 
-	profile.save();
+	Profile.updateOne({ _id: profile._id }, profile, { upsert: true }, (err) => {
+		if (err) console.log(err);
+	});
 
 	res.status(200).send({ profile: profile });
 });
